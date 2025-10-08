@@ -1,0 +1,108 @@
+{
+    "app_title": "AndView - Gestor de Dispositivos Android",
+    "menu": {
+        "file": "Archivo",
+        "refresh": "Actualizar Dispositivos",
+        "exit": "Salir",
+        "tools": "Herramientas",
+        "install_apk": "Instalar APK",
+        "screenshot": "Captura de Pantalla",
+        "help": "Ayuda",
+        "about": "Acerca de",
+        "info": "Información"
+    },
+    "devices": {
+        "title": "Dispositivos Conectados",
+        "refresh": "Actualizar",
+        "none_found": "No se encontraron dispositivos",
+        "none_selected": "Ningún dispositivo seleccionado"
+    },
+    "mirroring": {
+        "tab": "Duplicación",
+        "quality_settings": "Configuración de Calidad",
+        "preset": "Predefinido:",
+        "preset_default": "Predeterminado",
+        "preset_quality": "Alta Calidad",
+        "preset_performance": "Rendimiento",
+        "preset_low_latency": "Baja Latencia",
+        "preset_record": "Grabación",
+        "max_resolution": "Resolución Máx:",
+        "bitrate": "Bitrate:",
+        "max_fps": "FPS Máximo:",
+        "display_options": "Opciones de Pantalla",
+        "fullscreen": "Pantalla Completa",
+        "always_on_top": "Siempre Encima",
+        "borderless": "Sin Bordes",
+        "orientation": "Orientación:",
+        "orientation_auto": "Automática",
+        "orientation_portrait": "Vertical",
+        "orientation_landscape": "Horizontal",
+        "orientation_portrait_flip": "Vertical (Invertida)",
+        "orientation_landscape_flip": "Horizontal (Invertida)",
+        "device_options": "Opciones del Dispositivo",
+        "stay_awake": "Mantener Pantalla Encendida",
+        "show_touches": "Mostrar Toques",
+        "turn_screen_off": "Apagar Pantalla del Dispositivo",
+        "start": "Iniciar Duplicación",
+        "stop": "Detener"
+    },
+    "tools": {
+        "tab": "Herramientas",
+        "apk_install": "Instalación de APK",
+        "browse": "Examinar",
+        "install": "Instalar APK",
+        "screenshot": "Captura de Pantalla",
+        "capture": "Capturar Pantalla",
+        "device_info": "Información del Dispositivo"
+    },
+    "commands": {
+        "tab": "Comandos",
+        "shell_title": "Ejecutar Comando ADB Shell",
+        "placeholder": "Escriba un comando shell...",
+        "execute": "Ejecutar",
+        "output_placeholder": "La salida de los comandos aparecerá aquí...",
+        "clear": "Limpiar Salida"
+    },
+    "messages": {
+        "warning": "Advertencia",
+        "error": "Error",
+        "success": "Éxito",
+        "no_device": "¡Ningún dispositivo seleccionado!",
+        "select_apk": "¡Seleccione un archivo APK!",
+        "select_device": "¡Seleccione un dispositivo primero!",
+        "installing": "Instalando",
+        "wait_or_accept": "Espere o acepte en el dispositivo.",
+        "cancel": "Cancelar",
+        "apk_success": "APK instalado correctamente",
+        "apk_failed": "Error al instalar APK",
+        "screenshot_save": "Guardar Captura de Pantalla",
+        "capturing": "Capturando pantalla...",
+        "screenshot_success": "Captura de pantalla guardada correctamente",
+        "screenshot_failed": "Error al capturar pantalla"
+    },
+    "about": {
+        "title": "Acerca de AndView",
+        "subtitle": "Gestor de Dispositivos Android",
+        "version": "Versión 1.0.0",
+        "description": "Una herramienta moderna e intuitiva para gestionar dispositivos Android.",
+        "features": "Características:",
+        "feature_detection": "Detección automática de dispositivos",
+        "feature_mirroring": "Duplicación de pantalla",
+        "feature_apk": "Instalación de APKs",
+        "feature_screenshot": "Captura de pantallas",
+        "feature_shell": "Ejecución de comandos shell",
+        "footer": "Desarrollado con ❤️ usando Python y PyQt5",
+        "system_info": "Información del Sistema"
+    },
+    "status": {
+        "ready": "Listo",
+        "refreshing": "Actualizando...",
+        "found_devices": "Encontrado(s) {count} dispositivo(s)",
+        "device_selected": "Dispositivo seleccionado: {name}",
+        "scrcpy_starting": "Iniciando duplicación...",
+        "scrcpy_started": "Duplicación iniciada",
+        "scrcpy_stopped": "Duplicación detenida",
+        "scrcpy_failed": "Error al iniciar duplicación"
+    }
+}
+

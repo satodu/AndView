@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12">
+    <!-- Seta para cima -->
+    <path d="M5 2L1 6L9 6Z" fill="#ffffff"/>
+    <!-- Seta para baixo -->
+    <path d="M5 10L1 6L9 6Z" fill="#ffffff"/>
+</svg>

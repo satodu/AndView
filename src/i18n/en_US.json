@@ -1,0 +1,108 @@
+{
+    "app_title": "AndView - Android Device Manager",
+    "menu": {
+        "file": "File",
+        "refresh": "Refresh Devices",
+        "exit": "Exit",
+        "tools": "Tools",
+        "install_apk": "Install APK",
+        "screenshot": "Screenshot",
+        "help": "Help",
+        "about": "About",
+        "info": "Information"
+    },
+    "devices": {
+        "title": "Connected Devices",
+        "refresh": "Refresh",
+        "none_found": "No devices found",
+        "none_selected": "No device selected"
+    },
+    "mirroring": {
+        "tab": "Mirroring",
+        "quality_settings": "Quality Settings",
+        "preset": "Preset:",
+        "preset_default": "Default",
+        "preset_quality": "High Quality",
+        "preset_performance": "Performance",
+        "preset_low_latency": "Low Latency",
+        "preset_record": "Recording",
+        "max_resolution": "Max Resolution:",
+        "bitrate": "Bitrate:",
+        "max_fps": "Max FPS:",
+        "display_options": "Display Options",
+        "fullscreen": "Fullscreen",
+        "always_on_top": "Always on Top",
+        "borderless": "Borderless",
+        "orientation": "Orientation:",
+        "orientation_auto": "Auto",
+        "orientation_portrait": "Portrait",
+        "orientation_landscape": "Landscape",
+        "orientation_portrait_flip": "Portrait (Flipped)",
+        "orientation_landscape_flip": "Landscape (Flipped)",
+        "device_options": "Device Options",
+        "stay_awake": "Keep Screen On",
+        "show_touches": "Show Touches",
+        "turn_screen_off": "Turn Device Screen Off",
+        "start": "Start Mirroring",
+        "stop": "Stop"
+    },
+    "tools": {
+        "tab": "Tools",
+        "apk_install": "APK Installation",
+        "browse": "Browse",
+        "install": "Install APK",
+        "screenshot": "Screenshot",
+        "capture": "Capture Screenshot",
+        "device_info": "Device Information"
+    },
+    "commands": {
+        "tab": "Commands",
+        "shell_title": "Execute ADB Shell Command",
+        "placeholder": "Type a shell command...",
+        "execute": "Execute",
+        "output_placeholder": "Command output will appear here...",
+        "clear": "Clear Output"
+    },
+    "messages": {
+        "warning": "Warning",
+        "error": "Error",
+        "success": "Success",
+        "no_device": "No device selected!",
+        "select_apk": "Select an APK file!",
+        "select_device": "Select a device first!",
+        "installing": "Installing",
+        "wait_or_accept": "Wait or accept on device.",
+        "cancel": "Cancel",
+        "apk_success": "APK installed successfully",
+        "apk_failed": "Failed to install APK",
+        "screenshot_save": "Save Screenshot",
+        "capturing": "Capturing screenshot...",
+        "screenshot_success": "Screenshot captured successfully",
+        "screenshot_failed": "Failed to capture screenshot"
+    },
+    "about": {
+        "title": "About AndView",
+        "subtitle": "Android Device Manager",
+        "version": "Version 1.0.0",
+        "description": "A modern and intuitive tool for managing Android devices.",
+        "features": "Features:",
+        "feature_detection": "Automatic device detection",
+        "feature_mirroring": "Screen mirroring",
+        "feature_apk": "APK installation",
+        "feature_screenshot": "Screenshot capture",
+        "feature_shell": "Shell command execution",
+        "footer": "Developed with ❤️ using Python and PyQt5",
+        "system_info": "System Information"
+    },
+    "status": {
+        "ready": "Ready",
+        "refreshing": "Refreshing...",
+        "found_devices": "Found {count} device(s)",
+        "device_selected": "Device selected: {name}",
+        "scrcpy_starting": "Starting mirroring...",
+        "scrcpy_started": "Mirroring started",
+        "scrcpy_stopped": "Mirroring stopped",
+        "scrcpy_failed": "Failed to start mirroring"
+    }
+}
+

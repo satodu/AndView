@@ -1,0 +1,4 @@
+# PyQt5 - Use a versão do sistema (python3-qt5)
+# No Fedora/Nobara: sudo dnf install python3-qt5
+# PyQt5 do pip não compila no Python 3.13, use o do sistema!
+

@@ -1,0 +1,108 @@
+{
+    "app_title": "AndView - Gerenciador de Dispositivos Android",
+    "menu": {
+        "file": "Arquivo",
+        "refresh": "Atualizar Dispositivos",
+        "exit": "Sair",
+        "tools": "Ferramentas",
+        "install_apk": "Instalar APK",
+        "screenshot": "Screenshot",
+        "help": "Ajuda",
+        "about": "Sobre",
+        "info": "Informações"
+    },
+    "devices": {
+        "title": "Dispositivos Conectados",
+        "refresh": "Atualizar",
+        "none_found": "Nenhum dispositivo encontrado",
+        "none_selected": "Nenhum dispositivo selecionado"
+    },
+    "mirroring": {
+        "tab": "Espelhamento",
+        "quality_settings": "Configurações de Qualidade",
+        "preset": "Preset:",
+        "preset_default": "Padrão",
+        "preset_quality": "Alta Qualidade",
+        "preset_performance": "Performance",
+        "preset_low_latency": "Baixa Latência",
+        "preset_record": "Gravação",
+        "max_resolution": "Resolução Máx:",
+        "bitrate": "Bitrate:",
+        "max_fps": "FPS Máximo:",
+        "display_options": "Opções de Exibição",
+        "fullscreen": "Tela Cheia",
+        "always_on_top": "Sempre no Topo",
+        "borderless": "Sem Bordas",
+        "orientation": "Orientação:",
+        "orientation_auto": "Automática",
+        "orientation_portrait": "Retrato",
+        "orientation_landscape": "Paisagem",
+        "orientation_portrait_flip": "Retrato Invertido",
+        "orientation_landscape_flip": "Paisagem Invertida",
+        "device_options": "Opções do Dispositivo",
+        "stay_awake": "Manter Tela Ligada",
+        "show_touches": "Mostrar Toques",
+        "turn_screen_off": "Desligar Tela do Dispositivo",
+        "start": "Iniciar Espelhamento",
+        "stop": "Parar"
+    },
+    "tools": {
+        "tab": "Ferramentas",
+        "apk_install": "Instalação de APK",
+        "browse": "Procurar",
+        "install": "Instalar APK",
+        "screenshot": "Screenshot",
+        "capture": "Capturar Screenshot",
+        "device_info": "Informações do Dispositivo"
+    },
+    "commands": {
+        "tab": "Comandos",
+        "shell_title": "Executar Comando ADB Shell",
+        "placeholder": "Digite um comando shell...",
+        "execute": "Executar",
+        "output_placeholder": "A saída dos comandos aparecerá aqui...",
+        "clear": "Limpar Saída"
+    },
+    "messages": {
+        "warning": "Aviso",
+        "error": "Erro",
+        "success": "Sucesso",
+        "no_device": "Nenhum dispositivo selecionado!",
+        "select_apk": "Selecione um arquivo APK!",
+        "select_device": "Selecione um dispositivo primeiro!",
+        "installing": "Instalando",
+        "wait_or_accept": "Aguarde ou aceite no dispositivo.",
+        "cancel": "Cancelar",
+        "apk_success": "APK instalado com sucesso",
+        "apk_failed": "Falha ao instalar APK",
+        "screenshot_save": "Salvar Screenshot",
+        "capturing": "Capturando screenshot...",
+        "screenshot_success": "Screenshot capturada com sucesso",
+        "screenshot_failed": "Falha ao capturar screenshot"
+    },
+    "about": {
+        "title": "Sobre AndView",
+        "subtitle": "Gerenciador de Dispositivos Android",
+        "version": "Versão 1.0.0",
+        "description": "Uma ferramenta moderna e intuitiva para gerenciar dispositivos Android.",
+        "features": "Características:",
+        "feature_detection": "Detecção automática de dispositivos",
+        "feature_mirroring": "Espelhamento de tela",
+        "feature_apk": "Instalação de APKs",
+        "feature_screenshot": "Captura de screenshots",
+        "feature_shell": "Execução de comandos shell",
+        "footer": "Desenvolvido com ❤️ usando Python e PyQt5",
+        "system_info": "Informações do Sistema"
+    },
+    "status": {
+        "ready": "Pronto",
+        "refreshing": "Atualizando...",
+        "found_devices": "Encontrado(s) {count} dispositivo(s)",
+        "device_selected": "Dispositivo selecionado: {name}",
+        "scrcpy_starting": "Iniciando espelhamento...",
+        "scrcpy_started": "Espelhamento iniciado",
+        "scrcpy_stopped": "Espelhamento finalizado",
+        "scrcpy_failed": "Falha ao iniciar espelhamento"
+    }
+}
+
