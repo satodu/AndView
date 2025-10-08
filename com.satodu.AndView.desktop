@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AndView
+Comment=Android Device Manager with WiFi Connection Support
+GenericName=Android Manager
+Exec=andview
+Icon=com.satodu.AndView
+Terminal=false
+StartupNotify=true
+Categories=Utility;Development;System;
+Keywords=android;adb;scrcpy;mobile;development;
+MimeType=
+X-Desktop-File-Install-Version=0.26
