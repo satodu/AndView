@@ -35,13 +35,9 @@ run_script() {
     echo ""
 }
 
-# Executa build do AppImage
-run_script "build_appimage.sh"
+# Executa build do AppImage Standalone
+run_script "build_appimage_standalone.sh"
 appimage_result=$?
-
-# Executa build do Flatpak
-run_script "build_flatpak.sh"
-flatpak_result=$?
 
 echo "===================================="
 echo "  Resumo do Build"
@@ -49,32 +45,28 @@ echo "===================================="
 echo ""
 
 if [ $appimage_result -eq 0 ]; then
-    echo "✅ AppImage: Criado com sucesso"
-    echo "   📦 scripts/build/AppImage/AndView-1.0.0-x86_64.AppImage"
+    echo "✅ AppImage Standalone: Criado com sucesso"
+    echo "   📦 build/AppImage-Standalone/AndView-0.0.1-standalone-x86_64.AppImage"
+    echo "   ✨ Funciona sem instalar ADB ou scrcpy!"
 else
-    echo "❌ AppImage: Falhou"
-fi
-
-if [ $flatpak_result -eq 0 ]; then
-    echo "✅ Flatpak: Criado com sucesso"
-    echo "   📦 build/flatpak/AndView.flatpak"
-else
-    echo "❌ Flatpak: Falhou"
+    echo "❌ AppImage Standalone: Falhou"
 fi
 
 echo ""
 echo "===================================="
 
-if [ $appimage_result -eq 0 ] && [ $flatpak_result -eq 0 ]; then
-    echo "🎉 Todos os builds foram concluídos com sucesso!"
+if [ $appimage_result -eq 0 ]; then
+    echo "🎉 AppImage Standalone criado com sucesso!"
     echo ""
     echo "📋 Próximos passos:"
-    echo "   1. Teste os arquivos gerados"
-    echo "   2. Faça upload para o GitHub Releases"
-    echo "   3. Submeta o Flatpak para o Flathub (opcional)"
+    echo "   1. Teste o AppImage: ./build/AppImage-Standalone/AndView-0.0.1-standalone-x86_64.AppImage"
+    echo "   2. Crie release: ./scripts/create_release.sh"
+    echo "   3. Distribua para usuários!"
+    echo ""
+    echo "✨ Este AppImage funciona em qualquer Linux sem instalar nada!"
     echo ""
     exit 0
 else
-    echo "⚠️  Alguns builds falharam. Verifique os erros acima."
+    echo "⚠️  Build falhou. Verifique os erros acima."
     exit 1
 fi

@@ -38,33 +38,22 @@ if ! gh auth status >/dev/null 2>&1; then
     exit 1
 fi
 
-# Constrói ambos os AppImages
-echo "🔨 Construindo AppImages..."
+# Constrói o AppImage Standalone
+echo "🔨 Construindo AppImage Standalone..."
 echo ""
 
-echo "📦 Construindo AppImage normal..."
-./scripts/build_appimage.sh
-
-echo ""
 echo "📦 Construindo AppImage standalone..."
 ./scripts/build_appimage_standalone.sh
 
 echo ""
-echo "📋 Verificando arquivos gerados..."
-NORMAL_APPIMAGE="build/AppImage/${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
+echo "📋 Verificando arquivo gerado..."
 STANDALONE_APPIMAGE="build/AppImage-Standalone/${APP_NAME}-${APP_VERSION}-standalone-x86_64.AppImage"
-
-if [ ! -f "$NORMAL_APPIMAGE" ]; then
-    echo "❌ AppImage normal não encontrado: $NORMAL_APPIMAGE"
-    exit 1
-fi
 
 if [ ! -f "$STANDALONE_APPIMAGE" ]; then
     echo "❌ AppImage standalone não encontrado: $STANDALONE_APPIMAGE"
     exit 1
 fi
 
-echo "✅ AppImage normal: $(ls -lh "$NORMAL_APPIMAGE" | awk '{print $5}')"
 echo "✅ AppImage standalone: $(ls -lh "$STANDALONE_APPIMAGE" | awk '{print $5}')"
 echo ""
 
@@ -86,35 +75,30 @@ AndView é um gerenciador moderno de dispositivos Android com suporte a conexão
 - 📸 **Screenshots** e comandos ADB
 - 🎨 **Interface moderna** e intuitiva
 
-## 📦 Downloads
+## 📦 Download
 
-### AppImage Normal (290KB)
-- Requer ADB e scrcpy instalados no sistema
-- Menor tamanho
-- Para usuários que já têm as ferramentas Android
-
-### AppImage Standalone (~50MB)
-- Inclui ADB e scrcpy
-- Funciona sem dependências externas
-- Recomendado para novos usuários
+### AppImage Standalone (~107MB)
+- ✅ **Inclui ADB e scrcpy**
+- ✅ **Funciona sem dependências externas**
+- ✅ **Recomendado para todos os usuários**
+- ✅ **Funciona em qualquer distribuição Linux**
 
 ## 🚀 Como usar
 
-1. Baixe o AppImage apropriado
-2. Torne executável: \`chmod +x AndView-*.AppImage\`
-3. Execute: \`./AndView-*.AppImage\`
+1. Baixe o AppImage Standalone
+2. Torne executável: \`chmod +x AndView-*-standalone-x86_64.AppImage\`
+3. Execute: \`./AndView-*-standalone-x86_64.AppImage\`
 
 ## 📋 Requisitos
 
-### Para AppImage Normal:
-- ADB (Android Debug Bridge)
-- scrcpy
-- Python 3.11+
-
 ### Para AppImage Standalone:
-- Nenhum requisito adicional!
+- ✅ **Nenhum requisito adicional!**
+- ✅ Funciona em qualquer Linux
+- ✅ Inclui todas as dependências
 
-## 🔧 Instalação das dependências
+## 🔧 Instalação manual (apenas para desenvolvedores)
+
+> **💡 Recomendamos usar o AppImage Standalone** - não requer instalação de dependências!
 
 ### Ubuntu/Debian:
 \`\`\`bash
@@ -179,8 +163,7 @@ gh release create "v${APP_VERSION}" \
     --title "🎉 AndView v${APP_VERSION} - Primeiro Release!" \
     --notes-file "$RELEASE_NOTES_FILE" \
     --latest \
-    "$NORMAL_APPIMAGE#AppImage Normal (290KB)" \
-    "$STANDALONE_APPIMAGE#AppImage Standalone (~50MB)"
+    "$STANDALONE_APPIMAGE#AppImage Standalone (~107MB) - Funciona sem dependências!"
 
 if [ $? -eq 0 ]; then
     echo ""

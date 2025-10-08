@@ -69,7 +69,14 @@ Toda a documentação está na pasta **`docs/`**:
 
 ## 📋 Pré-requisitos
 
-### Linux
+### 📦 Para AppImage Standalone (Recomendado)
+**🎉 Nenhum requisito!** O AppImage inclui tudo que você precisa:
+- ✅ Python e PyQt5
+- ✅ ADB (Android Debug Bridge)  
+- ✅ scrcpy
+- ✅ Todas as bibliotecas necessárias
+
+### 🛠️ Para instalação manual (desenvolvedores)
 
 1. **Python 3.8+**
    ```bash
