@@ -11,7 +11,7 @@ echo "===================================="
 echo ""
 
 APP_NAME="AndView"
-APP_VERSION="1.0.0"
+APP_VERSION="0.0.1"
 BUILD_DIR="$PROJECT_ROOT/build/AppImage"
 APPDIR="$BUILD_DIR/$APP_NAME.AppDir"
 
