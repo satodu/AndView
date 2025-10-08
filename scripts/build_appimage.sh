@@ -120,7 +120,7 @@ cat > "$APPDIR/AppRun" << 'EOF'
 #!/bin/bash
 APPDIR="$(dirname "$(readlink -f "$0")")"
 export PATH="$APPDIR/usr/bin:$PATH"
-export PYTHONPATH="$APPDIR/usr/lib/python-packages:$PYTHONPATH"
+export PYTHONPATH="$APPDIR/usr/bin/src:$PYTHONPATH"
 export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
 
 cd "$APPDIR/usr/bin"
