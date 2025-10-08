@@ -28,23 +28,18 @@ if ! command -v flatpak >/dev/null 2>&1; then
     exit 1
 fi
 
-# Verifica se flatpak-builder está instalado
-if ! command -v flatpak-builder >/dev/null 2>&1; then
-    echo "⚠️  flatpak-builder não encontrado!"
+# Verifica se flatpak está instalado e tem SDK
+if ! flatpak list | grep -q "org.kde.Sdk"; then
+    echo "⚠️  SDK do KDE não encontrado!"
     echo ""
-    echo "Para instalar o flatpak-builder:"
-    echo ""
-    echo "Ubuntu/Debian:"
-    echo "  sudo apt install flatpak-builder"
-    echo ""
-    echo "Fedora:"
-    echo "  sudo dnf install flatpak-builder"
-    echo ""
-    echo "Arch Linux:"
-    echo "  sudo pacman -S flatpak-builder"
+    echo "Para instalar o SDK:"
+    echo "  flatpak install flathub org.kde.Sdk//5.15-22.08"
     echo ""
     exit 1
 fi
+
+# Usa flatpak-builder através do SDK
+FLATPAK_BUILDER="flatpak run --command=flatpak-builder org.kde.Sdk//5.15-22.08"
 
 APP_ID="com.satodu.AndView"
 BUILD_DIR="build/flatpak"
@@ -55,7 +50,7 @@ rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 
 echo "📦 Configurando repositório Flatpak..."
-flatpak-builder --repo="$REPO_DIR" --force-clean "$BUILD_DIR/build" com.satodu.AndView.yml
+$FLATPAK_BUILDER --repo="$REPO_DIR" --force-clean "$BUILD_DIR/build" com.satodu.AndView.yml
 
 if [ $? -eq 0 ]; then
     echo ""

@@ -2,7 +2,8 @@
 # Script para criar AppImage do AndView
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_ROOT"
 
 echo "===================================="
 echo "  Criador de AppImage - AndView"
@@ -11,7 +12,7 @@ echo ""
 
 APP_NAME="AndView"
 APP_VERSION="1.0.0"
-BUILD_DIR="$SCRIPT_DIR/build/AppImage"
+BUILD_DIR="$PROJECT_ROOT/build/AppImage"
 APPDIR="$BUILD_DIR/$APP_NAME.AppDir"
 
 # Verifica se appimagetool está instalado
@@ -130,7 +131,7 @@ chmod +x "$APPDIR/AppRun"
 
 echo "🔨 Construindo AppImage..."
 cd "$BUILD_DIR"
-appimagetool "$APPDIR" "${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
+ARCH=x86_64 appimagetool "$APPDIR" "${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
 
 if [ $? -eq 0 ]; then
     echo ""
