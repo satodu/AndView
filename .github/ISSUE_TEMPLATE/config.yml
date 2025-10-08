@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussões da Comunidade
+    url: https://github.com/satodu/AndView/discussions
+    about: Peça ajuda, compartilhe ideias ou discuta o projeto com a comunidade
+  - name: 📖 Documentação
+    url: https://github.com/satodu/AndView/wiki
+    about: Consulte a documentação completa do projeto
+  - name: 🐛 Bug Report
+    url: https://github.com/satodu/AndView/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D+
+    about: Reportar um problema ou bug
+  - name: ✨ Feature Request
+    url: https://github.com/satodu/AndView/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE%5D+
+    about: Sugerir uma nova funcionalidade

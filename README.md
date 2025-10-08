@@ -137,7 +137,7 @@ Veja [docs/APPIMAGE.md](docs/APPIMAGE.md) para detalhes.
 
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Veja [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) para detalhes.
+Contribuições são bem-vindas! Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes.
 
 ## 📄 Licença
 
@@ -147,7 +147,7 @@ MIT License - veja [LICENSE](LICENSE) para detalhes.
 
 - Problemas? Veja [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 - Dúvidas? Abra uma issue
-- Quer contribuir? Veja [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
+- Quer contribuir? Veja [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 

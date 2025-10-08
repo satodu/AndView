@@ -1,0 +1,31 @@
+# Configurações recomendadas para o repositório AndView
+# Este arquivo serve como documentação das configurações recomendadas
+
+# Configurações de Branch Protection (aplicar via GitHub UI):
+# - Require a pull request before merging
+# - Require status checks to pass before merging
+# - Require branches to be up to date before merging
+# - Require conversation resolution before merging
+# - Include administrators
+# - Allow force pushes: NO
+# - Allow deletions: NO
+
+# Configurações de Issues:
+# - Enable issues: YES
+# - Enable discussions: YES
+# - Allow users to contact maintainers privately: YES
+
+# Configurações de Pull Requests:
+# - Require pull request reviews before merging: YES
+# - Dismiss stale reviews when new commits are pushed: YES
+# - Require review from code owners: YES (se CODEOWNERS configurado)
+
+# Configurações de Security:
+# - Enable vulnerability alerts: YES
+# - Enable dependency graph: YES
+# - Enable Dependabot alerts: YES
+
+# Configurações de General:
+# - Features: Issues, Projects, Wiki, Discussions
+# - Pull Requests: Allow merge commits, Allow squash merging, Allow rebase merging
+# - Archive this repository: NO

@@ -1,0 +1,16 @@
+# Configuração de proprietários de código
+# Para mais informações: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+
+# Proprietários globais
+* @satodu
+
+# Arquivos de configuração críticos
+/.github/ @satodu
+/scripts/build_*.sh @satodu
+/main.py @satodu
+/requirements.txt @satodu
+
+# Arquivos de documentação
+/README.md @satodu
+/CONTRIBUTING.md @satodu
+/docs/ @satodu
