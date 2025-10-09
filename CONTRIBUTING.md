@@ -114,9 +114,9 @@ AndView/
 
 ## 📋 Processo de Revisão
 
-1. **Automatizado**: Verificações de CI/CD
-2. **Revisão de código**: Mantenedores revisam o código
-3. **Testes**: Funcionalidade é testada
+1. **Revisão de código**: Mantenedores revisam o código
+2. **Testes**: Funcionalidade é testada localmente
+3. **Aprovação**: Mantenedores aprovam as mudanças
 4. **Merge**: Após aprovação, o PR é mergeado
 
 ## 🏷️ Labels
