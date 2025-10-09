@@ -11,7 +11,7 @@ echo "===================================="
 echo ""
 
 APP_NAME="AndView"
-APP_VERSION="1.0.0"
+APP_VERSION="0.0.1"
 BUILD_DIR="$PROJECT_ROOT/build/AppImage"
 APPDIR="$BUILD_DIR/$APP_NAME.AppDir"
 
@@ -53,6 +53,7 @@ echo "📋 Copiando código fonte..."
 cp main.py "$APPDIR/usr/bin/"
 cp requirements.txt "$APPDIR/usr/share/andview/"
 cp -r src "$APPDIR/usr/share/andview/"
+cp -r src "$APPDIR/usr/bin/"
 
 echo "🔧 Copiando dependências do sistema..."
 # Copia ADB
@@ -86,7 +87,7 @@ cat > "$APPDIR/AppRun" << 'EOF'
 APPDIR="$(dirname "$(readlink -f "$0")")"
 export PATH="$APPDIR/usr/bin:$PATH"
 export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
-export PYTHONPATH="$APPDIR/usr/share/andview/src:$APPDIR/usr/lib/python-packages:$PYTHONPATH"
+export PYTHONPATH="$APPDIR/usr/share/andview/src:$APPDIR/usr/bin:$APPDIR/usr/lib/python-packages:$PYTHONPATH"
 
 cd "$APPDIR/usr/bin"
 exec python3 main.py "$@"

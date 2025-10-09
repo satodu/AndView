@@ -10,7 +10,7 @@ echo "  🚀 Criador de Release - AndView"
 echo "====================================="
 echo ""
 
-APP_VERSION="1.0.0"
+APP_VERSION="0.0.1"
 APP_NAME="AndView"
 
 # Verifica se gh está instalado

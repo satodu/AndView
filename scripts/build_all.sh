@@ -46,7 +46,7 @@ echo ""
 
 if [ $appimage_result -eq 0 ]; then
     echo "✅ AppImage: Criado com sucesso"
-    echo "   📦 build/AppImage/AndView-1.0.0-x86_64.AppImage"
+    echo "   📦 build/AppImage/AndView-0.0.1-x86_64.AppImage"
     echo "   ✨ Funciona sem instalar ADB ou scrcpy!"
 else
     echo "❌ AppImage: Falhou"
@@ -59,7 +59,7 @@ if [ $appimage_result -eq 0 ]; then
     echo "🎉 AppImage criado com sucesso!"
     echo ""
     echo "📋 Próximos passos:"
-    echo "   1. Teste o AppImage: ./build/AppImage/AndView-1.0.0-x86_64.AppImage"
+    echo "   1. Teste o AppImage: ./build/AppImage/AndView-0.0.1-x86_64.AppImage"
     echo "   2. Crie release: ./scripts/create_release.sh"
     echo "   3. Distribua para usuários!"
     echo ""
