@@ -37,6 +37,7 @@ sudo apt install python3-pyqt5        # Ubuntu/Debian
 Toda a documentação está na pasta **`docs/`**:
 
 - 👉 **[START_HERE.md](docs/START_HERE.md)** - **Comece por aqui!**
+- 🔧 **[DEBUG_MODE.md](docs/DEBUG_MODE.md)** - **⚠️ OBRIGATÓRIO: Como ativar modo debug**
 - 📚 **[QUICKSTART.md](docs/QUICKSTART.md)** - Guia rápido de uso
 - 💻 **[DEV_GUIDE.md](docs/DEV_GUIDE.md)** - Guia de desenvolvimento
 - 📦 **[APPIMAGE.md](docs/APPIMAGE.md)** - Como criar AppImage
@@ -142,10 +143,16 @@ Veja [docs/APPIMAGE.md](docs/APPIMAGE.md) para detalhes.
 
 ## 📱 Preparando o Dispositivo Android
 
+**⚠️ IMPORTANTE:** Sem ativar o modo debug, o AndView não funcionará!
+
+### 🔧 Configuração Rápida:
 1. Ative as **Opções do Desenvolvedor** (toque 7x no número da versão)
 2. Ative a **Depuração USB**
 3. Conecte via USB
 4. Autorize o computador no dispositivo
+
+### 📖 Guia Completo:
+👉 **Veja [DEBUG_MODE.md](docs/DEBUG_MODE.md) para instruções detalhadas e solução de problemas**
 
 ## 🤝 Contribuindo
 
