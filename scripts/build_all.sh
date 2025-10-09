@@ -35,8 +35,8 @@ run_script() {
     echo ""
 }
 
-# Executa build do AppImage Standalone
-run_script "build_appimage_standalone.sh"
+# Executa build do AppImage
+run_script "build_appimage.sh"
 appimage_result=$?
 
 echo "===================================="
@@ -45,21 +45,21 @@ echo "===================================="
 echo ""
 
 if [ $appimage_result -eq 0 ]; then
-    echo "✅ AppImage Standalone: Criado com sucesso"
-    echo "   📦 build/AppImage-Standalone/AndView-0.0.1-standalone-x86_64.AppImage"
+    echo "✅ AppImage: Criado com sucesso"
+    echo "   📦 build/AppImage/AndView-1.0.0-x86_64.AppImage"
     echo "   ✨ Funciona sem instalar ADB ou scrcpy!"
 else
-    echo "❌ AppImage Standalone: Falhou"
+    echo "❌ AppImage: Falhou"
 fi
 
 echo ""
 echo "===================================="
 
 if [ $appimage_result -eq 0 ]; then
-    echo "🎉 AppImage Standalone criado com sucesso!"
+    echo "🎉 AppImage criado com sucesso!"
     echo ""
     echo "📋 Próximos passos:"
-    echo "   1. Teste o AppImage: ./build/AppImage-Standalone/AndView-0.0.1-standalone-x86_64.AppImage"
+    echo "   1. Teste o AppImage: ./build/AppImage/AndView-1.0.0-x86_64.AppImage"
     echo "   2. Crie release: ./scripts/create_release.sh"
     echo "   3. Distribua para usuários!"
     echo ""

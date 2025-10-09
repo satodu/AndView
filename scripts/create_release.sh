@@ -10,7 +10,7 @@ echo "  🚀 Criador de Release - AndView"
 echo "====================================="
 echo ""
 
-APP_VERSION="0.0.1"
+APP_VERSION="1.0.0"
 APP_NAME="AndView"
 
 # Verifica se gh está instalado
@@ -38,23 +38,23 @@ if ! gh auth status >/dev/null 2>&1; then
     exit 1
 fi
 
-# Constrói o AppImage Standalone
-echo "🔨 Construindo AppImage Standalone..."
+# Constrói o AppImage
+echo "🔨 Construindo AppImage..."
 echo ""
 
-echo "📦 Construindo AppImage standalone..."
-./scripts/build_appimage_standalone.sh
+echo "📦 Construindo AppImage..."
+./scripts/build_appimage.sh
 
 echo ""
 echo "📋 Verificando arquivo gerado..."
-STANDALONE_APPIMAGE="build/AppImage-Standalone/${APP_NAME}-${APP_VERSION}-standalone-x86_64.AppImage"
+APPIMAGE_FILE="build/AppImage/${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
 
-if [ ! -f "$STANDALONE_APPIMAGE" ]; then
-    echo "❌ AppImage standalone não encontrado: $STANDALONE_APPIMAGE"
+if [ ! -f "$APPIMAGE_FILE" ]; then
+    echo "❌ AppImage não encontrado: $APPIMAGE_FILE"
     exit 1
 fi
 
-echo "✅ AppImage standalone: $(ls -lh "$STANDALONE_APPIMAGE" | awk '{print $5}')"
+echo "✅ AppImage: $(ls -lh "$APPIMAGE_FILE" | awk '{print $5}')"
 echo ""
 
 # Cria release notes
@@ -77,7 +77,7 @@ AndView é um gerenciador moderno de dispositivos Android com suporte a conexão
 
 ## 📦 Download
 
-### AppImage Standalone (~107MB)
+### AppImage (~107MB)
 - ✅ **Inclui ADB e scrcpy**
 - ✅ **Funciona sem dependências externas**
 - ✅ **Recomendado para todos os usuários**
@@ -85,20 +85,20 @@ AndView é um gerenciador moderno de dispositivos Android com suporte a conexão
 
 ## 🚀 Como usar
 
-1. Baixe o AppImage Standalone
-2. Torne executável: \`chmod +x AndView-*-standalone-x86_64.AppImage\`
-3. Execute: \`./AndView-*-standalone-x86_64.AppImage\`
+1. Baixe o AppImage
+2. Torne executável: \`chmod +x AndView-*-x86_64.AppImage\`
+3. Execute: \`./AndView-*-x86_64.AppImage\`
 
 ## 📋 Requisitos
 
-### Para AppImage Standalone:
+### Para AppImage:
 - ✅ **Nenhum requisito adicional!**
 - ✅ Funciona em qualquer Linux
 - ✅ Inclui todas as dependências
 
 ## 🔧 Instalação manual (apenas para desenvolvedores)
 
-> **💡 Recomendamos usar o AppImage Standalone** - não requer instalação de dependências!
+> **💡 Recomendamos usar o AppImage** - não requer instalação de dependências!
 
 ### Ubuntu/Debian:
 \`\`\`bash
@@ -163,7 +163,7 @@ gh release create "v${APP_VERSION}" \
     --title "🎉 AndView v${APP_VERSION} - Primeiro Release!" \
     --notes-file "$RELEASE_NOTES_FILE" \
     --latest \
-    "$STANDALONE_APPIMAGE#AppImage Standalone (~107MB) - Funciona sem dependências!"
+    "$APPIMAGE_FILE#AppImage (~107MB) - Funciona sem dependências!"
 
 if [ $? -eq 0 ]; then
     echo ""

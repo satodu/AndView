@@ -1,4 +1,9 @@
-# AndView - Interface Gráfica para scrcpy e ADB
+<div align="center">
+  <img src="src/ui/resources/logo.png" alt="AndView Logo" width="120">
+  <h1>AndView - Interface Gráfica para scrcpy e ADB</h1>
+  
+  <img src="docs/images/demo.png" alt="AndView - Gerenciador de Dispositivos Android" width="80%">
+</div>
 
 Uma interface gráfica moderna em Python para gerenciar dispositivos Android usando scrcpy e ADB (Android Debug Bridge).
 
