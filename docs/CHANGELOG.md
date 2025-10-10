@@ -1,33 +1,50 @@
 # Changelog
 
-Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
+All notable changes to this project will be documented in this file.
 
-O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
-e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-10-08
+## [0.0.2] - 2025-10-10
 
-### Adicionado
-- Interface gráfica completa usando PyQt5
-- Gerenciamento de dispositivos Android via ADB
-- Espelhamento de tela com scrcpy
-- Detecção automática de dispositivos conectados
-- Instalação de APKs via interface
-- Captura de screenshots
-- Execução de comandos shell ADB
-- Presets de qualidade para espelhamento
-- Informações detalhadas do dispositivo
-- Atualização automática da lista de dispositivos
-- Script de instalação automatizado
-- Documentação completa
+### Added
+- **Fully Independent AppImage** - No system dependencies required!
+- Includes scrcpy v3.3.3 (latest version with ADB built-in)
+- Complete English documentation
 
-### Características
-- ✅ Detecção automática de dispositivos
-- ✅ Interface intuitiva e moderna
-- ✅ Múltiplos presets de qualidade
-- ✅ Suporte a instalação de APKs
-- ✅ Screenshots integradas
-- ✅ Console ADB shell
-- ✅ Informações detalhadas do dispositivo
-- ✅ Apenas para Linux
+### Changed
+- **Migrated from PyQt5 to PySide6** - Better Python 3.13+ support
+- AppImage now includes everything (Python, PySide6, ADB, scrcpy)
+- Simplified installation - just download and run!
+- Updated all documentation to English
 
+### Improved
+- Build process now downloads latest scrcpy automatically
+- Better AppImage script with proper environment setup
+- Cleaner user experience - zero dependencies
+
+## [0.0.1] - 2025-10-08
+
+### Added
+- Complete GUI using PyQt5
+- Android device management via ADB
+- Screen mirroring with scrcpy
+- Automatic detection of connected devices
+- APK installation via interface
+- Screenshot capture
+- ADB shell command execution
+- Quality presets for mirroring
+- Detailed device information
+- Automatic device list updates
+- Automated installation script
+- Complete documentation (Portuguese)
+
+### Features
+- ✅ Automatic device detection
+- ✅ Intuitive and modern interface
+- ✅ Multiple quality presets
+- ✅ APK installation support
+- ✅ Integrated screenshots
+- ✅ ADB shell console
+- ✅ Detailed device information
+- ✅ Linux only

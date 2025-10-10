@@ -1,83 +1,83 @@
-# 🔧 Como Ativar o Modo Debug no Android
+# 🔧 How to Enable Debug Mode on Android
 
-Para usar o AndView, você **DEVE** ativar o modo debug no seu dispositivo Android. Este guia mostra como fazer isso passo a passo.
+To use AndView, you **MUST** enable debug mode on your Android device. This guide shows how to do it step by step.
 
-## ⚠️ Importante
+## ⚠️ Important
 
-**Sem o modo debug ativado, o AndView não conseguirá:**
-- ❌ Detectar seu dispositivo
-- ❌ Conectar via USB ou WiFi
-- ❌ Espelhar a tela
-- ❌ Executar comandos ADB
+**Without debug mode enabled, AndView will not be able to:**
+- ❌ Detect your device
+- ❌ Connect via USB or WiFi
+- ❌ Mirror the screen
+- ❌ Execute ADB commands
 
-## 📱 Passo a Passo
+## 📱 Step by Step
 
-### 1. Ativar as Opções do Desenvolvedor
+### 1. Enable Developer Options
 
-1. **Abra as Configurações** do Android
-2. **Vá para "Sobre o telefone"** ou "Sobre o dispositivo"
-3. **Encontre "Número da versão"** ou "Versão do software"
-4. **Toque 7 vezes** no número da versão
-5. Você verá a mensagem: **"Você agora é um desenvolvedor!"**
+1. **Open Android Settings**
+2. **Go to "About phone"** or "About device"
+3. **Find "Build number"** or "Software version"
+4. **Tap 7 times** on the build number
+5. You'll see the message: **"You are now a developer!"**
 
-### 2. Ativar a Depuração USB
+### 2. Enable USB Debugging
 
-1. **Volte para as Configurações**
-2. **Procure por "Opções do desenvolvedor"** ou "Para desenvolvedores"
-3. **Ative a opção** (pode estar em Configurações avançadas)
-4. **Ative "Depuração USB"** (USB Debugging)
+1. **Return to Settings**
+2. **Look for "Developer options"** or "For developers"
+3. **Enable the option** (may be in Advanced settings)
+4. **Enable "USB debugging"**
 
-### 3. Autorizar o Computador
+### 3. Authorize the Computer
 
-1. **Conecte o dispositivo via USB** ao computador
-2. **Aparecerá uma notificação** no Android
-3. **Toque na notificação**
-4. **Marque "Sempre permitir deste computador"**
-5. **Toque em "OK"** ou "Permitir"
+1. **Connect the device via USB** to the computer
+2. **A notification will appear** on Android
+3. **Tap the notification**
+4. **Check "Always allow from this computer"**
+5. **Tap "OK"** or "Allow"
 
-## 🔍 Como Verificar se Está Funcionando
+## 🔍 How to Check if It's Working
 
 ### Via Terminal (Linux):
 
 ```bash
-# Verificar se o dispositivo aparece
+# Check if the device appears
 adb devices
 
-# Deve mostrar algo como:
+# Should show something like:
 # List of devices attached
 # ABC123DEF456    device
 ```
 
 ### Via AndView:
 
-1. **Abra o AndView**
-2. **Vá para a aba "Dispositivos"**
-3. **Clique em "Atualizar"**
-4. **Seu dispositivo deve aparecer** na lista
+1. **Open AndView**
+2. **Go to the "Devices" tab**
+3. **Click "Refresh"**
+4. **Your device should appear** in the list
 
-## 🚨 Problemas Comuns
+## 🚨 Common Problems
 
-### ❌ "Dispositivo não aparece"
+### ❌ "Device doesn't appear"
 
-**Soluções:**
-- Verifique se a depuração USB está ativada
-- Reconecte o cabo USB
-- Tente outro cabo USB
-- Reinicie o dispositivo Android
-- Reinicie o serviço ADB: `sudo adb kill-server && adb start-server`
+**Solutions:**
+- Check if USB debugging is enabled
+- Reconnect the USB cable
+- Try another USB cable
+- Restart the Android device
+- Restart the ADB service: `sudo adb kill-server && adb start-server`
 
-### ❌ "Dispositivo aparece como 'unauthorized'"
+### ❌ "Device appears as 'unauthorized'"
 
-**Soluções:**
-- Desconecte e reconecte o USB
-- No Android, toque na notificação e autorize novamente
-- Marque "Sempre permitir deste computador"
+**Solutions:**
+- Disconnect and reconnect the USB
+- On Android, tap the notification and authorize again
+- Check "Always allow from this computer"
 
-### ❌ "ADB não encontrado"
+### ❌ "ADB not found"
 
-**Soluções:**
-- Use o AppImage (inclui ADB)
-- Ou instale manualmente:
+**Solutions:**
+- Use the AppImage (includes ADB)
+- Or install manually:
   ```bash
   # Ubuntu/Debian
   sudo apt install android-tools-adb
@@ -89,65 +89,65 @@ adb devices
   sudo pacman -S android-tools
   ```
 
-## 📶 Conexão WiFi (Opcional)
+## 📶 WiFi Connection (Optional)
 
-Após configurar via USB, você pode conectar via WiFi:
+After setting up via USB, you can connect via WiFi:
 
-1. **Conecte via USB primeiro** (para configurar)
-2. **No AndView, vá para a aba "WiFi"**
-3. **Configure a conexão WiFi**
-4. **Desconecte o USB**
-5. **Continue usando via WiFi**
+1. **Connect via USB first** (for setup)
+2. **In AndView, go to the "WiFi" tab**
+3. **Configure the WiFi connection**
+4. **Disconnect the USB**
+5. **Continue using via WiFi**
 
-## 🔐 Segurança
+## 🔐 Security
 
-### ⚠️ Avisos Importantes:
+### ⚠️ Important Warnings:
 
-- **Depuração USB** permite acesso total ao dispositivo
-- **Só autorize computadores confiáveis**
-- **Desative quando não estiver usando** o AndView
-- **Nunca deixe a depuração ativada** em dispositivos de produção
+- **USB debugging** allows full access to the device
+- **Only authorize trusted computers**
+- **Disable when not using** AndView
+- **Never leave debugging enabled** on production devices
 
-### 🛡️ Como Desativar:
+### 🛡️ How to Disable:
 
-1. **Configurações → Opções do desenvolvedor**
-2. **Desative "Depuração USB"**
-3. **Ou desative completamente "Opções do desenvolvedor"**
+1. **Settings → Developer options**
+2. **Disable "USB debugging"**
+3. **Or completely disable "Developer options"**
 
-## 📱 Diferentes Versões do Android
+## 📱 Different Android Versions
 
-### Android 11+ (mais recente):
-- As opções podem estar em **"Configurações do sistema"**
-- Procure por **"Opções para desenvolvedores"**
+### Android 11+ (latest):
+- Options may be in **"System settings"**
+- Look for **"Developer options"**
 
-### Android 10 e anteriores:
-- Geralmente em **"Sobre o telefone"**
-- Depois em **"Opções do desenvolvedor"**
+### Android 10 and earlier:
+- Usually in **"About phone"**
+- Then in **"Developer options"**
 
 ### Samsung:
-- Pode estar em **"Configurações do desenvolvedor"**
-- Ou em **"Informações do software"**
+- May be in **"Developer settings"**
+- Or in **"Software information"**
 
 ### Xiaomi/MIUI:
-- Procure por **"Configurações adicionais"**
-- Ou **"Para desenvolvedores"**
+- Look for **"Additional settings"**
+- Or **"For developers"**
 
-## 🆘 Ainda Não Funciona?
+## 🆘 Still Not Working?
 
-Se mesmo seguindo este guia não funcionar:
+If it still doesn't work after following this guide:
 
-1. **Verifique se o cabo USB suporta dados** (não apenas carregamento)
-2. **Tente outro cabo USB**
-3. **Reinicie o dispositivo Android**
-4. **Reinicie o computador**
-5. **Verifique se há drivers específicos** para seu dispositivo
-6. **Consulte a documentação específica** do seu dispositivo
+1. **Check if the USB cable supports data** (not just charging)
+2. **Try another USB cable**
+3. **Restart the Android device**
+4. **Restart the computer**
+5. **Check for device-specific drivers**
+6. **Consult the device-specific documentation**
 
-## 📞 Suporte
+## 📞 Support
 
-- **Issues no GitHub:** [AndView Issues](https://github.com/satodu/AndView/issues)
-- **Documentação completa:** [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **GitHub Issues:** [AndView Issues](https://github.com/satodu/AndView/issues)
+- **Complete documentation:** [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
 ---
 
-**💡 Dica:** Mantenha este guia salvo! Você precisará dele sempre que conectar um novo dispositivo ou após atualizações do Android.
+**💡 Tip:** Keep this guide saved! You'll need it whenever you connect a new device or after Android updates.

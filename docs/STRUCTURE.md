@@ -1,259 +1,259 @@
-# Estrutura do Projeto AndView
+# AndView Project Structure
 
-Documentação sobre a organização dos arquivos e diretórios do projeto.
+Documentation about file and directory organization of the project.
 
-## 📁 Estrutura de Diretórios
+## 📁 Directory Structure
 
 ```
 AndView/
-├── andview                    # Wrapper para executar o app
-├── dev                        # Wrapper para modo desenvolvimento
-├── main.py                    # Ponto de entrada da aplicação
-├── requirements.txt           # Dependências Python
-├── LICENSE                    # Licença MIT
-├── README.md                  # Documentação principal
-├── .gitignore                # Arquivos ignorados pelo Git
+├── andview                    # Wrapper to run the app
+├── dev                        # Wrapper for development mode
+├── main.py                    # Application entry point
+├── requirements.txt           # Python dependencies
+├── LICENSE                    # MIT License
+├── README.md                  # Main documentation
+├── .gitignore                # Files ignored by Git
 │
-├── src/                       # Código fonte principal
+├── src/                       # Main source code
 │   ├── __init__.py
-│   ├── adb_manager.py         # Gerenciamento de comandos ADB
-│   ├── scrcpy_manager.py      # Gerenciamento do scrcpy
-│   └── ui/                    # Interface gráfica
+│   ├── adb_manager.py         # ADB command management
+│   ├── scrcpy_manager.py      # scrcpy management
+│   └── ui/                    # Graphical interface
 │       ├── __init__.py
-│       ├── main_window.py     # Janela principal
-│       └── widgets/           # Widgets customizados
+│       ├── main_window.py     # Main window
+│       └── widgets/           # Custom widgets
 │           ├── __init__.py
-│           ├── device_list.py    # Lista de dispositivos
-│           └── control_panel.py  # Painel de controle
+│           ├── device_list.py    # Device list
+│           └── control_panel.py  # Control panel
 │
-├── scripts/                   # Scripts de automação
-│   ├── install.sh             # Instalação completa
-│   ├── dev.sh                 # Modo desenvolvimento
-│   └── build_appimage.sh      # Criar AppImage
+├── scripts/                   # Automation scripts
+│   ├── install.sh             # Complete installation
+│   ├── dev.sh                 # Development mode
+│   └── build_appimage.sh      # Create AppImage
 │
-├── docs/                      # Documentação completa
-│   ├── START_HERE.md          # Guia de início
-│   ├── README.md              # Overview detalhado
-│   ├── QUICKSTART.md          # Guia rápido
-│   ├── DEV_GUIDE.md           # Guia de desenvolvimento
-│   ├── APPIMAGE.md            # Criar AppImage
-│   ├── TROUBLESHOOTING.md     # Solução de problemas
-│   ├── CONTRIBUTING.md        # Como contribuir
-│   ├── CHANGELOG.md           # Histórico de versões
-│   └── STRUCTURE.md           # Este arquivo
+├── docs/                      # Complete documentation
+│   ├── START_HERE.md          # Getting started guide
+│   ├── README.md              # Detailed overview
+│   ├── QUICKSTART.md          # Quick guide
+│   ├── DEV_GUIDE.md           # Development guide
+│   ├── APPIMAGE.md            # Create AppImage
+│   ├── TROUBLESHOOTING.md     # Troubleshooting
+│   ├── CONTRIBUTING.md        # How to contribute
+│   ├── CHANGELOG.md           # Version history
+│   └── STRUCTURE.md           # This file
 │
-└── venv/                      # Ambiente virtual Python (criado na instalação)
+└── venv/                      # Python virtual environment (created on install)
     ├── bin/
     ├── include/
     └── lib/
 ```
 
-## 📄 Descrição dos Arquivos
+## 📄 File Descriptions
 
-### Raiz do Projeto
+### Project Root
 
-| Arquivo | Descrição |
-|---------|-----------|
-| `andview` | Script wrapper para executar o aplicativo |
-| `dev` | Script wrapper para modo desenvolvimento |
-| `main.py` | Ponto de entrada da aplicação Python |
-| `requirements.txt` | Lista de dependências Python (PyQt5, etc.) |
-| `LICENSE` | Licença MIT do projeto |
-| `README.md` | Documentação principal e overview |
-| `.gitignore` | Arquivos e diretórios ignorados pelo Git |
+| File | Description |
+|------|-------------|
+| `andview` | Wrapper script to run the application |
+| `dev` | Wrapper script for development mode |
+| `main.py` | Python application entry point |
+| `requirements.txt` | List of Python dependencies (PyQt5, etc.) |
+| `LICENSE` | MIT project license |
+| `README.md` | Main documentation and overview |
+| `.gitignore` | Files and directories ignored by Git |
 
-### Diretório `src/`
+### `src/` Directory
 
-Contém todo o código fonte da aplicação.
+Contains all application source code.
 
-| Arquivo | Responsabilidade |
-|---------|------------------|
-| `adb_manager.py` | Classe `ADBManager` - gerencia comandos ADB, lista dispositivos, instala APKs, etc. |
-| `scrcpy_manager.py` | Classe `ScrcpyManager` - gerencia scrcpy, inicia/para espelhamento, opções de configuração |
-| `ui/main_window.py` | Classe `MainWindow` - janela principal da aplicação, integra todos os componentes |
-| `ui/widgets/device_list.py` | Widget de lista de dispositivos conectados |
-| `ui/widgets/control_panel.py` | Widget do painel de controle com abas (espelhamento, ferramentas, comandos) |
+| File | Responsibility |
+|------|----------------|
+| `adb_manager.py` | `ADBManager` class - manages ADB commands, lists devices, installs APKs, etc. |
+| `scrcpy_manager.py` | `ScrcpyManager` class - manages scrcpy, starts/stops mirroring, configuration options |
+| `ui/main_window.py` | `MainWindow` class - main application window, integrates all components |
+| `ui/widgets/device_list.py` | Connected device list widget |
+| `ui/widgets/control_panel.py` | Control panel widget with tabs (mirroring, tools, commands) |
 
-### Diretório `scripts/`
+### `scripts/` Directory
 
-Scripts de automação para instalação, desenvolvimento e build.
+Automation scripts for installation, development and building.
 
-| Script | Função |
-|--------|--------|
-| `install.sh` | Instalação completa: verifica dependências, cria venv, instala pacotes, cria atalhos |
-| `dev.sh` | Modo desenvolvimento com várias opções (debug, lint, format, clean, etc.) |
-| `build_appimage.sh` | Cria AppImage para distribuição |
+| Script | Function |
+|--------|----------|
+| `install.sh` | Complete installation: checks dependencies, creates venv, installs packages, creates shortcuts |
+| `dev.sh` | Development mode with various options (debug, lint, format, clean, etc.) |
+| `build_appimage.sh` | Creates AppImage for distribution |
 
-### Diretório `docs/`
+### `docs/` Directory
 
-Toda a documentação do projeto.
+All project documentation.
 
-| Documento | Conteúdo |
-|-----------|----------|
-| `START_HERE.md` | **Comece por aqui!** Guia inicial rápido |
-| `README.md` | Overview detalhado do projeto (versão completa) |
-| `QUICKSTART.md` | Guia rápido de uso do aplicativo |
-| `DEV_GUIDE.md` | Guia completo para desenvolvedores |
-| `APPIMAGE.md` | Como criar e distribuir AppImage |
-| `TROUBLESHOOTING.md` | Solução de problemas comuns |
-| `CONTRIBUTING.md` | Guia para contribuidores |
-| `CHANGELOG.md` | Histórico de versões e mudanças |
-| `STRUCTURE.md` | Este arquivo - estrutura do projeto |
+| Document | Content |
+|----------|---------|
+| `START_HERE.md` | **Start here!** Quick initial guide |
+| `README.md` | Detailed project overview (complete version) |
+| `QUICKSTART.md` | Quick usage guide |
+| `DEV_GUIDE.md` | Complete guide for developers |
+| `APPIMAGE.md` | How to create and distribute AppImage |
+| `TROUBLESHOOTING.md` | Common problem solving |
+| `CONTRIBUTING.md` | Guide for contributors |
+| `CHANGELOG.md` | Version history and changes |
+| `STRUCTURE.md` | This file - project structure |
 
-## 🔄 Fluxo de Execução
+## 🔄 Execution Flow
 
-### Execução Normal
+### Normal Execution
 
 ```
 ./andview
   ↓
-Ativa venv
+Activates venv
   ↓
-Executa main.py
+Executes main.py
   ↓
-Importa MainWindow de src/ui/
+Imports MainWindow from src/ui/
   ↓
-MainWindow importa ADBManager e ScrcpyManager
+MainWindow imports ADBManager and ScrcpyManager
   ↓
-MainWindow cria widgets (DeviceList, ControlPanel)
+MainWindow creates widgets (DeviceList, ControlPanel)
   ↓
-Aplicação inicia
+Application starts
 ```
 
-### Modo Desenvolvimento
+### Development Mode
 
 ```
-./dev [opções]
+./dev [options]
   ↓
-Executa scripts/dev.sh
+Executes scripts/dev.sh
   ↓
-Verifica/cria venv
+Checks/creates venv
   ↓
-Instala dependências se necessário
+Installs dependencies if needed
   ↓
-Processa opções (--debug, --lint, etc.)
+Processes options (--debug, --lint, etc.)
   ↓
-Executa main.py com configurações apropriadas
+Executes main.py with appropriate settings
 ```
 
-### Instalação
+### Installation
 
 ```
 ./scripts/install.sh
   ↓
-Detecta sistema operacional
+Detects operating system
   ↓
-Verifica ADB, scrcpy, Python
+Checks ADB, scrcpy, Python
   ↓
-Oferece instalar dependências faltantes
+Offers to install missing dependencies
   ↓
-Cria ambiente virtual (venv/)
+Creates virtual environment (venv/)
   ↓
-Instala pacotes Python
+Installs Python packages
   ↓
-Cria wrappers (andview, dev)
+Creates wrappers (andview, dev)
   ↓
-Opcionalmente cria atalho no menu
+Optionally creates menu shortcut
 ```
 
-## 🎯 Padrões de Organização
+## 🎯 Organization Patterns
 
-### Código Python
+### Python Code
 
-- **Modularidade**: Cada classe em seu próprio arquivo
-- **Separação de Responsabilidades**: 
-  - `adb_manager.py` - apenas ADB
-  - `scrcpy_manager.py` - apenas scrcpy  
-  - `ui/` - apenas interface gráfica
-- **Type Hints**: Usados em todas as funções
-- **Docstrings**: Todas as classes e funções documentadas
+- **Modularity**: Each class in its own file
+- **Separation of Concerns**: 
+  - `adb_manager.py` - only ADB
+  - `scrcpy_manager.py` - only scrcpy  
+  - `ui/` - only GUI
+- **Type Hints**: Used in all functions
+- **Docstrings**: All classes and functions documented
 
-### Scripts Shell
+### Shell Scripts
 
-- **Portabilidade**: Compatíveis com bash
-- **Validação**: Verificam dependências antes de executar
-- **Feedback**: Mensagens claras com emojis
-- **Tratamento de Erros**: Exit codes apropriados
+- **Portability**: Compatible with bash
+- **Validation**: Check dependencies before executing
+- **Feedback**: Clear messages with emojis
+- **Error Handling**: Appropriate exit codes
 
-### Documentação
+### Documentation
 
-- **Hierarquia**: Do geral (README) ao específico (DEV_GUIDE)
-- **Markdown**: Formatação consistente
-- **Exemplos**: Código e comandos sempre com exemplos
-- **Acessibilidade**: Linguagem clara em português
+- **Hierarchy**: From general (README) to specific (DEV_GUIDE)
+- **Markdown**: Consistent formatting
+- **Examples**: Code and commands always with examples
+- **Accessibility**: Clear language in English
 
-## 🚀 Adicionando Novos Componentes
+## 🚀 Adding New Components
 
-### Novo Widget UI
+### New UI Widget
 
-1. Criar arquivo em `src/ui/widgets/novo_widget.py`
-2. Importar em `src/ui/widgets/__init__.py`
-3. Usar em `src/ui/main_window.py`
+1. Create file in `src/ui/widgets/new_widget.py`
+2. Import in `src/ui/widgets/__init__.py`
+3. Use in `src/ui/main_window.py`
 
-### Nova Funcionalidade ADB
+### New ADB Feature
 
-1. Adicionar método em `src/adb_manager.py`
-2. Adicionar botão/ação em `src/ui/widgets/control_panel.py`
-3. Conectar sinal em `src/ui/main_window.py`
+1. Add method in `src/adb_manager.py`
+2. Add button/action in `src/ui/widgets/control_panel.py`
+3. Connect signal in `src/ui/main_window.py`
 
-### Novo Script
+### New Script
 
-1. Criar script em `scripts/novo_script.sh`
-2. Tornar executável: `chmod +x scripts/novo_script.sh`
-3. (Opcional) Criar wrapper na raiz
+1. Create script in `scripts/new_script.sh`
+2. Make executable: `chmod +x scripts/new_script.sh`
+3. (Optional) Create wrapper in root
 
-### Nova Documentação
+### New Documentation
 
-1. Criar arquivo em `docs/NOVO_DOC.md`
-2. Adicionar link no README.md
-3. Adicionar link no START_HERE.md se for importante
+1. Create file in `docs/NEW_DOC.md`
+2. Add link in README.md
+3. Add link in START_HERE.md if important
 
-## 📦 Build e Distribuição
+## 📦 Build and Distribution
 
-### Estrutura do AppImage
+### AppImage Structure
 
-Quando você cria um AppImage com `./scripts/build_appimage.sh`:
+When you create an AppImage with `./scripts/build_appimage.sh`:
 
 ```
 build/
 └── AppImage/
-    ├── AndView.AppDir/          # Diretório de construção
-    │   ├── AppRun               # Script de execução
-    │   ├── andview.desktop      # Arquivo desktop
-    │   ├── andview.png          # Ícone
+    ├── AndView.AppDir/          # Build directory
+    │   ├── AppRun               # Execution script
+    │   ├── andview.desktop      # Desktop file
+    │   ├── andview.png          # Icon
     │   └── usr/
-    │       ├── bin/             # Código da aplicação
-    │       ├── lib/             # Dependências Python
-    │       └── share/           # Recursos
+    │       ├── bin/             # Application code
+    │       ├── lib/             # Python dependencies
+    │       └── share/           # Resources
     │
-    └── AndView-1.0.0-x86_64.AppImage  # AppImage final
+    └── AndView-1.0.0-x86_64.AppImage  # Final AppImage
 ```
 
-## 🔐 Arquivos Ignorados (.gitignore)
+## 🔐 Ignored Files (.gitignore)
 
-Não são versionados:
+Not versioned:
 
-- `venv/` - Ambiente virtual
-- `__pycache__/` - Cache Python
-- `build/` - Artefatos de build
-- `*.pyc`, `*.pyo` - Bytecode Python
-- `.vscode/`, `.idea/` - Configurações IDE
+- `venv/` - Virtual environment
+- `__pycache__/` - Python cache
+- `build/` - Build artifacts
+- `*.pyc`, `*.pyo` - Python bytecode
+- `.vscode/`, `.idea/` - IDE settings
 - `*.log` - Logs
-- `andview` (gerado) - Script wrapper gerado
-- `*.AppImage` - Binários gerados
+- `andview` (generated) - Generated wrapper script
+- `*.AppImage` - Generated binaries
 
-## 📊 Métricas do Projeto
+## 📊 Project Metrics
 
-- **Linhas de Código Python**: ~2000
-- **Arquivos Python**: 6
-- **Scripts Shell**: 3
-- **Documentos**: 9
-- **Dependências Python**: 3 (PyQt5, PyQt5-Qt5, PyQt5-sip)
-- **Dependências Sistema**: 2 (adb, scrcpy)
+- **Python Lines of Code**: ~2000
+- **Python Files**: 6
+- **Shell Scripts**: 3
+- **Documents**: 9
+- **Python Dependencies**: 3 (PyQt5, PyQt5-Qt5, PyQt5-sip)
+- **System Dependencies**: 2 (adb, scrcpy)
 
-## 🔗 Dependências
+## 🔗 Dependencies
 
-### Internas (entre módulos)
+### Internal (between modules)
 
 ```
 main.py
@@ -264,37 +264,36 @@ main.py
       └── scrcpy_manager.py
 ```
 
-### Externas
+### External
 
-- **PyQt5** - Interface gráfica
-- **adb** - Comunicação com Android
-- **scrcpy** - Espelhamento de tela
+- **PyQt5** - GUI
+- **adb** - Communication with Android
+- **scrcpy** - Screen mirroring
 - **Python 3.8+** - Runtime
 
-## 📝 Convenções
+## 📝 Conventions
 
-### Nomenclatura
+### Naming
 
-- **Arquivos Python**: `snake_case.py`
+- **Python files**: `snake_case.py`
 - **Classes**: `PascalCase`
-- **Funções/métodos**: `snake_case()`
-- **Constantes**: `UPPER_CASE`
+- **Functions/methods**: `snake_case()`
+- **Constants**: `UPPER_CASE`
 - **Scripts**: `kebab-case.sh`
 
 ### Git
 
-- **Branches**: `feature/nome-da-feature`
-- **Commits**: Mensagens descritivas em português
-- **Tags**: `v1.0.0` (versionamento semântico)
+- **Branches**: `feature/feature-name`
+- **Commits**: Descriptive messages in English
+- **Tags**: `v1.0.0` (semantic versioning)
 
-### Documentação
+### Documentation
 
-- **Arquivos**: `UPPER_CASE.md`
-- **Seções**: Headers com emojis
-- **Código**: Sempre em blocos ```bash ou ```python
-- **Links**: Relativos quando possível
+- **Files**: `UPPER_CASE.md`
+- **Sections**: Headers with emojis
+- **Code**: Always in blocks ```bash or ```python
+- **Links**: Relative when possible
 
 ---
 
-**Estrutura mantida simples, clara e escalável! 🚀**
-
+**Structure kept simple, clear and scalable! 🚀**

@@ -1,59 +1,58 @@
-# Contribuindo para o AndView
+# Contributing to AndView
 
-Obrigado por considerar contribuir para o AndView! 
+Thank you for considering contributing to AndView! 
 
-## Como Contribuir
+## How to Contribute
 
-1. **Fork** o repositório
-2. **Clone** seu fork localmente
-3. Crie uma **branch** para sua feature (`git checkout -b feature/MinhaNovaFeature`)
-4. Faça suas alterações
-5. **Teste** suas alterações
-6. **Commit** suas mudanças (`git commit -m 'Adiciona nova feature X'`)
-7. **Push** para a branch (`git push origin feature/MinhaNovaFeature`)
-8. Abra um **Pull Request**
+1. **Fork** the repository
+2. **Clone** your fork locally
+3. Create a **branch** for your feature (`git checkout -b feature/MyNewFeature`)
+4. Make your changes
+5. **Test** your changes
+6. **Commit** your changes (`git commit -m 'Add new feature X'`)
+7. **Push** to the branch (`git push origin feature/MyNewFeature`)
+8. Open a **Pull Request**
 
-## Diretrizes
+## Guidelines
 
-### Código
+### Code
 
-- Siga as convenções PEP 8 para código Python
-- Adicione comentários quando necessário
-- Mantenha o código limpo e legível
+- Follow PEP 8 conventions for Python code
+- Add comments when necessary
+- Keep the code clean and readable
 
 ### Commits
 
-- Use mensagens de commit descritivas
-- Prefira commits pequenos e focados
-- Use português para mensagens de commit
+- Use descriptive commit messages
+- Prefer small and focused commits
+- Use English for commit messages
 
-### Testes
+### Testing
 
-- Teste suas alterações antes de fazer o commit
-- Certifique-se de que não há erros de sintaxe
-- Verifique se todas as funcionalidades ainda funcionam
+- Test your changes before committing
+- Make sure there are no syntax errors
+- Verify that all features still work
 
-## Relatando Bugs
+## Reporting Bugs
 
-Ao relatar um bug, inclua:
+When reporting a bug, include:
 
-- Descrição detalhada do problema
-- Passos para reproduzir
-- Comportamento esperado vs comportamento atual
-- Screenshots (se aplicável)
-- Informações do sistema (distro Linux, versões do ADB/scrcpy)
+- Detailed description of the problem
+- Steps to reproduce
+- Expected behavior vs actual behavior
+- Screenshots (if applicable)
+- System information (Linux distro, ADB/scrcpy versions)
 
-## Sugerindo Melhorias
+## Suggesting Improvements
 
-Sugestões são sempre bem-vindas! Ao sugerir melhorias:
+Suggestions are always welcome! When suggesting improvements:
 
-- Descreva claramente a melhoria proposta
-- Explique por que seria útil
-- Forneça exemplos de uso, se possível
+- Clearly describe the proposed improvement
+- Explain why it would be useful
+- Provide usage examples, if possible
 
-## Dúvidas?
+## Questions?
 
-Se tiver dúvidas, abra uma issue com a tag `question`.
+If you have questions, open an issue with the `question` tag.
 
-Obrigado! 🙏
-
+Thank you! 🙏

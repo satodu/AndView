@@ -2,19 +2,19 @@
 Widget para conexão WiFi de dispositivos Android
 """
 
-from PyQt5.QtWidgets import (
+from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, 
     QLineEdit, QPushButton, QGroupBox, QMessageBox,
     QSpinBox, QProgressDialog
 )
-from PyQt5.QtCore import Qt, QThread, pyqtSignal
-from PyQt5.QtGui import QFont
+from PySide6.QtCore import Qt, QThread, Signal
+from PySide6.QtGui import QFont
 import re
 
 
 class WiFiConnectionWorker(QThread):
     """Worker thread para operações WiFi"""
-    finished = pyqtSignal(bool, str)
+    finished = Signal(bool, str)
     
     def __init__(self, adb_manager, operation, **kwargs):
         super().__init__()

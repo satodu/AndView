@@ -1,27 +1,27 @@
-# Criando AppImage do AndView
+# Creating AndView AppImage
 
-Este guia explica como criar um AppImage do AndView para distribuição.
+This guide explains how to create an AppImage of AndView for distribution.
 
-## O que é AppImage?
+## What is AppImage?
 
-AppImage é um formato de pacote universal para Linux que permite distribuir aplicativos como arquivos executáveis únicos, sem necessidade de instalação.
+AppImage is a universal package format for Linux that allows you to distribute applications as single executable files, without requiring installation.
 
-## Pré-requisitos
+## Prerequisites
 
-### 1. Instalar appimagetool
+### 1. Install appimagetool
 
 ```bash
-# Baixar appimagetool
+# Download appimagetool
 wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
 
-# Tornar executável
+# Make it executable
 chmod +x appimagetool-x86_64.AppImage
 
-# Mover para /usr/local/bin
+# Move to /usr/local/bin
 sudo mv appimagetool-x86_64.AppImage /usr/local/bin/appimagetool
 ```
 
-### 2. Instalar ImageMagick (opcional, para criar ícone)
+### 2. Install ImageMagick (optional, to create icon)
 
 ```bash
 # Ubuntu/Debian
@@ -34,38 +34,38 @@ sudo dnf install ImageMagick
 sudo pacman -S imagemagick
 ```
 
-## Criando o AppImage
+## Creating the AppImage
 
-### Método Automatizado (Recomendado)
+### Automated Method (Recommended)
 
-Execute o script de build:
+Run the build script:
 
 ```bash
 ./build_appimage.sh
 ```
 
-O AppImage será criado em `build/AppImage/AndView-1.0.0-x86_64.AppImage`
+The AppImage will be created in `build/AppImage/AndView-1.0.0-x86_64.AppImage`
 
-### Testando o AppImage
+### Testing the AppImage
 
 ```bash
 ./build/AppImage/AndView-1.0.0-x86_64.AppImage
 ```
 
-## Estrutura do AppImage
+## AppImage Structure
 
 ```
 AndView.AppDir/
-├── AppRun                    # Script principal de execução
-├── andview.desktop          # Arquivo desktop (link simbólico)
-├── andview.png             # Ícone (link simbólico)
+├── AppRun                    # Main execution script
+├── andview.desktop          # Desktop file (symbolic link)
+├── andview.png             # Icon (symbolic link)
 └── usr/
     ├── bin/
-    │   ├── andview         # Script wrapper
-    │   ├── main.py         # Código principal
-    │   └── src/            # Código fonte
+    │   ├── andview         # Wrapper script
+    │   ├── main.py         # Main code
+    │   └── src/            # Source code
     ├── lib/
-    │   └── python-packages/  # Dependências Python
+    │   └── python-packages/  # Python dependencies
     └── share/
         ├── applications/
         │   └── andview.desktop
@@ -74,55 +74,55 @@ AndView.AppDir/
                 └── andview.png
 ```
 
-## Personalizando o Ícone
+## Customizing the Icon
 
-Para usar um ícone personalizado:
+To use a custom icon:
 
-1. Crie ou obtenha um ícone PNG de 256x256 pixels
-2. Substitua o arquivo em:
+1. Create or get a 256x256 pixel PNG icon
+2. Replace the file in:
    ```bash
-   cp seu-icone.png build/AppImage/AndView.AppDir/usr/share/icons/hicolor/256x256/apps/andview.png
+   cp your-icon.png build/AppImage/AndView.AppDir/usr/share/icons/hicolor/256x256/apps/andview.png
    ```
-3. Reconstrua o AppImage
+3. Rebuild the AppImage
 
-## Distribuindo
+## Distribution
 
-### 1. Upload para GitHub Releases
+### 1. Upload to GitHub Releases
 
 ```bash
-# Após criar uma release no GitHub
+# After creating a release on GitHub
 gh release upload v1.0.0 build/AppImage/AndView-1.0.0-x86_64.AppImage
 ```
 
 ### 2. AppImageHub
 
-Para listar no AppImageHub:
-1. Fork do repositório: https://github.com/AppImage/appimage.github.io
-2. Adicione seu AppImage em `database/`
-3. Crie um pull request
+To list on AppImageHub:
+1. Fork the repository: https://github.com/AppImage/appimage.github.io
+2. Add your AppImage in `database/`
+3. Create a pull request
 
-### 3. Distribuição Direta
+### 3. Direct Distribution
 
-Simplesmente compartilhe o arquivo `.AppImage`. Os usuários podem:
+Simply share the `.AppImage` file. Users can:
 
 ```bash
-# Baixar
-wget https://seu-site.com/AndView-1.0.0-x86_64.AppImage
+# Download
+wget https://your-site.com/AndView-1.0.0-x86_64.AppImage
 
-# Tornar executável
+# Make executable
 chmod +x AndView-1.0.0-x86_64.AppImage
 
-# Executar
+# Run
 ./AndView-1.0.0-x86_64.AppImage
 ```
 
-## Integração com o Sistema
+## System Integration
 
-Para integrar o AppImage ao menu de aplicações:
+To integrate the AppImage into the application menu:
 
-### Opção 1: AppImageLauncher (Recomendado)
+### Option 1: AppImageLauncher (Recommended)
 
-Instale o AppImageLauncher que faz a integração automaticamente:
+Install AppImageLauncher which does the integration automatically:
 
 ```bash
 # Ubuntu/Debian
@@ -130,23 +130,23 @@ sudo add-apt-repository ppa:appimagelauncher-team/stable
 sudo apt update
 sudo apt install appimagelauncher
 
-# Outras distros: baixar do GitHub
+# Other distros: download from GitHub
 # https://github.com/TheAssassin/AppImageLauncher/releases
 ```
 
-### Opção 2: Manual
+### Option 2: Manual
 
 ```bash
-# Copiar para ~/Applications
+# Copy to ~/Applications
 mkdir -p ~/Applications
 cp AndView-1.0.0-x86_64.AppImage ~/Applications/
 
-# Criar arquivo desktop
+# Create desktop file
 cat > ~/.local/share/applications/andview.desktop << EOF
 [Desktop Entry]
 Type=Application
 Name=AndView
-Comment=Interface Gráfica para scrcpy e ADB
+Comment=GUI for scrcpy and ADB
 Exec=$HOME/Applications/AndView-1.0.0-x86_64.AppImage
 Icon=phone
 Categories=Utility;Development;
@@ -154,49 +154,48 @@ Terminal=false
 EOF
 ```
 
-## Atualizações
+## Updates
 
-Para criar uma nova versão:
+To create a new version:
 
-1. Atualize a versão em `build_appimage.sh`
-2. Execute `./build_appimage.sh`
-3. Distribua o novo AppImage
+1. Update version in `build_appimage.sh`
+2. Run `./build_appimage.sh`
+3. Distribute the new AppImage
 
 ## Troubleshooting
 
-### Erro: "cannot open shared object file"
+### Error: "cannot open shared object file"
 
-O AppImage precisa que as bibliotecas do sistema estejam disponíveis. Para ADB e scrcpy, eles devem estar instalados no sistema:
+The AppImage needs system libraries to be available. For ADB and scrcpy, they must be installed on the system:
 
 ```bash
 sudo apt install android-tools-adb scrcpy  # Ubuntu/Debian
 sudo dnf install android-tools scrcpy      # Fedora/Nobara
 ```
 
-### Erro ao executar: "No such file or directory"
+### Error on run: "No such file or directory"
 
 ```bash
-# Certifique-se de que o AppImage é executável
+# Make sure the AppImage is executable
 chmod +x AndView-1.0.0-x86_64.AppImage
 
-# Verifique se FUSE está instalado
+# Check if FUSE is installed
 sudo apt install fuse libfuse2  # Ubuntu/Debian
 ```
 
-### AppImage muito grande
+### AppImage too large
 
-Para reduzir o tamanho:
+To reduce size:
 
-1. Use `--no-cache-dir` ao instalar pacotes Python
-2. Remova arquivos desnecessários (.pyc, __pycache__)
-3. Use compressão:
+1. Use `--no-cache-dir` when installing Python packages
+2. Remove unnecessary files (.pyc, __pycache__)
+3. Use compression:
    ```bash
    appimagetool --comp gzip AndView.AppDir
    ```
 
-## Recursos Adicionais
+## Additional Resources
 
 - [AppImage Documentation](https://docs.appimage.org/)
 - [AppImageKit GitHub](https://github.com/AppImage/AppImageKit)
 - [Best Practices](https://github.com/AppImage/AppImageSpec/blob/master/draft.md)
-

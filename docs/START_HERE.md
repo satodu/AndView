@@ -1,75 +1,75 @@
-# 🚀 Comece Aqui - AndView
+# 🚀 Start Here - AndView
 
-Bem-vindo ao **AndView** - Interface Gráfica para scrcpy e ADB!
+Welcome to **AndView** - GUI for scrcpy and ADB!
 
-## ⚡ Início Rápido
+## ⚡ Quick Start
 
-### 1️⃣ Primeiro, instale as dependências do sistema
+### 1️⃣ First, install system dependencies
 
-Como você está no **Nobara/Fedora**, execute:
+If you're on **Nobara/Fedora**, run:
 
 ```bash
-# Instale ferramentas de desenvolvimento (NECESSÁRIO!)
+# Install development tools (REQUIRED!)
 sudo dnf install python3-devel gcc gcc-c++
 
-# Instale ADB e scrcpy
+# Install ADB and scrcpy
 sudo dnf install android-tools scrcpy
 ```
 
-### 2️⃣ Execute a instalação do projeto
+### 2️⃣ Run the project installation
 
 ```bash
 cd /home/panda/Projects/satodu/AndView
 ./scripts/install.sh
 ```
 
-Isso irá:
-- ✅ Criar ambiente virtual Python
-- ✅ Instalar PyQt5 e dependências
-- ✅ Criar script de execução
-- ✅ (Opcional) Criar atalho no menu
+This will:
+- ✅ Create Python virtual environment
+- ✅ Install PyQt5 and dependencies
+- ✅ Create execution script
+- ✅ (Optional) Create menu shortcut
 
-### 3️⃣ Execute o aplicativo
+### 3️⃣ Run the application
 
 ```bash
 ./andview
 ```
 
-## 🛠️ Modo Desenvolvimento
+## 🛠️ Development Mode
 
-Para testar e desenvolver:
+For testing and development:
 
 ```bash
-# Execução normal em modo dev
+# Normal dev mode execution
 ./dev.sh
 
-# Com debug ativado (mostra mais informações)
+# With debug enabled (shows more info)
 ./dev.sh --debug
 
-# Com saída verbose
+# With verbose output
 ./dev.sh --verbose
 
-# Verificar código (instala pylint se necessário)
+# Check code (installs pylint if needed)
 ./dev.sh --lint
 
-# Formatar código (instala black se necessário)
+# Format code (installs black if needed)
 ./dev.sh --format
 
-# Limpar arquivos temporários
+# Clean temporary files
 ./dev.sh --clean
 
-# Instalar ferramentas de desenvolvimento
+# Install development tools
 ./dev.sh --install-dev
 
-# Ver todas as opções
+# See all options
 ./dev.sh --help
 ```
 
-## 📦 Criar AppImage (No Futuro)
+## 📦 Create AppImage (Future)
 
-Quando quiser distribuir o aplicativo como AppImage:
+When you want to distribute the app as AppImage:
 
-### 1. Instale o appimagetool
+### 1. Install appimagetool
 
 ```bash
 wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
@@ -77,176 +77,175 @@ chmod +x appimagetool-x86_64.AppImage
 sudo mv appimagetool-x86_64.AppImage /usr/local/bin/appimagetool
 ```
 
-### 2. Construa o AppImage
+### 2. Build the AppImage
 
 ```bash
 ./scripts/build_appimage.sh
 ```
 
-### 3. Teste o AppImage
+### 3. Test the AppImage
 
 ```bash
 ./build/AppImage/AndView-1.0.0-x86_64.AppImage
 ```
 
-Veja [APPIMAGE.md](APPIMAGE.md) para detalhes completos.
+See [APPIMAGE.md](APPIMAGE.md) for complete details.
 
-## 📚 Documentação
+## 📚 Documentation
 
-Criamos vários guias para ajudá-lo:
+We've created several guides to help you:
 
-### Para Usuários Finais
-- **[README.md](README.md)** - Visão geral do projeto
-- **[QUICKSTART.md](QUICKSTART.md)** - Guia rápido de uso
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Solução de problemas
+### For End Users
+- **[README.md](README.md)** - Project overview
+- **[QUICKSTART.md](QUICKSTART.md)** - Quick usage guide
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Problem solving
 
-### Para Desenvolvedores
-- **[DEV_GUIDE.md](DEV_GUIDE.md)** - Guia completo de desenvolvimento
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Como contribuir
-- **[APPIMAGE.md](APPIMAGE.md)** - Como criar AppImage
+### For Developers
+- **[DEV_GUIDE.md](DEV_GUIDE.md)** - Complete development guide
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - How to contribute
+- **[APPIMAGE.md](APPIMAGE.md)** - How to create AppImage
 
-### Outros
-- **[CHANGELOG.md](CHANGELOG.md)** - Histórico de versões
-- **[LICENSE](LICENSE)** - Licença MIT
+### Others
+- **[CHANGELOG.md](CHANGELOG.md)** - Version history
+- **[LICENSE](LICENSE)** - MIT License
 
-## 🎯 Estrutura do Projeto
+## 🎯 Project Structure
 
 ```
 AndView/
-├── main.py                    # ← Inicia o aplicativo
+├── main.py                    # ← Starts the application
 ├── src/
-│   ├── adb_manager.py         # Gerencia comandos ADB
-│   ├── scrcpy_manager.py      # Gerencia scrcpy
+│   ├── adb_manager.py         # Manages ADB commands
+│   ├── scrcpy_manager.py      # Manages scrcpy
 │   └── ui/
-│       ├── main_window.py     # Janela principal
+│       ├── main_window.py     # Main window
 │       └── widgets/
-│           ├── device_list.py    # Lista de dispositivos
-│           └── control_panel.py  # Painel de controle
+│           ├── device_list.py    # Device list
+│           └── control_panel.py  # Control panel
 │
-├── dev.sh                     # ← Script de desenvolvimento
-├── install.sh                 # ← Script de instalação
-├── build_appimage.sh          # ← Cria AppImage
+├── dev.sh                     # ← Development script
+├── install.sh                 # ← Installation script
+├── build_appimage.sh          # ← Creates AppImage
 │
-└── [Documentação em .md]
+└── [Documentation in .md]
 ```
 
-## 🔧 Funcionalidades Principais
+## 🔧 Main Features
 
-✅ **Detecção Automática** de dispositivos Android
-✅ **Espelhamento de Tela** com scrcpy (múltiplos presets)
-✅ **Instalação de APKs** via interface gráfica
-✅ **Captura de Screenshots**
-✅ **Console ADB Shell** integrado
-✅ **Informações Detalhadas** do dispositivo
+✅ **Automatic Detection** of Android devices
+✅ **Screen Mirroring** with scrcpy (multiple presets)
+✅ **APK Installation** via GUI
+✅ **Screenshots Capture**
+✅ **Integrated ADB Shell** console
+✅ **Detailed Information** about the device
 
-## 🎨 Presets de Qualidade
+## 🎨 Quality Presets
 
-- **Padrão**: Configuração balanceada (8M bitrate)
-- **Alta Qualidade**: Melhor visual (16M, 60 FPS, H265)
-- **Performance**: Melhor desempenho (720p, 4M, 30 FPS)
-- **Baixa Latência**: Menor delay (1024p, 8M, 60 FPS, sem áudio)
-- **Gravação**: Para gravar vídeos (16M, 60 FPS)
+- **Default**: Balanced configuration (8M bitrate)
+- **High Quality**: Best visual (16M, 60 FPS, H265)
+- **Performance**: Best performance (720p, 4M, 30 FPS)
+- **Low Latency**: Lowest delay (1024p, 8M, 60 FPS, no audio)
+- **Recording**: For video recording (16M, 60 FPS)
 
-## 🐛 Problemas Comuns
+## 🐛 Common Issues
 
-### Erro ao instalar PyQt5
+### Error installing PyQt5
 ```bash
-# Instale ferramentas de desenvolvimento
+# Install development tools
 sudo dnf install python3-devel gcc gcc-c++
 ```
 
-### Dispositivo não aparece
+### Device doesn't appear
 ```bash
-# Verifique se depuração USB está ativada
+# Check if USB debugging is enabled
 adb devices
 
-# Reinicie servidor ADB se necessário
+# Restart ADB server if needed
 adb kill-server
 adb start-server
 ```
 
-### scrcpy com tela preta
-- Desbloqueie a tela do dispositivo
-- Volte para tela inicial (saia de apps)
+### scrcpy with black screen
+- Unlock the device screen
+- Return to home screen (exit apps)
 
-Veja [TROUBLESHOOTING.md](TROUBLESHOOTING.md) para mais soluções.
+See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for more solutions.
 
-## 📱 Preparando o Dispositivo Android
+## 📱 Preparing Your Android Device
 
-1. **Ative Opções do Desenvolvedor**:
-   - Configurações → Sobre o telefone
-   - Toque 7 vezes em "Número da versão"
+1. **Enable Developer Options**:
+   - Settings → About phone
+   - Tap 7 times on "Build number"
 
-2. **Ative Depuração USB**:
-   - Configurações → Opções do desenvolvedor
-   - Ative "Depuração USB"
+2. **Enable USB Debugging**:
+   - Settings → Developer options
+   - Enable "USB debugging"
 
-3. **Conecte via USB**:
-   - Use um cabo USB de dados (não apenas carregamento)
-   - Autorize o computador quando solicitado
-   - Marque "Sempre permitir"
+3. **Connect via USB**:
+   - Use a USB data cable (not just charging)
+   - Authorize the computer when prompted
+   - Check "Always allow"
 
-## 💡 Dicas
+## 💡 Tips
 
-### Desenvolvimento
+### Development
 ```bash
-# Sempre use o script de dev para testar
+# Always use the dev script for testing
 ./dev
 
-# Limpe cache antes de testar mudanças importantes
+# Clean cache before testing important changes
 ./dev --clean
 ./dev
 
-# Verifique qualidade do código periodicamente
+# Check code quality periodically
 ./dev --lint
 ./dev --format
 ```
 
 ### Performance
-- Use preset "Performance" para dispositivos mais lentos
-- Conecte via USB para melhor qualidade (WiFi tem mais latência)
-- Feche outros apps no Android para liberar recursos
+- Use "Performance" preset for slower devices
+- Connect via USB for better quality (WiFi has more latency)
+- Close other apps on Android to free resources
 
-### Produtividade
-- Use `F5` para atualizar lista de dispositivos
-- Use `Ctrl+S` para screenshot rápido
-- Mantenha comandos frequentes salvos para executar no console
+### Productivity
+- Use `F5` to refresh device list
+- Use `Ctrl+S` for quick screenshot
+- Keep frequent commands saved to run in console
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Quer melhorar o AndView?
+Want to improve AndView?
 
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/MinhaFeature`)
-3. Faça suas alterações
-4. Teste com `./dev.sh --debug`
-5. Commit (`git commit -m 'Adiciona MinhaFeature'`)
-6. Push (`git push origin feature/MinhaFeature`)
-7. Abra um Pull Request
+1. Fork the project
+2. Create a branch (`git checkout -b feature/MyFeature`)
+3. Make your changes
+4. Test with `./dev.sh --debug`
+5. Commit (`git commit -m 'Add MyFeature'`)
+6. Push (`git push origin feature/MyFeature`)
+7. Open a Pull Request
 
-Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## 📞 Precisa de Ajuda?
+## 📞 Need Help?
 
-1. **Leia a documentação** nos arquivos `.md`
-2. **Veja o troubleshooting** em [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-3. **Execute com debug** para ver erros: `./dev.sh --debug`
-4. **Abra uma issue** no GitHub com detalhes do problema
+1. **Read the documentation** in the `.md` files
+2. **See troubleshooting** in [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+3. **Run with debug** to see errors: `./dev.sh --debug`
+4. **Open an issue** on GitHub with problem details
 
-## 🎉 Próximos Passos
+## 🎉 Next Steps
 
-Agora que você está configurado:
+Now that you're set up:
 
-1. ✅ Execute `./scripts/install.sh` para configurar tudo
-2. ✅ Conecte seu dispositivo Android
-3. ✅ Execute `./andview` e divirta-se!
-4. ✅ Para desenvolvimento, use `./dev`
-5. ✅ No futuro, crie AppImage com `./scripts/build_appimage.sh`
+1. ✅ Run `./scripts/install.sh` to set everything up
+2. ✅ Connect your Android device
+3. ✅ Run `./andview` and have fun!
+4. ✅ For development, use `./dev`
+5. ✅ In the future, create AppImage with `./scripts/build_appimage.sh`
 
-**Divirta-se codificando! 🚀**
+**Happy coding! 🚀**
 
 ---
 
-*AndView - Interface Gráfica para scrcpy e ADB*  
-*Desenvolvido com ❤️ usando Python e PyQt5*
-
+*AndView - GUI for scrcpy and ADB*  
+*Developed with ❤️ using Python and PyQt5*

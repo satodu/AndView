@@ -1,6 +1,9 @@
 #!/bin/bash
-# Wrapper para executar o AndView
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
-exec python3 main.py "$@"
 
+# Ativa o ambiente virtual
+source venv/bin/activate
+
+# Executa o aplicativo
+exec python3 main.py "$@"

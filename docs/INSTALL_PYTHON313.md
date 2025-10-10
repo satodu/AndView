@@ -1,178 +1,177 @@
-# Instalação no Python 3.13
+# Installation on Python 3.13
 
-## Sobre PyQt5 e Python 3.13
+## About PyQt5 and Python 3.13
 
-O PyQt5 disponível no **PyPI (pip)** ainda não é totalmente compatível com **Python 3.13**, apresentando erros de compilação. 
+PyQt5 available on **PyPI (pip)** is not yet fully compatible with **Python 3.13**, presenting compilation errors. 
 
-Por isso, este projeto foi configurado para usar o **PyQt5 do repositório do sistema**, que já está compilado e funcionando perfeitamente com Python 3.13.
+Therefore, this project has been configured to use **PyQt5 from the system repository**, which is already compiled and working perfectly with Python 3.13.
 
-## ✅ Solução Implementada
+## ✅ Implemented Solution
 
-Ao invés de usar um ambiente virtual (venv) com PyQt5 do pip, o AndView agora:
+Instead of using a virtual environment (venv) with PyQt5 from pip, AndView now:
 
-1. **Usa o Python do sistema** (Python 3.13)
-2. **Usa o PyQt5 do repositório** (instalado via dnf/apt)
-3. **Não requer ambiente virtual** (mais simples!)
+1. **Uses system Python** (Python 3.13)
+2. **Uses PyQt5 from repository** (installed via dnf/apt)
+3. **Doesn't require virtual environment** (simpler!)
 
-## 📦 Instalação
+## 📦 Installation
 
 ### Fedora/Nobara (Python 3.13)
 
 ```bash
-# 1. Instale PyQt5 do sistema
+# 1. Install system PyQt5
 sudo dnf install python3-qt5
 
-# 2. Instale ADB e scrcpy
+# 2. Install ADB and scrcpy
 sudo dnf install android-tools scrcpy
 
-# 3. Execute o instalador do projeto
+# 3. Run the project installer
 ./scripts/install.sh
 
-# 4. Execute o app
+# 4. Run the app
 ./andview
 ```
 
 ### Ubuntu/Debian
 
 ```bash
-# 1. Instale PyQt5 do sistema
+# 1. Install system PyQt5
 sudo apt install python3-pyqt5
 
-# 2. Instale ADB e scrcpy
+# 2. Install ADB and scrcpy
 sudo apt install android-tools-adb scrcpy
 
-# 3. Execute o instalador do projeto
+# 3. Run the project installer
 ./scripts/install.sh
 
-# 4. Execute o app
+# 4. Run the app
 ./andview
 ```
 
 ### Arch/Manjaro
 
 ```bash
-# 1. Instale PyQt5 do sistema
+# 1. Install system PyQt5
 sudo pacman -S python-pyqt5
 
-# 2. Instale ADB e scrcpy
+# 2. Install ADB and scrcpy
 sudo pacman -S android-tools scrcpy
 
-# 3. Execute o instalador do projeto
+# 3. Run the project installer
 ./scripts/install.sh
 
-# 4. Execute o app
+# 4. Run the app
 ./andview
 ```
 
-## 🔍 Verificando a Instalação
+## 🔍 Verifying Installation
 
-Para verificar se o PyQt5 está instalado corretamente:
+To verify if PyQt5 is installed correctly:
 
 ```bash
 python3 -c "from PyQt5.QtCore import PYQT_VERSION_STR; print('PyQt5:', PYQT_VERSION_STR)"
 ```
 
-Deve mostrar algo como: `PyQt5: 5.15.11`
+Should show something like: `PyQt5: 5.15.11`
 
-## ❓ Por que não usar venv?
+## ❓ Why not use venv?
 
-### Antes (com venv e PyQt5 do pip):
+### Before (with venv and PyQt5 from pip):
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install PyQt5  # ❌ Falha ao compilar no Python 3.13
+pip install PyQt5  # ❌ Fails to compile on Python 3.13
 ```
 
-**Erro típico:**
+**Typical error:**
 ```
 error: assignment to 'sipSimpleWrapper *' from incompatible pointer type 'PyObject *'
 error: command '/usr/bin/gcc' failed with exit code 1
 ```
 
-### Agora (sem venv, PyQt5 do sistema):
+### Now (without venv, system PyQt5):
 ```bash
-sudo dnf install python3-qt5  # ✅ Já está compilado!
-python3 main.py                # ✅ Funciona direto!
+sudo dnf install python3-qt5  # ✅ Already compiled!
+python3 main.py                # ✅ Works directly!
 ```
 
-## 🎯 Vantagens da Nova Abordagem
+## 🎯 Advantages of New Approach
 
-✅ **Mais simples** - Sem venv para gerenciar  
-✅ **Mais rápido** - PyQt5 já está compilado  
-✅ **Mais confiável** - Pacote testado pela distribuição  
-✅ **Compatível** - Funciona com Python 3.13  
-✅ **Menos espaço** - Não duplica o PyQt5  
+✅ **Simpler** - No venv to manage  
+✅ **Faster** - PyQt5 already compiled  
+✅ **More reliable** - Package tested by distribution  
+✅ **Compatible** - Works with Python 3.13  
+✅ **Less space** - Doesn't duplicate PyQt5  
 
-## 🔄 Migração de Versões Antigas
+## 🔄 Migration from Old Versions
 
-Se você já tinha o projeto instalado com venv:
+If you already had the project installed with venv:
 
 ```bash
-# 1. Remova o ambiente virtual antigo
+# 1. Remove old virtual environment
 rm -rf venv
 
-# 2. Instale PyQt5 do sistema
+# 2. Install system PyQt5
 sudo dnf install python3-qt5
 
-# 3. Pronto! Agora funciona direto
+# 3. Done! Now it works directly
 ./andview
 ```
 
-## 📝 Desenvolvimento
+## 📝 Development
 
-Para desenvolvimento, o script `./dev` foi atualizado para funcionar sem venv:
+For development, the `./dev` script has been updated to work without venv:
 
 ```bash
-./dev              # Executa normalmente
-./dev --debug      # Modo debug
-./dev --lint       # Análise de código
+./dev              # Runs normally
+./dev --debug      # Debug mode
+./dev --lint       # Code analysis
 ```
 
 ## 🚀 AppImage
 
-O AppImage também foi atualizado para incluir o PyQt5 do sistema.
+The AppImage has also been updated to include system PyQt5.
 
 ```bash
 ./scripts/build_appimage.sh
 ```
 
-O AppImage resultante incluirá o PyQt5 e funcionará em qualquer distribuição Linux.
+The resulting AppImage will include PyQt5 and work on any Linux distribution.
 
-## ⚠️ Notas Importantes
+## ⚠️ Important Notes
 
-1. **Python 3.12 e anteriores**: Também funcionam com esta abordagem
-2. **PyQt5 futuro**: Quando o PyQt5 do pip suportar Python 3.13, poderemos voltar a usar venv se desejado
-3. **Outras dependências**: Se você adicionar outras libs Python, pode instalar via pip sem problemas:
+1. **Python 3.12 and earlier**: Also work with this approach
+2. **Future PyQt5**: When pip's PyQt5 supports Python 3.13, we can go back to using venv if desired
+3. **Other dependencies**: If you add other Python libs, you can install via pip without problems:
    ```bash
-   # Instalação global
-   pip3 install --user nome-do-pacote
+   # Global installation
+   pip3 install --user package-name
    
-   # Ou crie venv apenas para outras dependências
+   # Or create venv only for other dependencies
    python3 -m venv venv --system-site-packages
    ```
 
-## 🆘 Problemas?
+## 🆘 Problems?
 
-Se encontrar algum erro:
+If you encounter any errors:
 
-1. Verifique se PyQt5 está instalado:
+1. Check if PyQt5 is installed:
    ```bash
    python3 -c "import PyQt5"
    ```
 
-2. Verifique a versão do Python:
+2. Check Python version:
    ```bash
    python3 --version
    ```
 
-3. Reinstale PyQt5 do sistema:
+3. Reinstall system PyQt5:
    ```bash
    sudo dnf reinstall python3-qt5
    ```
 
-4. Veja [TROUBLESHOOTING.md](TROUBLESHOOTING.md) para mais soluções
+4. See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for more solutions
 
 ---
 
-**Configuração otimizada para Python 3.13! 🎉**
-
+**Configuration optimized for Python 3.13! 🎉**

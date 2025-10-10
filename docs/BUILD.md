@@ -1,20 +1,20 @@
 # Build Guide - AndView
 
-Este guia explica como gerar os pacotes de distribuição do AndView (AppImage e Flatpak).
+This guide explains how to generate AndView distribution packages (AppImage and Flatpak).
 
-## Pré-requisitos
+## Prerequisites
 
-### Para AppImage:
-- `appimagetool` - Ferramenta para criar AppImages
+### For AppImage:
+- `appimagetool` - Tool to create AppImages
 - Python 3.8+
-- Dependências do projeto (PyQt5, psutil, etc.)
+- Project dependencies (PyQt5, psutil, etc.)
 
-### Para Flatpak:
-- `flatpak` e `flatpak-builder`
+### For Flatpak:
+- `flatpak` and `flatpak-builder`
 - Python 3.8+
-- SDK do KDE Platform
+- KDE Platform SDK
 
-## Instalação das Ferramentas
+## Installing Tools
 
 ### Ubuntu/Debian:
 ```bash
@@ -54,33 +54,33 @@ flatpak install flathub org.kde.Platform//5.15-22.08
 flatpak install flathub org.kde.Sdk//5.15-22.08
 ```
 
-## Gerando os Pacotes
+## Generating Packages
 
-### Build Completo (Recomendado):
+### Complete Build (Recommended):
 ```bash
 ./scripts/build_all.sh
 ```
 
-### Build Individual:
+### Individual Build:
 
-#### Apenas AppImage:
+#### AppImage only:
 ```bash
 ./scripts/build_appimage.sh
 ```
 
-#### Apenas Flatpak:
+#### Flatpak only:
 ```bash
 ./scripts/build_flatpak.sh
 ```
 
-## Arquivos Gerados
+## Generated Files
 
-Após o build bem-sucedido, os seguintes arquivos serão criados:
+After a successful build, the following files will be created:
 
 - **AppImage**: `scripts/build/AppImage/AndView-1.0.0-x86_64.AppImage`
 - **Flatpak**: `build/flatpak/AndView.flatpak`
 
-## Testando os Pacotes
+## Testing Packages
 
 ### AppImage:
 ```bash
@@ -89,65 +89,65 @@ Após o build bem-sucedido, os seguintes arquivos serão criados:
 
 ### Flatpak:
 ```bash
-# Instalar
+# Install
 flatpak install --bundle build/flatpak/AndView.flatpak
 
-# Executar
+# Run
 flatpak run com.satodu.AndView
 
-# Desinstalar
+# Uninstall
 flatpak uninstall com.satodu.AndView
 ```
 
-## Distribuição
+## Distribution
 
 ### GitHub Releases:
-1. Vá para a página de releases no GitHub
-2. Crie uma nova release
-3. Faça upload dos arquivos `.AppImage` e `.flatpak`
+1. Go to the releases page on GitHub
+2. Create a new release
+3. Upload the `.AppImage` and `.flatpak` files
 
 ### Flathub (Flatpak):
-Para submeter o Flatpak ao Flathub:
-1. Fork do repositório [flathub](https://github.com/flathub/flathub)
-2. Adicione o arquivo `com.satodu.AndView.yml` na pasta `flathub/`
-3. Crie um pull request
+To submit Flatpak to Flathub:
+1. Fork the [flathub](https://github.com/flathub/flathub) repository
+2. Add the `com.satodu.AndView.yml` file to the `flathub/` folder
+3. Create a pull request
 
-## Solução de Problemas
+## Troubleshooting
 
-### AppImage não executa:
-- Verifique se tem permissão de execução: `chmod +x AndView-*.AppImage`
-- Verifique dependências do sistema (ADB, scrcpy)
+### AppImage doesn't run:
+- Check if it has execution permission: `chmod +x AndView-*.AppImage`
+- Check system dependencies (ADB, scrcpy)
 
-### Flatpak falha no build:
-- Verifique se o SDK do KDE está instalado
-- Limpe o cache: `flatpak-builder --repo=repo --force-clean build com.satodu.AndView.yml`
+### Flatpak fails to build:
+- Check if KDE SDK is installed
+- Clean the cache: `flatpak-builder --repo=repo --force-clean build com.satodu.AndView.yml`
 
-### Dependências faltando:
-- Instale as dependências do sistema necessárias
-- Para Ubuntu/Debian: `sudo apt install android-tools-adb scrcpy`
-- Para Fedora: `sudo dnf install android-tools scrcpy`
-- Para Arch: `sudo pacman -S android-tools scrcpy`
+### Missing dependencies:
+- Install necessary system dependencies
+- For Ubuntu/Debian: `sudo apt install android-tools-adb scrcpy`
+- For Fedora: `sudo dnf install android-tools scrcpy`
+- For Arch: `sudo pacman -S android-tools scrcpy`
 
-## Estrutura dos Arquivos
+## File Structure
 
 ```
 scripts/
-├── build_all.sh          # Build completo
-├── build_appimage.sh     # Build AppImage
-└── build_flatpak.sh      # Build Flatpak
+├── build_all.sh          # Complete build
+├── build_appimage.sh     # AppImage build
+└── build_flatpak.sh      # Flatpak build
 
-com.satodu.AndView.yml    # Manifest do Flatpak
-com.satodu.AndView.desktop # Arquivo desktop
-com.satodu.AndView.png    # Ícone
+com.satodu.AndView.yml    # Flatpak manifest
+com.satodu.AndView.desktop # Desktop file
+com.satodu.AndView.png    # Icon
 ```
 
-## Personalização
+## Customization
 
-Para modificar as configurações de build:
+To modify build settings:
 
-- **AppImage**: Edite `scripts/build_appimage.sh`
-- **Flatpak**: Edite `com.satodu.AndView.yml`
+- **AppImage**: Edit `scripts/build_appimage.sh`
+- **Flatpak**: Edit `com.satodu.AndView.yml`
 
-Para alterar metadados (nome, descrição, ícone):
-- Edite `com.satodu.AndView.desktop`
-- Substitua `com.satodu.AndView.png` pelo seu ícone
+To change metadata (name, description, icon):
+- Edit `com.satodu.AndView.desktop`
+- Replace `com.satodu.AndView.png` with your icon

@@ -11,29 +11,30 @@ echo "  AndView - Modo Desenvolvimento"
 echo "===================================="
 echo ""
 
-# Verifica se PyQt5 está instalado
-if ! python3 -c "import PyQt5" 2>/dev/null; then
-    echo "❌ PyQt5 não encontrado!"
+# Verifica se o venv existe
+if [ ! -d "venv" ]; then
+    echo "❌ Ambiente virtual não encontrado!"
     echo ""
-    echo "📦 Instale o PyQt5 do sistema:"
-    echo ""
-    if [ -f /etc/fedora-release ] || [ -f /etc/nobara-release ]; then
-        echo "  sudo dnf install python3-qt5"
-    elif [ -f /etc/debian_version ]; then
-        echo "  sudo apt install python3-pyqt5"
-    elif [ -f /etc/arch-release ]; then
-        echo "  sudo pacman -S python-pyqt5"
-    else
-        echo "  Instale python3-pyqt5 para seu sistema"
-    fi
-    echo ""
-    echo "⚠️  O PyQt5 do pip não compila no Python 3.13"
-    echo "   Use a versão do repositório do sistema!"
+    echo "Execute primeiro:"
+    echo "  ./scripts/install.sh"
     echo ""
     exit 1
 fi
 
-echo "✅ PyQt5 encontrado (versão do sistema)"
+# Ativa o ambiente virtual
+source venv/bin/activate
+
+# Verifica se PySide6 está instalado
+if ! python3 -c "import PySide6" 2>/dev/null; then
+    echo "❌ PySide6 não encontrado no ambiente virtual!"
+    echo ""
+    echo "📦 Reinstale as dependências:"
+    echo "  pip install PySide6"
+    echo ""
+    exit 1
+fi
+
+echo "✅ PySide6 encontrado"
 echo ""
 
 # Verifica argumentos
@@ -49,63 +50,55 @@ case "$1" in
         python3 -u main.py
         ;;
     --lint)
-        echo "🔍 Executando linter..."
+        echo "🔍 Executando análise de código (pylint)..."
         if ! command -v pylint >/dev/null 2>&1; then
-            echo "Instalando pylint..."
+            echo "⚠️  pylint não encontrado, instalando..."
             pip install pylint
         fi
-        pylint src/
+        pylint src/ main.py
         ;;
     --format)
-        echo "✨ Formatando código..."
+        echo "✨ Formatando código (black)..."
         if ! command -v black >/dev/null 2>&1; then
-            echo "Instalando black..."
+            echo "⚠️  black não encontrado, instalando..."
             pip install black
         fi
         black src/ main.py
         ;;
     --clean)
-        echo "🧹 Limpando arquivos temporários..."
+        echo "🗑️  Limpando arquivos temporários..."
         find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null
         find . -type f -name "*.pyc" -delete
         find . -type f -name "*.pyo" -delete
-        echo "✅ Limpeza concluída"
+        echo "✅ Limpeza concluída!"
         ;;
     --install-dev)
         echo "📦 Instalando ferramentas de desenvolvimento..."
-        pip install pylint black pytest pytest-qt
-        echo "✅ Ferramentas instaladas"
+        pip install pylint black
+        echo "✅ Ferramentas instaladas!"
         ;;
     --help)
-        echo "Uso: ./dev.sh [opção]"
+        echo "Uso: ./dev [opção]"
         echo ""
         echo "Opções:"
-        echo "  (nenhuma)      Executa o aplicativo normalmente"
-        echo "  --debug        Executa com modo debug ativado"
-        echo "  --verbose      Executa com saída verbose"
-        echo "  --lint         Executa análise de código com pylint"
-        echo "  --format       Formata o código com black"
-        echo "  --clean        Remove arquivos temporários"
-        echo "  --install-dev  Instala ferramentas de desenvolvimento"
-        echo "  --help         Mostra esta ajuda"
-        echo ""
+        echo "  (sem opção)   Executa normalmente"
+        echo "  --debug       Ativa modo debug"
+        echo "  --verbose     Ativa modo verbose"
+        echo "  --lint        Análise de código com pylint"
+        echo "  --format      Formata código com black"
+        echo "  --clean       Limpa arquivos temporários"
+        echo "  --install-dev Instala ferramentas de dev"
+        echo "  --help        Mostra esta ajuda"
         ;;
     *)
         echo "▶️  Executando AndView..."
         echo ""
         python3 main.py
+        EXIT_CODE=$?
+        if [ $EXIT_CODE -ne 0 ]; then
+            echo ""
+            echo "❌ AndView encerrado com código de erro: $EXIT_CODE"
+        fi
+        exit $EXIT_CODE
         ;;
 esac
-
-EXIT_CODE=$?
-
-if [ $EXIT_CODE -ne 0 ]; then
-    echo ""
-    echo "❌ AndView encerrado com código de erro: $EXIT_CODE"
-else
-    echo ""
-    echo "✅ AndView encerrado normalmente"
-fi
-
-exit $EXIT_CODE
-

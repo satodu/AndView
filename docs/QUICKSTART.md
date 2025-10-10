@@ -1,94 +1,94 @@
-# Guia Rápido - AndView
+# Quick Start - AndView
 
-## Instalação Rápida
+## Quick Installation
 
-### 1. Clone o repositório
+### 1. Clone the repository
 ```bash
-git clone <url-do-repositorio>
+git clone <repository-url>
 cd AndView
 ```
 
-### 2. Execute o instalador
+### 2. Run the installer
 ```bash
 chmod +x install.sh
 ./install.sh
 ```
 
-O instalador irá:
-- ✅ Verificar dependências
-- ✅ Oferecer instalar ADB e scrcpy (se necessário)
-- ✅ Criar ambiente virtual Python
-- ✅ Instalar dependências Python
-- ✅ Criar script de execução
-- ✅ Criar atalho no menu (opcional)
+The installer will:
+- ✅ Check dependencies
+- ✅ Offer to install ADB and scrcpy (if needed)
+- ✅ Create Python virtual environment
+- ✅ Install Python dependencies
+- ✅ Create execution script
+- ✅ Create menu shortcut (optional)
 
-### 3. Execute o aplicativo
+### 3. Run the application
 ```bash
 ./andview
 ```
 
-Ou manualmente:
+Or manually:
 ```bash
 source venv/bin/activate
 python3 main.py
 ```
 
-## Preparando seu Dispositivo Android
+## Preparing Your Android Device
 
-### 1. Ative as Opções do Desenvolvedor
-1. Vá em **Configurações** > **Sobre o telefone**
-2. Toque 7 vezes em **Número da versão**
-3. Volte para Configurações
-4. Entre em **Opções do desenvolvedor**
+### 1. Enable Developer Options
+1. Go to **Settings** > **About phone**
+2. Tap 7 times on **Build number**
+3. Return to Settings
+4. Enter **Developer options**
 
-### 2. Ative a Depuração USB
-1. Em **Opções do desenvolvedor**
-2. Ative **Depuração USB**
+### 2. Enable USB Debugging
+1. In **Developer options**
+2. Enable **USB debugging**
 
-### 3. Conecte via USB
-1. Conecte o dispositivo ao computador via USB
-2. No dispositivo, autorize o computador quando solicitado
-3. Marque "Sempre permitir deste computador"
+### 3. Connect via USB
+1. Connect the device to the computer via USB
+2. On the device, authorize the computer when prompted
+3. Check "Always allow from this computer"
 
-## Usando o AndView
+## Using AndView
 
-### Espelhamento Básico
-1. Conecte seu dispositivo
-2. Selecione o dispositivo na lista à esquerda
-3. Clique em "▶️ Iniciar Espelhamento"
+### Basic Mirroring
+1. Connect your device
+2. Select the device in the left list
+3. Click "▶️ Start Mirroring"
 
-### Instalando APKs
-1. Vá na aba "🛠️ Ferramentas"
-2. Clique em "📁 Procurar" e selecione o APK
-3. Clique em "📦 Instalar APK"
+### Installing APKs
+1. Go to the "🛠️ Tools" tab
+2. Click "📁 Browse" and select the APK
+3. Click "📦 Install APK"
 
-### Capturando Screenshots
-1. Vá na aba "🛠️ Ferramentas"
-2. Clique em "📸 Capturar Screenshot"
-3. Escolha onde salvar
+### Capturing Screenshots
+1. Go to the "🛠️ Tools" tab
+2. Click "📸 Capture Screenshot"
+3. Choose where to save
 
-### Executando Comandos
-1. Vá na aba "⌨️ Comandos"
-2. Digite o comando shell (ex: `ls /sdcard/`)
-3. Pressione Enter ou clique em "▶️ Executar"
+### Running Commands
+1. Go to the "⌨️ Commands" tab
+2. Type the shell command (e.g., `ls /sdcard/`)
+3. Press Enter or click "▶️ Execute"
 
-## Presets de Qualidade
+## Quality Presets
 
-- **Padrão**: Configuração balanceada
-- **Alta Qualidade**: Melhor qualidade visual (mais recursos)
-- **Performance**: Melhor desempenho (menos recursos)
-- **Baixa Latência**: Menor atraso possível
-- **Gravação**: Otimizado para gravar vídeo
+- **Default**: Balanced configuration
+- **High Quality**: Best visual quality (more resources)
+- **Performance**: Best performance (fewer resources)
+- **Low Latency**: Lowest possible delay
+- **Recording**: Optimized for video recording
 
-## Atalhos de Teclado
+## Keyboard Shortcuts
 
-- `F5` - Atualizar lista de dispositivos
-- `Ctrl+S` - Capturar screenshot
-- `Ctrl+Q` - Sair
+- `F5` - Refresh device list
+- `Ctrl+S` - Capture screenshot
+- `Ctrl+Q` - Exit
 
-## Problemas Comuns
+## Common Problems
 
-### "ADB não encontrado"
+### "ADB not found"
 ```bash
 # Ubuntu/Debian
 sudo apt install android-tools-adb
@@ -100,7 +100,7 @@ sudo dnf install android-tools
 sudo pacman -S android-tools
 ```
 
-### "scrcpy não encontrado"
+### "scrcpy not found"
 ```bash
 # Ubuntu/Debian
 sudo apt install scrcpy
@@ -112,18 +112,17 @@ sudo dnf install scrcpy
 sudo pacman -S scrcpy
 ```
 
-### Dispositivo não aparece
-1. Verifique se a depuração USB está ativada
-2. Tente outro cabo USB
-3. Execute `adb kill-server && adb start-server` no terminal
-4. Clique em "🔄 Atualizar" no AndView
+### Device doesn't appear
+1. Check if USB debugging is enabled
+2. Try another USB cable
+3. Run `adb kill-server && adb start-server` in terminal
+4. Click "🔄 Refresh" in AndView
 
-### Tela preta no scrcpy
-1. Desbloqueie a tela do dispositivo
-2. Desative o protetor de tela
-3. Verifique se não há outros aplicativos usando a tela
+### Black screen in scrcpy
+1. Unlock the device screen
+2. Disable screen saver
+3. Check if no other apps are using the screen
 
-## Mais Ajuda
+## More Help
 
-Para documentação completa, veja o [README.md](README.md)
-
+For complete documentation, see [README.md](README.md)

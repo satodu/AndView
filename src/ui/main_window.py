@@ -2,13 +2,13 @@
 Janela principal da aplicação
 """
 
-from PyQt5.QtWidgets import (
+from PySide6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-    QSplitter, QStatusBar, QMenuBar, QAction, QMessageBox,
+    QSplitter, QStatusBar, QMenuBar, QMessageBox,
     QFileDialog, QLabel, QApplication, QProgressDialog, QTabWidget
 )
-from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtGui import QIcon, QPalette, QColor
+from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QIcon, QPalette, QColor, QAction
 import os
 from datetime import datetime
 
@@ -599,7 +599,7 @@ class MainWindow(QMainWindow):
         self.status_bar.showMessage(f"Instalando {os.path.basename(apk_path)}...")
         
         # Importa QProgressDialog
-        from PyQt5.QtWidgets import QProgressDialog
+        from PySide6.QtWidgets import QProgressDialog
         
         # Mostra diálogo de progresso com cancelamento
         progress = QProgressDialog(
@@ -615,7 +615,7 @@ class MainWindow(QMainWindow):
         progress.show()
         
         # Processa eventos para atualizar a interface
-        from PyQt5.QtWidgets import QApplication
+        from PySide6.QtWidgets import QApplication
         QApplication.processEvents()
         
         try:
@@ -729,8 +729,8 @@ class MainWindow(QMainWindow):
         <p><b>GitHub:</b> <a href="https://github.com/satodu">@satodu</a></p>
         <p><b>Website:</b> <a href="https://panda.papoinformal.com.br/">panda.papoinformal.com.br</a></p>
         <br>
-        <p>Interface desenvolvida com PyQt5 e tema inspirado no GNOME Adwaita.</p>
-        <p>Desenvolvido com ❤️ usando Python e PyQt5</p>
+        <p>Interface desenvolvida com PySide6 e tema inspirado no GNOME Adwaita.</p>
+        <p>Desenvolvido com ❤️ usando Python e PySide6</p>
         """
         
         QMessageBox.about(self, "Sobre AndView", about_text)
@@ -741,7 +741,7 @@ class MainWindow(QMainWindow):
         <h3>Informações do Sistema</h3>
         <p><b>AndView:</b> 0.0.1-alpha</p>
         <p><b>Python:</b> {self._get_python_version()}</p>
-        <p><b>PyQt5:</b> {self._get_pyqt_version()}</p>
+        <p><b>PySide6:</b> {self._get_pyside_version()}</p>
         """
         
         QMessageBox.information(self, "Sobre", version_text)
@@ -751,10 +751,10 @@ class MainWindow(QMainWindow):
         import sys
         return f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
     
-    def _get_pyqt_version(self) -> str:
-        """Retorna a versão do PyQt5"""
-        from PyQt5.QtCore import PYQT_VERSION_STR
-        return PYQT_VERSION_STR
+    def _get_pyside_version(self) -> str:
+        """Retorna a versão do PySide6"""
+        from PySide6 import __version__
+        return __version__
     
     def closeEvent(self, event):
         """Manipula o fechamento da janela"""

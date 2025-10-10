@@ -2,11 +2,11 @@
 Widget de lista de dispositivos
 """
 
-from PyQt5.QtWidgets import (
+from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QListWidget, QListWidgetItem,
     QPushButton, QHBoxLayout, QLabel
 )
-from PyQt5.QtCore import pyqtSignal, Qt
+from PySide6.QtCore import Signal, Qt
 from typing import List
 from ...adb_manager import ADBDevice
 
@@ -14,8 +14,8 @@ from ...adb_manager import ADBDevice
 class DeviceListWidget(QWidget):
     """Widget para exibir a lista de dispositivos Android conectados"""
     
-    device_selected = pyqtSignal(ADBDevice)
-    refresh_requested = pyqtSignal()
+    device_selected = Signal(ADBDevice)
+    refresh_requested = Signal()
     
     def __init__(self, parent=None):
         super().__init__(parent)

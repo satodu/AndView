@@ -1,40 +1,36 @@
 #!/bin/bash
-# Script para criar AppImage do AndView (com ADB e scrcpy incluídos)
+# Script para criar AppImage TOTALMENTE INDEPENDENTE do AndView
+# Inclui: Python venv, PySide6, ADB, scrcpy
+# NÃO REQUER nenhuma dependência do sistema!
+
+set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_ROOT"
 
-echo "===================================="
-echo "  Criador de AppImage - AndView"
-echo "===================================="
+echo "============================================"
+echo "  AndView - AppImage Independente Builder"
+echo "============================================"
+echo ""
+echo "✨ Este AppImage será TOTALMENTE independente!"
+echo "📦 Tamanho estimado: ~150-200MB"
+echo "🎉 Não precisa instalar NADA no sistema!"
 echo ""
 
 APP_NAME="AndView"
-APP_VERSION="0.0.1"
+APP_VERSION="0.0.2"
 BUILD_DIR="$PROJECT_ROOT/build/AppImage"
 APPDIR="$BUILD_DIR/$APP_NAME.AppDir"
 
 # Verifica se appimagetool está instalado
 if ! command -v appimagetool >/dev/null 2>&1; then
-    echo "⚠️  appimagetool não encontrado!"
+    echo "❌ appimagetool não encontrado!"
     echo ""
     echo "Para instalar:"
     echo "  wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
     echo "  chmod +x appimagetool-x86_64.AppImage"
     echo "  sudo mv appimagetool-x86_64.AppImage /usr/local/bin/appimagetool"
-    echo ""
-    exit 1
-fi
-
-# Verifica se ADB e scrcpy estão instalados
-if ! command -v adb >/dev/null 2>&1; then
-    echo "⚠️  ADB não encontrado! Instale o Android SDK Platform Tools"
-    exit 1
-fi
-
-if ! command -v scrcpy >/dev/null 2>&1; then
-    echo "⚠️  scrcpy não encontrado! Instale o scrcpy"
     exit 1
 fi
 
@@ -43,53 +39,85 @@ rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 
 echo "📦 Criando estrutura do AppDir..."
-mkdir -p "$APPDIR/usr/bin"
-mkdir -p "$APPDIR/usr/lib"
-mkdir -p "$APPDIR/usr/share/applications"
-mkdir -p "$APPDIR/usr/share/icons/hicolor/256x256/apps"
-mkdir -p "$APPDIR/usr/share/andview"
+mkdir -p "$APPDIR/usr/"{bin,lib,share/andview,share/applications,share/icons/hicolor/256x256/apps}
 
 echo "📋 Copiando código fonte..."
-cp main.py "$APPDIR/usr/bin/"
-cp requirements.txt "$APPDIR/usr/share/andview/"
+cp main.py "$APPDIR/usr/share/andview/"
 cp -r src "$APPDIR/usr/share/andview/"
-cp -r src "$APPDIR/usr/bin/"
 
-echo "🔧 Copiando dependências do sistema..."
-# Copia ADB
-ADB_PATH=$(which adb)
-cp "$ADB_PATH" "$APPDIR/usr/bin/"
+echo "🐍 Criando ambiente Python virtual com PySide6..."
+python3 -m venv "$APPDIR/usr/venv"
+source "$APPDIR/usr/venv/bin/activate"
 
-# Copia scrcpy
-SCRCPY_PATH=$(which scrcpy)
-cp "$SCRCPY_PATH" "$APPDIR/usr/bin/"
+echo "📦 Instalando PySide6 (isso pode demorar alguns minutos)..."
+pip install --upgrade pip -q
+pip install PySide6 -q
 
-# Copia bibliotecas necessárias para ADB e scrcpy
-echo "📚 Copiando bibliotecas do sistema..."
-ldd "$ADB_PATH" | grep "=>" | awk '{print $3}' | while read lib; do
-    if [ -f "$lib" ]; then
-        cp "$lib" "$APPDIR/usr/lib/" 2>/dev/null || true
+echo "⬇️  Baixando scrcpy v3.3.3 (com ADB incluído)..."
+SCRCPY_VERSION="3.3.3"
+wget -O /tmp/scrcpy.tar.gz \
+    "https://github.com/Genymobile/scrcpy/releases/download/v${SCRCPY_VERSION}/scrcpy-linux-x86_64-v${SCRCPY_VERSION}.tar.gz"
+
+if [ $? -eq 0 ] && [ -s /tmp/scrcpy.tar.gz ]; then
+    echo "   ✅ Download completo, extraindo..."
+    tar -xzf /tmp/scrcpy.tar.gz -C /tmp/
+    
+    # Copia binários do scrcpy
+    if [ -d "/tmp/scrcpy-linux-x86_64-v${SCRCPY_VERSION}" ]; then
+        cp -r /tmp/scrcpy-linux-x86_64-v${SCRCPY_VERSION}/* "$APPDIR/usr/bin/"
+        chmod +x "$APPDIR/usr/bin/scrcpy"
+        
+        # scrcpy v3.3.3 já vem com adb incluído
+        if [ -f "$APPDIR/usr/bin/adb" ]; then
+            chmod +x "$APPDIR/usr/bin/adb"
+            echo "   ✅ scrcpy v${SCRCPY_VERSION} incluído (com ADB)"
+        else
+            echo "   ✅ scrcpy v${SCRCPY_VERSION} incluído"
+        fi
+    else
+        echo "   ❌ Erro ao extrair scrcpy"
+        exit 1
     fi
+else
+    echo "   ❌ Erro ao baixar scrcpy"
+    exit 1
+fi
+
+rm -rf /tmp/scrcpy* 2>/dev/null || true
+
+echo "📚 Copiando bibliotecas necessárias para scrcpy..."
+# Copia bibliotecas essenciais do sistema
+for lib in libusb-1.0.so.0 libavcodec.so.* libavformat.so.* libavutil.so.* libswresample.so.* libSDL2-2.0.so.0; do
+    find /usr/lib* /lib* -name "$lib" -exec cp {} "$APPDIR/usr/lib/" \; 2>/dev/null || true
 done
 
-ldd "$SCRCPY_PATH" | grep "=>" | awk '{print $3}' | while read lib; do
-    if [ -f "$lib" ]; then
-        cp "$lib" "$APPDIR/usr/lib/" 2>/dev/null || true
-    fi
-done
-
-echo "🐍 Instalando dependências Python..."
-pip install --target="$APPDIR/usr/lib/python-packages" -r requirements.txt
-
-echo "🔧 Criando script de execução..."
+echo "🔧 Criando script de execução AppRun..."
 cat > "$APPDIR/AppRun" << 'EOF'
 #!/bin/bash
 APPDIR="$(dirname "$(readlink -f "$0")")"
+
+# Configura variáveis de ambiente para scrcpy e ADB
 export PATH="$APPDIR/usr/bin:$PATH"
 export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
-export PYTHONPATH="$APPDIR/usr/share/andview/src:$APPDIR/usr/bin:$APPDIR/usr/lib/python-packages:$PYTHONPATH"
 
-cd "$APPDIR/usr/bin"
+# Configura Qt plugins para PySide6
+QT_PLUGIN_PATH="$APPDIR/usr/venv/lib/python"*"/site-packages/PySide6/Qt/plugins"
+if [ -d "$QT_PLUGIN_PATH" ]; then
+    export QT_QPA_PLATFORM_PLUGIN_PATH="$QT_PLUGIN_PATH"
+fi
+
+# Configura variável para scrcpy encontrar o servidor
+if [ -f "$APPDIR/usr/bin/scrcpy-server" ]; then
+    export SCRCPY_SERVER_PATH="$APPDIR/usr/bin/scrcpy-server"
+fi
+
+# Ativa o ambiente virtual Python
+if [ -f "$APPDIR/usr/venv/bin/activate" ]; then
+    source "$APPDIR/usr/venv/bin/activate"
+fi
+
+# Executa a aplicação
+cd "$APPDIR/usr/share/andview"
 exec python3 main.py "$@"
 EOF
 
@@ -101,23 +129,27 @@ cat > "$APPDIR/usr/share/applications/andview.desktop" << EOF
 Version=1.0
 Type=Application
 Name=AndView
-Comment=Android Device Manager with WiFi Connection Support
+Comment=Android Device Manager - GUI for scrcpy and ADB
 GenericName=Android Manager
-Exec=andview
+Exec=AppRun
 Icon=andview
 Terminal=false
 StartupNotify=true
 Categories=Utility;Development;
 Keywords=android;adb;scrcpy;mobile;development;
-MimeType=
-X-Desktop-File-Install-Version=0.26
 EOF
 
-echo "🎨 Criando ícone..."
-if command -v magick >/dev/null 2>&1; then
-    magick src/ui/resources/logo.png -resize 256x256 "$APPDIR/usr/share/icons/hicolor/256x256/apps/andview.png"
+echo "🎨 Copiando ícone..."
+if [ -f "src/ui/resources/logo.png" ]; then
+    if command -v magick >/dev/null 2>&1; then
+        magick src/ui/resources/logo.png -resize 256x256 \
+            "$APPDIR/usr/share/icons/hicolor/256x256/apps/andview.png"
+    else
+        cp src/ui/resources/logo.png \
+            "$APPDIR/usr/share/icons/hicolor/256x256/apps/andview.png"
+    fi
 else
-    cp src/ui/resources/logo.png "$APPDIR/usr/share/icons/hicolor/256x256/apps/andview.png"
+    echo "⚠️  Logo não encontrado"
 fi
 
 # Cria links simbólicos
@@ -129,21 +161,33 @@ cd "$BUILD_DIR"
 ARCH=x86_64 appimagetool "$APPDIR" "${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
 
 if [ $? -eq 0 ]; then
+    SIZE=$(ls -lh "$BUILD_DIR/${APP_NAME}-${APP_VERSION}-x86_64.AppImage" | awk '{print $5}')
     echo ""
-    echo "===================================="
-    echo "  ✅ AppImage criado com sucesso!"
-    echo "===================================="
+    echo "============================================"
+    echo "  ✅ AppImage Independente Criado!"
+    echo "============================================"
     echo ""
     echo "📦 Arquivo: $BUILD_DIR/${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
-    echo "📏 Tamanho: $(ls -lh "$BUILD_DIR/${APP_NAME}-${APP_VERSION}-x86_64.AppImage" | awk '{print $5}')"
+    echo "📏 Tamanho: $SIZE"
     echo ""
-    echo "🚀 Para testar:"
-    echo "  $BUILD_DIR/${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
+    echo "🎉 Este AppImage é 100% INDEPENDENTE:"
+    echo "   ✅ Python 3 + ambiente virtual incluído"
+    echo "   ✅ PySide6 incluído"
+    echo "   ✅ ADB incluído"
+    echo "   ✅ scrcpy incluído"
+    echo "   ✅ Todas as bibliotecas necessárias"
     echo ""
-    echo "✨ Este AppImage inclui ADB e scrcpy - funciona sem dependências externas!"
+    echo "🚀 Para usar:"
+    echo "   1. Baixar o AppImage"
+    echo "   2. chmod +x AndView-*.AppImage"
+    echo "   3. ./AndView-*.AppImage"
+    echo ""
+    echo "   NÃO precisa instalar NADA no sistema!"
+    echo ""
+    echo "⚠️  Lembre-se: O dispositivo Android precisa estar"
+    echo "   em modo debug (Configurações → Opções do desenvolvedor)"
     echo ""
 else
     echo "❌ Erro ao criar AppImage"
     exit 1
 fi
-

@@ -1,40 +1,40 @@
-# AndView - Interface Gráfica para scrcpy e ADB
+# AndView - GUI for scrcpy and ADB
 
-Uma interface gráfica moderna em Python para gerenciar dispositivos Android usando scrcpy e ADB (Android Debug Bridge).
+A modern Python GUI for managing Android devices using scrcpy and ADB (Android Debug Bridge).
 
-## Créditos
+## Credits
 
-Este projeto utiliza as seguintes ferramentas:
+This project uses the following tools:
 
 - **[scrcpy](https://github.com/Genymobile/scrcpy)** - Mirror Android devices
 - **[ADB (Android Debug Bridge)](https://developer.android.com/studio/command-line/adb)** - Android Debug Bridge
 
-Desenvolvido por **Eduardo Sato** ([@satodu](https://github.com/satodu))
+Developed by **Eduardo Sato** ([@satodu](https://github.com/satodu))
 
-## Características
+## Features
 
-- 🔍 Detecção automática de dispositivos Android conectados
-- 📱 Espelhamento de tela com scrcpy
-- 🎮 Controle remoto do dispositivo
-- 📊 Informações detalhadas do dispositivo
-- 🔧 Operações ADB comuns (instalação de APKs, screenshots, etc.)
-- 🎨 Interface moderna e intuitiva com PyQt5
+- 🔍 Automatic detection of connected Android devices
+- 📱 Screen mirroring with scrcpy
+- 🎮 Remote device control
+- 📊 Detailed device information
+- 🔧 Common ADB operations (APK installation, screenshots, etc.)
+- 🎨 Modern and intuitive interface with PyQt5
 
-## Pré-requisitos
+## Prerequisites
 
-### Instalação no Linux
+### Installation on Linux
 
 1. **ADB (Android Debug Bridge)**
    ```bash
    sudo apt install android-tools-adb android-tools-fastboot  # Ubuntu/Debian
-   # ou
+   # or
    sudo dnf install android-tools  # Fedora/Nobara
    ```
 
 2. **scrcpy**
    ```bash
    sudo apt install scrcpy  # Ubuntu/Debian
-   # ou
+   # or
    sudo dnf install scrcpy  # Fedora/Nobara
    ```
 
@@ -43,80 +43,80 @@ Desenvolvido por **Eduardo Sato** ([@satodu](https://github.com/satodu))
    python3 --version
    ```
 
-## Instalação
+## Installation
 
-1. Clone o repositório:
+1. Clone the repository:
    ```bash
-   git clone <url-do-repositorio>
+   git clone <repository-url>
    cd AndView
    ```
 
-2. Crie um ambiente virtual (recomendado):
+2. Create a virtual environment (recommended):
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. Instale as dependências:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-## Uso
+## Usage
 
-### Modo Normal
+### Normal Mode
 
-1. Conecte seu dispositivo Android via USB
-2. Ative a depuração USB nas opções de desenvolvedor
-3. Execute o aplicativo:
+1. Connect your Android device via USB
+2. Enable USB debugging in developer options
+3. Run the application:
    ```bash
    ./andview
    ```
    
-   Ou manualmente:
+   Or manually:
    ```bash
    source venv/bin/activate
    python3 main.py
    ```
 
-### Modo Desenvolvimento
+### Development Mode
 
-Para testar durante o desenvolvimento:
+For testing during development:
 
 ```bash
-./dev.sh              # Execução normal
-./dev.sh --debug      # Modo debug
-./dev.sh --verbose    # Saída verbose
-./dev.sh --lint       # Análise de código
-./dev.sh --format     # Formata código
-./dev.sh --clean      # Limpa arquivos temp
-./dev.sh --help       # Mostra ajuda
+./dev.sh              # Normal execution
+./dev.sh --debug      # Debug mode
+./dev.sh --verbose    # Verbose output
+./dev.sh --lint       # Code analysis
+./dev.sh --format     # Format code
+./dev.sh --clean      # Clean temp files
+./dev.sh --help       # Show help
 ```
 
-## Funcionalidades
+## Features
 
-- **Lista de Dispositivos**: Visualize todos os dispositivos Android conectados
-- **Espelhamento de Tela**: Inicie scrcpy com diferentes opções de configuração
-- **Informações do Dispositivo**: Modelo, versão do Android, bateria, etc.
-- **Instalação de APKs**: Arraste e solte ou selecione APKs para instalar
-- **Screenshots**: Capture screenshots do dispositivo
-- **Transferência de Arquivos**: Envie e receba arquivos do dispositivo
-- **Shell ADB**: Execute comandos ADB personalizados
+- **Device List**: View all connected Android devices
+- **Screen Mirroring**: Start scrcpy with different configuration options
+- **Device Information**: Model, Android version, battery, etc.
+- **APK Installation**: Drag and drop or select APKs to install
+- **Screenshots**: Capture device screenshots
+- **File Transfer**: Send and receive files from device
+- **ADB Shell**: Execute custom ADB commands
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 AndView/
-├── main.py              # Ponto de entrada da aplicação
-├── requirements.txt     # Dependências Python
-├── README.md           # Documentação
+├── main.py              # Application entry point
+├── requirements.txt     # Python dependencies
+├── README.md           # Documentation
 ├── src/
 │   ├── __init__.py
-│   ├── adb_manager.py  # Gerenciamento de comandos ADB
-│   ├── scrcpy_manager.py  # Gerenciamento do scrcpy
+│   ├── adb_manager.py  # ADB command management
+│   ├── scrcpy_manager.py  # scrcpy management
 │   └── ui/
 │       ├── __init__.py
-│       ├── main_window.py  # Janela principal
+│       ├── main_window.py  # Main window
 │       └── widgets/
 │           ├── __init__.py
 │           ├── device_list.py
@@ -125,33 +125,32 @@ AndView/
     └── icons/
 ```
 
-## Licença
+## License
 
 MIT License
 
-## Criando AppImage
+## Creating AppImage
 
-Para criar um AppImage para distribuição:
+To create an AppImage for distribution:
 
-1. Instale o `appimagetool`:
+1. Install `appimagetool`:
    ```bash
    wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
    chmod +x appimagetool-x86_64.AppImage
    sudo mv appimagetool-x86_64.AppImage /usr/local/bin/appimagetool
    ```
 
-2. Execute o script de build:
+2. Run the build script:
    ```bash
    ./build_appimage.sh
    ```
 
-3. O AppImage será criado em `build/AppImage/AndView-1.0.0-x86_64.AppImage`
+3. The AppImage will be created in `build/AppImage/AndView-1.0.0-x86_64.AppImage`
 
-Veja [APPIMAGE.md](APPIMAGE.md) para mais detalhes.
+See [APPIMAGE.md](APPIMAGE.md) for more details.
 
-## Contribuindo
+## Contributing
 
-Contribuições são bem-vindas! Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-Sinta-se à vontade para abrir issues ou pull requests.
-
+Feel free to open issues or pull requests.

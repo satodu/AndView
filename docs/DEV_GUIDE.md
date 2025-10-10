@@ -1,148 +1,148 @@
-# Guia de Desenvolvimento - AndView
+# Development Guide - AndView
 
-Este guia é para desenvolvedores que querem contribuir ou modificar o AndView.
+This guide is for developers who want to contribute or modify AndView.
 
-## Configuração Inicial
+## Initial Setup
 
-### 1. Clone o Repositório
+### 1. Clone the Repository
 
 ```bash
-git clone <url-do-repositorio>
+git clone <repository-url>
 cd AndView
 ```
 
-### 2. Configuração Rápida
+### 2. Quick Setup
 
 ```bash
-# Instala tudo automaticamente
+# Installs everything automatically
 ./scripts/install.sh
 
-# Ou configuração manual
+# Or manual setup
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Desenvolvimento
+## Development
 
-### Script de Desenvolvimento
+### Development Script
 
-O script `dev` (ou `scripts/dev.sh`) facilita o desenvolvimento com várias opções:
+The `dev` script (or `scripts/dev.sh`) makes development easier with several options:
 
 ```bash
-# Execução normal (modo dev)
+# Normal execution (dev mode)
 ./dev
 
-# Com debug ativado
+# With debug enabled
 ./dev --debug
 
-# Com saída verbose
+# With verbose output
 ./dev --verbose
 
-# Análise de código (pylint)
+# Code analysis (pylint)
 ./dev --lint
 
-# Formatação automática de código (black)
+# Automatic code formatting (black)
 ./dev --format
 
-# Limpar arquivos temporários
+# Clean temporary files
 ./dev --clean
 
-# Instalar ferramentas de desenvolvimento
+# Install development tools
 ./dev --install-dev
 
-# Mostrar ajuda
+# Show help
 ./dev --help
 ```
 
-### Estrutura do Projeto
+### Project Structure
 
 ```
 AndView/
-├── main.py                    # Ponto de entrada
+├── main.py                    # Entry point
 ├── src/
 │   ├── __init__.py
-│   ├── adb_manager.py         # Gerenciamento ADB
-│   ├── scrcpy_manager.py      # Gerenciamento scrcpy
+│   ├── adb_manager.py         # ADB management
+│   ├── scrcpy_manager.py      # scrcpy management
 │   └── ui/
-│       ├── main_window.py     # Janela principal
+│       ├── main_window.py     # Main window
 │       └── widgets/
-│           ├── device_list.py    # Lista de dispositivos
-│           └── control_panel.py  # Painel de controle
-├── dev                        # Wrapper para modo dev
-├── andview                    # Wrapper para executar app
+│           ├── device_list.py    # Device list
+│           └── control_panel.py  # Control panel
+├── dev                        # Wrapper for dev mode
+├── andview                    # Wrapper to run app
 ├── scripts/
-│   ├── dev.sh                 # Script de desenvolvimento
-│   ├── build_appimage.sh      # Script para criar AppImage
-│   └── install.sh             # Script de instalação
-└── docs/                      # Toda a documentação
+│   ├── dev.sh                 # Development script
+│   ├── build_appimage.sh      # Script to create AppImage
+│   └── install.sh             # Installation script
+└── docs/                      # All documentation
 ```
 
-## Workflow de Desenvolvimento
+## Development Workflow
 
-### 1. Fazendo Mudanças
+### 1. Making Changes
 
 ```bash
-# 1. Crie uma branch
-git checkout -b feature/minha-feature
+# 1. Create a branch
+git checkout -b feature/my-feature
 
-# 2. Faça suas alterações
-# Edite os arquivos necessários
+# 2. Make your changes
+# Edit the necessary files
 
-# 3. Teste suas alterações
+# 3. Test your changes
 ./dev
 
-# 4. Verifique o código
+# 4. Check the code
 ./dev --lint
 ./dev --format
 
 # 5. Commit
 git add .
-git commit -m "Adiciona minha feature"
+git commit -m "Add my feature"
 
 # 6. Push
-git push origin feature/minha-feature
+git push origin feature/my-feature
 ```
 
-### 2. Testando
+### 2. Testing
 
 ```bash
-# Teste básico
+# Basic test
 ./dev
 
-# Teste com debug para ver mais detalhes
+# Test with debug to see more details
 ./dev --debug
 
-# Limpe arquivos temporários antes de testar
+# Clean temporary files before testing
 ./dev --clean
 ./dev
 ```
 
-### 3. Verificação de Qualidade
+### 3. Quality Check
 
 ```bash
-# Instale ferramentas de dev (primeira vez)
+# Install dev tools (first time)
 ./dev --install-dev
 
-# Execute linter
+# Run linter
 ./dev --lint
 
-# Formate o código
+# Format the code
 ./dev --format
 ```
 
-## Adicionando Novas Funcionalidades
+## Adding New Features
 
-### Exemplo: Nova Função ADB
+### Example: New ADB Function
 
-1. **Edite `src/adb_manager.py`**:
+1. **Edit `src/adb_manager.py`**:
 
 ```python
-def nova_funcao(self, serial: str) -> Tuple[bool, str]:
-    """Descrição da nova função"""
+def new_function(self, serial: str) -> Tuple[bool, str]:
+    """Description of the new function"""
     try:
         result = subprocess.run(
-            [self.adb_path, "-s", serial, "shell", "comando"],
+            [self.adb_path, "-s", serial, "shell", "command"],
             capture_output=True,
             text=True,
             timeout=10
@@ -156,174 +156,174 @@ def nova_funcao(self, serial: str) -> Tuple[bool, str]:
     except subprocess.TimeoutExpired:
         return False, "Timeout"
     except FileNotFoundError:
-        return False, "ADB não encontrado"
+        return False, "ADB not found"
 ```
 
-2. **Adicione à UI em `src/ui/widgets/control_panel.py`**:
+2. **Add to UI in `src/ui/widgets/control_panel.py`**:
 
 ```python
-# No setup_ui ou na aba apropriada
-novo_btn = QPushButton("🔧 Nova Função")
-novo_btn.clicked.connect(self._on_nova_funcao)
+# In setup_ui or in the appropriate tab
+new_btn = QPushButton("🔧 New Function")
+new_btn.clicked.connect(self._on_new_function)
 
-# Adicione o handler
-def _on_nova_funcao(self):
+# Add the handler
+def _on_new_function(self):
     if not self.current_device:
-        QMessageBox.warning(self, "Aviso", "Nenhum dispositivo!")
+        QMessageBox.warning(self, "Warning", "No device!")
         return
     
-    # Emita um sinal ou chame diretamente
-    self.nova_funcao.emit()
+    # Emit a signal or call directly
+    self.new_function.emit()
 ```
 
-3. **Conecte na janela principal em `src/ui/main_window.py`**:
+3. **Connect in the main window in `src/ui/main_window.py`**:
 
 ```python
-# No __init__ ou _setup_ui
-self.control_panel.nova_funcao.connect(self._on_nova_funcao)
+# In __init__ or _setup_ui
+self.control_panel.new_function.connect(self._on_new_function)
 
-# Adicione o handler
-def _on_nova_funcao(self):
-    success, message = self.adb_manager.nova_funcao(
+# Add the handler
+def _on_new_function(self):
+    success, message = self.adb_manager.new_function(
         self.current_device.serial
     )
     
     if success:
-        QMessageBox.information(self, "Sucesso", message)
+        QMessageBox.information(self, "Success", message)
     else:
-        QMessageBox.critical(self, "Erro", message)
+        QMessageBox.critical(self, "Error", message)
 ```
 
-4. **Teste**:
+4. **Test**:
 
 ```bash
 ./dev --debug
 ```
 
-## Depuração
+## Debugging
 
-### Debug com prints
+### Debug with prints
 
 ```python
-# Use prints para debug rápido
+# Use prints for quick debug
 print(f"DEBUG: device={device.serial}")
 
-# Ou use o módulo logging
+# Or use the logging module
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 logger.debug(f"Device: {device.serial}")
 ```
 
-### Debug com PyQt5
+### Debug with PyQt5
 
 ```bash
-# Execute com QT_DEBUG_PLUGINS para ver problemas do Qt
+# Run with QT_DEBUG_PLUGINS to see Qt issues
 QT_DEBUG_PLUGINS=1 ./dev --debug
 ```
 
-### Debug do scrcpy/ADB
+### Debug scrcpy/ADB
 
 ```bash
-# Teste comandos manualmente
+# Test commands manually
 adb devices -l
 scrcpy --version
 
-# Veja o que o AndView está executando
+# See what AndView is executing
 ./dev --verbose
 ```
 
-## Criando Releases
+## Creating Releases
 
-### 1. Atualize a Versão
+### 1. Update Version
 
-Edite nos seguintes arquivos:
+Edit in the following files:
 - `src/__init__.py` → `__version__`
 - `build_appimage.sh` → `APP_VERSION`
-- `CHANGELOG.md` → Nova seção
+- `CHANGELOG.md` → New section
 
-### 2. Crie o AppImage
+### 2. Create the AppImage
 
 ```bash
 ./scripts/build_appimage.sh
 ```
 
-### 3. Teste o AppImage
+### 3. Test the AppImage
 
 ```bash
 ./build/AppImage/AndView-1.0.0-x86_64.AppImage
 ```
 
-### 4. Crie a Release
+### 4. Create the Release
 
 ```bash
-# Crie uma tag
+# Create a tag
 git tag -a v1.0.0 -m "Release 1.0.0"
 git push origin v1.0.0
 
-# Upload do AppImage no GitHub Releases
-# Ou use gh CLI
+# Upload the AppImage on GitHub Releases
+# Or use gh CLI
 gh release create v1.0.0 \
     build/AppImage/AndView-1.0.0-x86_64.AppImage \
     --title "AndView v1.0.0" \
-    --notes "Release notes aqui"
+    --notes "Release notes here"
 ```
 
-## Troubleshooting de Desenvolvimento
+## Development Troubleshooting
 
-### PyQt5 não encontrado
+### PyQt5 not found
 
 ```bash
 source venv/bin/activate
 pip install --upgrade PyQt5
 ```
 
-### Imports não funcionam
+### Imports not working
 
 ```bash
-# Certifique-se de estar no diretório correto
+# Make sure you're in the correct directory
 cd /home/panda/Projects/satodu/AndView
 
-# E que o ambiente virtual está ativo
+# And that the virtual environment is active
 source venv/bin/activate
 ```
 
-### Mudanças não aparecem
+### Changes don't appear
 
 ```bash
-# Limpe arquivos compilados
+# Clean compiled files
 ./dev --clean
 
-# Ou manualmente
+# Or manually
 find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null
 find . -type f -name "*.pyc" -delete
 ```
 
-## Boas Práticas
+## Best Practices
 
-### Código
+### Code
 
-- ✅ Siga PEP 8
-- ✅ Use type hints quando possível
-- ✅ Docstrings em todas as funções/classes
-- ✅ Nomes descritivos de variáveis
-- ✅ Mantenha funções pequenas e focadas
+- ✅ Follow PEP 8
+- ✅ Use type hints when possible
+- ✅ Docstrings in all functions/classes
+- ✅ Descriptive variable names
+- ✅ Keep functions small and focused
 
 ### Git
 
-- ✅ Commits pequenos e focados
-- ✅ Mensagens descritivas
-- ✅ Teste antes de fazer commit
-- ✅ Use branches para features
+- ✅ Small and focused commits
+- ✅ Descriptive messages
+- ✅ Test before committing
+- ✅ Use branches for features
 
 ### UI
 
-- ✅ Mensagens claras ao usuário
-- ✅ Tratamento de erros adequado
-- ✅ Feedback visual das ações
-- ✅ Acessibilidade (tamanhos de fonte, contraste)
+- ✅ Clear messages to the user
+- ✅ Proper error handling
+- ✅ Visual feedback of actions
+- ✅ Accessibility (font sizes, contrast)
 
-## Recursos Úteis
+## Useful Resources
 
 - [PyQt5 Documentation](https://www.riverbankcomputing.com/static/Docs/PyQt5/)
 - [ADB Documentation](https://developer.android.com/studio/command-line/adb)
@@ -331,12 +331,11 @@ find . -type f -name "*.pyc" -delete
 - [Python Type Hints](https://docs.python.org/3/library/typing.html)
 - [AppImage Documentation](https://docs.appimage.org/)
 
-## Ajuda
+## Help
 
-Se precisar de ajuda:
-1. Veja a documentação nos arquivos `.md`
-2. Abra uma issue no GitHub
-3. Consulte os exemplos no código existente
+If you need help:
+1. See the documentation in the `.md` files
+2. Open an issue on GitHub
+3. Check the examples in the existing code
 
-Boa codificação! 🚀
-
+Happy coding! 🚀

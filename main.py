@@ -6,8 +6,8 @@ Ponto de entrada da aplicação
 
 import sys
 import os
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtGui import QIcon
+from PySide6.QtWidgets import QApplication
+from PySide6.QtGui import QIcon
 from src.ui import MainWindow
 
 
@@ -30,7 +30,7 @@ def main():
     window.show()
     
     # Inicia o loop de eventos
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == "__main__":

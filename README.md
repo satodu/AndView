@@ -1,173 +1,129 @@
 <div align="center">
   <img src="src/ui/resources/logo.png" alt="AndView Logo" width="120">
-  <h1>AndView - Interface Gráfica para scrcpy e ADB</h1>
+  <h1>AndView - GUI for scrcpy and ADB</h1>
   
-  <img src="docs/images/demo.png" alt="AndView - Gerenciador de Dispositivos Android" width="80%">
+  <img src="docs/images/demo.png" alt="AndView - Android Device Manager" width="80%">
 </div>
 
-Uma interface gráfica moderna em Python para gerenciar dispositivos Android usando scrcpy e ADB (Android Debug Bridge).
+A modern Python GUI for managing Android devices using [scrcpy](https://github.com/Genymobile/scrcpy) and ADB (Android Debug Bridge).
 
 ![Linux](https://img.shields.io/badge/Linux-Only-blue)
 ![Python](https://img.shields.io/badge/Python-3.8+-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## 🚀 Início Rápido
+## 🚀 Installation (Super Easy!)
 
-### Instalação
+### For Users: Just Download and Run! 🎉
+
+1. **Download** the latest AppImage from [Releases](https://github.com/satodu/AndView/releases)
+2. **Make it executable:**
+   ```bash
+   chmod +x AndView-*.AppImage
+   ```
+3. **Run it!**
+   ```bash
+   ./AndView-*.AppImage
+   ```
+
+**That's it!** No installation, no dependencies, no hassle! 🎊
+
+The AppImage includes everything:
+- ✅ Python + PySide6
+- ✅ ADB (Android Debug Bridge)
+- ✅ scrcpy v3.3.3 (latest version)
+- ✅ All necessary libraries
+
+Works on **any** Linux distribution! 🐧
+
+### One-Liner Install (Optional)
+
+For quick installation to your Applications folder:
 
 ```bash
-# 1. Clone o repositório
-git clone <url-do-repositorio>
+wget https://github.com/satodu/AndView/releases/latest/download/AndView-1.0.0-x86_64.AppImage && chmod +x AndView-*.AppImage && mkdir -p ~/Applications && mv AndView-*.AppImage ~/Applications/
+```
+
+## 📱 Preparing Your Android Device
+
+**⚠️ IMPORTANT:** You MUST enable debug mode on your Android device!
+
+### Quick Setup (2 minutes):
+1. **Settings → About phone** → Tap 7x on "Build number"
+2. **Settings → Developer options** → Enable "USB debugging"
+3. Connect via USB and authorize your computer
+
+👉 **Detailed guide:** [DEBUG_MODE.md](docs/DEBUG_MODE.md)
+
+## ✨ Features
+
+- 🔍 Automatic detection of connected Android devices
+- 📱 Screen mirroring with scrcpy (latest version)
+- 🎮 Remote device control
+- 📊 Detailed device information
+- 🔧 Common ADB operations (APK installation, screenshots, etc.)
+- 🎨 Modern and intuitive interface with PySide6
+- 📶 WiFi connection support
+
+## 📖 Documentation
+
+- 👉 **[START_HERE.md](docs/START_HERE.md)** - Getting started guide
+- 🔧 **[DEBUG_MODE.md](docs/DEBUG_MODE.md)** - **⚠️ REQUIRED: Enable debug mode**
+- 📚 **[QUICKSTART.md](docs/QUICKSTART.md)** - Quick usage guide
+- 🔧 **[TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)** - Common problems and solutions
+
+## 💻 For Developers
+
+Want to contribute or modify the code? See the [Development Guide](docs/DEV_GUIDE.md).
+
+### Quick Development Setup
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/satodu/AndView.git
 cd AndView
 
-# 2. Instale PyQt5 (do sistema)
-sudo dnf install python3-qt5          # Fedora/Nobara
-# ou
-sudo apt install python3-pyqt5        # Ubuntu/Debian
-
-# 3. Execute o instalador (ADB, scrcpy, etc.)
+# 2. Run the installer
 ./scripts/install.sh
 
-# 4. Execute o aplicativo
-./andview
+# 3. Run in development mode
+./dev
 ```
 
-## 📖 Documentação
-
-Toda a documentação está na pasta **`docs/`**:
-
-- 👉 **[START_HERE.md](docs/START_HERE.md)** - **Comece por aqui!**
-- 🔧 **[DEBUG_MODE.md](docs/DEBUG_MODE.md)** - **⚠️ OBRIGATÓRIO: Como ativar modo debug**
-- 📚 **[QUICKSTART.md](docs/QUICKSTART.md)** - Guia rápido de uso
-- 💻 **[DEV_GUIDE.md](docs/DEV_GUIDE.md)** - Guia de desenvolvimento
-- 📦 **[APPIMAGE.md](docs/APPIMAGE.md)** - Como criar AppImage
-- 🔧 **[TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)** - Solução de problemas
-- 🤝 **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Como contribuir
-- 📋 **[CHANGELOG.md](docs/CHANGELOG.md)** - Histórico de versões
-- 📁 **[STRUCTURE.md](docs/STRUCTURE.md)** - Estrutura do projeto
-- 🐍 **[INSTALL_PYTHON313.md](docs/INSTALL_PYTHON313.md)** - Instalação no Python 3.13
-
-## ✨ Características
-
-- 🔍 Detecção automática de dispositivos Android conectados
-- 📱 Espelhamento de tela com scrcpy
-- 🎮 Controle remoto do dispositivo
-- 📊 Informações detalhadas do dispositivo
-- 🔧 Operações ADB comuns (instalação de APKs, screenshots, etc.)
-- 🎨 Interface moderna e intuitiva com PyQt5
-
-## 🛠️ Scripts Disponíveis
-
-### Atalhos Rápidos (na raiz):
-
-```bash
-./andview              # Executa o aplicativo
-./dev                  # Modo desenvolvimento
-./dev --debug          # Debug ativado
-./dev --help           # Ver todas opções
-```
-
-### Scripts Completos (em `scripts/`):
-
-- **`./scripts/install.sh`** - Instalação completa e automatizada
-- **`./scripts/dev.sh`** - Modo desenvolvimento com múltiplas opções
-- **`./scripts/build_appimage.sh`** - Criar AppImage para distribuição
-
-## 📋 Pré-requisitos
-
-### 📦 Para AppImage Standalone (Recomendado)
-**🎉 Nenhum requisito!** O AppImage inclui tudo que você precisa:
-- ✅ Python e PyQt5
-- ✅ ADB (Android Debug Bridge)  
-- ✅ scrcpy
-- ✅ Todas as bibliotecas necessárias
-
-### 🛠️ Para instalação manual (desenvolvedores)
-
-1. **Python 3.8+**
-   ```bash
-   python3 --version
-   ```
-
-2. **PyQt5 (do sistema)**
-   ```bash
-   sudo dnf install python3-qt5          # Fedora/Nobara
-   sudo apt install python3-pyqt5        # Ubuntu/Debian
-   sudo pacman -S python-pyqt5           # Arch/Manjaro
-   ```
-
-3. **ADB (Android Debug Bridge)**
-   ```bash
-   sudo dnf install android-tools        # Fedora/Nobara
-   sudo apt install android-tools-adb    # Ubuntu/Debian
-   sudo pacman -S android-tools          # Arch/Manjaro
-   ```
-
-4. **scrcpy**
-   ```bash
-   sudo dnf install scrcpy               # Fedora/Nobara
-   sudo apt install scrcpy               # Ubuntu/Debian
-   sudo pacman -S scrcpy                 # Arch/Manjaro
-   ```
-
-> **⚠️ Nota sobre Python 3.13**: O PyQt5 do pip ainda não é compatível com Python 3.13.  
-> Este projeto usa o PyQt5 do repositório do sistema, que já funciona perfeitamente!  
-> Veja [INSTALL_PYTHON313.md](docs/INSTALL_PYTHON313.md) para detalhes.
-
-## 🎯 Uso
-
-### Modo Normal
-
-```bash
-./andview
-```
-
-### Modo Desenvolvimento
-
-```bash
-./dev                 # ou ./scripts/dev.sh
-./dev --debug         # Com debug
-./dev --verbose       # Verbose
-./dev --lint          # Análise de código
-./dev --format        # Formata código
-./dev --clean         # Limpa arquivos temp
-```
-
-## 📦 Criar AppImage
+### Building Your Own AppImage
 
 ```bash
 ./scripts/build_appimage.sh
 ```
 
-Veja [docs/APPIMAGE.md](docs/APPIMAGE.md) para detalhes.
+The script will create a fully independent AppImage with everything included!
 
-## 📱 Preparando o Dispositivo Android
+See [docs/APPIMAGE.md](docs/APPIMAGE.md) for detailed build instructions.
 
-**⚠️ IMPORTANTE:** Sem ativar o modo debug, o AndView não funcionará!
+## 🙏 Acknowledgments
 
-### 🔧 Configuração Rápida:
-1. Ative as **Opções do Desenvolvedor** (toque 7x no número da versão)
-2. Ative a **Depuração USB**
-3. Conecte via USB
-4. Autorize o computador no dispositivo
+This project is powered by the amazing [**scrcpy**](https://github.com/Genymobile/scrcpy) by Genymobile - an incredible tool for displaying and controlling Android devices. Without scrcpy, this GUI wouldn't be possible!
 
-### 📖 Guia Completo:
-👉 **Veja [DEBUG_MODE.md](docs/DEBUG_MODE.md) para instruções detalhadas e solução de problemas**
+Special thanks to:
+- [**scrcpy**](https://github.com/Genymobile/scrcpy) - The core technology behind screen mirroring
+- [ADB (Android Debug Bridge)](https://developer.android.com/studio/command-line/adb) - Android's debugging tool
+- PySide6 - For the modern GUI framework
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes.
+Contributions are welcome! See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details.
 
-## 📄 Licença
+## 📄 License
 
-MIT License - veja [LICENSE](LICENSE) para detalhes.
+MIT License - see [LICENSE](LICENSE) for details.
 
-## 🆘 Ajuda
+## 🆘 Help
 
-- Problemas? Veja [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
-- Dúvidas? Abra uma issue
-- Quer contribuir? Veja [CONTRIBUTING.md](CONTRIBUTING.md)
+- Problems? See [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
+- Questions? [Open an issue](https://github.com/satodu/AndView/issues)
+- Want to contribute? See [CONTRIBUTING.md](docs/CONTRIBUTING.md)
 
 ---
 
-Desenvolvido com ❤️ usando Python e PyQt5
+Open source, feito com ❤️ no Linux.
+
+**by Panda** ([@eduardo-sato-panda](https://www.linkedin.com/in/eduardo-sato-panda))

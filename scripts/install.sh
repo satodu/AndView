@@ -102,47 +102,53 @@ else
 fi
 echo ""
 
-# Verifica PyQt5
-echo "🔍 Verificando PyQt5..."
-if ! python3 -c "import PyQt5" 2>/dev/null; then
-    echo "⚠️  PyQt5 não encontrado!"
-    echo "Deseja instalar? (s/n)"
-    read -r response
-    if [[ "$response" =~ ^([sS][iI][mM]|[sS])$ ]]; then
-        if [[ "$OS" == "ubuntu" ]] || [[ "$OS" == "debian" ]]; then
-            sudo apt install -y python3-pyqt5
-        elif [[ "$OS" == "fedora" ]] || [[ "$OS" == "nobara" ]]; then
-            sudo dnf install -y python3-qt5
-        elif [[ "$OS" == "arch" ]] || [[ "$OS" == "manjaro" ]]; then
-            sudo pacman -S python-pyqt5
-        else
-            echo "❌ Distribuição não suportada para instalação automática"
-            echo "Por favor, instale o PyQt5 manualmente"
-            exit 1
-        fi
-    else
-        echo "❌ PyQt5 é necessário para executar o AndView"
-        exit 1
-    fi
-else
-    echo "✅ PyQt5 encontrado (versão do sistema)"
+# Cria ambiente virtual
+echo "🐍 Configurando ambiente virtual Python..."
+if [ -d "venv" ]; then
+    echo "⚠️  Ambiente virtual já existe. Removendo..."
+    rm -rf venv
 fi
+
+python3 -m venv venv
+if [ $? -ne 0 ]; then
+    echo "❌ Erro ao criar ambiente virtual!"
+    echo "Instale python3-venv:"
+    if [[ "$OS" == "ubuntu" ]] || [[ "$OS" == "debian" ]]; then
+        echo "  sudo apt install python3-venv"
+    elif [[ "$OS" == "fedora" ]] || [[ "$OS" == "nobara" ]]; then
+        echo "  sudo dnf install python3"
+    fi
+    exit 1
+fi
+echo "✅ Ambiente virtual criado"
 echo ""
 
-# Informação sobre dependências
-echo "📝 Configuração de dependências..."
-echo "Este projeto usa o PyQt5 do sistema (não requer venv)"
-echo "✅ Configuração completa!"
+# Ativa o ambiente virtual e instala dependências
+echo "📦 Instalando PySide6..."
+source venv/bin/activate
+pip install --upgrade pip -q
+pip install PySide6
+if [ $? -eq 0 ]; then
+    echo "✅ PySide6 instalado com sucesso"
+else
+    echo "❌ Erro ao instalar PySide6"
+    exit 1
+fi
+deactivate
 echo ""
 
 # Cria scripts de execução na raiz
 echo "🔧 Criando scripts de execução..."
-cd ..
 
 cat > andview << 'EOF'
 #!/bin/bash
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
+
+# Ativa o ambiente virtual
+source venv/bin/activate
+
+# Executa o aplicativo
 exec python3 main.py "$@"
 EOF
 
@@ -194,7 +200,9 @@ echo "  ./dev"
 echo "  ./dev --debug"
 echo "  ./dev --help"
 echo ""
+echo "📝 Nota: O projeto agora usa PySide6 dentro de um"
+echo "   ambiente virtual Python (venv/)"
+echo ""
 echo "Documentação em: docs/"
 echo "Scripts em: scripts/"
 echo ""
-

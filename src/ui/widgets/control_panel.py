@@ -2,12 +2,12 @@
 Widget do painel de controle
 """
 
-from PyQt5.QtWidgets import (
+from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QGroupBox,
     QLabel, QComboBox, QSpinBox, QCheckBox, QLineEdit,
     QFileDialog, QMessageBox, QTextEdit, QTabWidget
 )
-from PyQt5.QtCore import pyqtSignal, Qt
+from PySide6.QtCore import Signal, Qt
 from ...adb_manager import ADBDevice
 from ...scrcpy_manager import ScrcpyOptions
 
@@ -15,11 +15,11 @@ from ...scrcpy_manager import ScrcpyOptions
 class ControlPanelWidget(QWidget):
     """Widget do painel de controle do scrcpy e ADB"""
     
-    start_mirroring = pyqtSignal(ScrcpyOptions)
-    stop_mirroring = pyqtSignal()
-    install_apk = pyqtSignal(str)
-    take_screenshot = pyqtSignal()
-    execute_command = pyqtSignal(str)
+    start_mirroring = Signal(ScrcpyOptions)
+    stop_mirroring = Signal()
+    install_apk = Signal(str)
+    take_screenshot = Signal()
+    execute_command = Signal(str)
     
     def __init__(self, parent=None):
         super().__init__(parent)

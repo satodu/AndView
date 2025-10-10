@@ -1,14 +1,14 @@
 # Troubleshooting - AndView
 
-Guia de resolução de problemas comuns.
+Troubleshooting guide for common issues.
 
-## Problemas de Instalação
+## Installation Problems
 
-### Erro: "Python.h: Arquivo ou diretório inexistente"
+### Error: "Python.h: No such file or directory"
 
-**Causa**: Faltam ferramentas de desenvolvimento Python.
+**Cause**: Missing Python development tools.
 
-**Solução**:
+**Solution**:
 
 ```bash
 # Ubuntu/Debian
@@ -21,16 +21,16 @@ sudo dnf install python3-devel gcc gcc-c++
 sudo pacman -S base-devel
 ```
 
-Depois execute novamente:
+Then run again:
 ```bash
 ./install.sh
 ```
 
-### Erro ao compilar PyQt5-sip
+### Error compiling PyQt5-sip
 
-**Causa**: Faltam compiladores ou bibliotecas de desenvolvimento.
+**Cause**: Missing compilers or development libraries.
 
-**Solução**:
+**Solution**:
 
 ```bash
 # Ubuntu/Debian
@@ -43,9 +43,9 @@ sudo dnf install gcc gcc-c++ python3-devel
 sudo pacman -S base-devel
 ```
 
-### PyQt5 não instala
+### PyQt5 won't install
 
-**Alternativa**: Use a versão do repositório do sistema:
+**Alternative**: Use the system repository version:
 
 ```bash
 # Ubuntu/Debian
@@ -58,146 +58,146 @@ sudo dnf install python3-qt5
 sudo pacman -S python-pyqt5
 ```
 
-Depois, use o Python do sistema sem venv:
+Then, use system Python without venv:
 ```bash
 python3 main.py
 ```
 
-## Problemas com ADB
+## ADB Problems
 
-### ADB não detecta dispositivo
+### ADB doesn't detect device
 
-**Verificações**:
+**Checks**:
 
-1. **Depuração USB ativada?**
-   - Configurações → Opções do desenvolvedor → Depuração USB
+1. **USB debugging enabled?**
+   - Settings → Developer options → USB debugging
 
-2. **Dispositivo autorizado?**
+2. **Device authorized?**
    ```bash
    adb devices
-   # Deve mostrar "device", não "unauthorized"
+   # Should show "device", not "unauthorized"
    ```
    
-   Se mostrar "unauthorized", desbloqueie o telefone e aceite.
+   If it shows "unauthorized", unlock the phone and accept.
 
-3. **Servidor ADB travado?**
+3. **ADB server stuck?**
    ```bash
    adb kill-server
    adb start-server
    adb devices
    ```
 
-4. **Cabo USB funcionando?**
-   - Tente outro cabo
-   - Teste outra porta USB
-   - Alguns cabos são apenas para carregamento
+4. **USB cable working?**
+   - Try another cable
+   - Test another USB port
+   - Some cables are charge-only
 
-5. **Regras udev (Linux)?**
+5. **udev rules (Linux)?**
    ```bash
-   # Crie arquivo de regras
+   # Create rules file
    sudo nano /etc/udev/rules.d/51-android.rules
    
-   # Adicione (substitua XXXX pelo vendor ID do seu dispositivo):
+   # Add (replace XXXX with your device's vendor ID):
    SUBSYSTEM=="usb", ATTR{idVendor}=="XXXX", MODE="0666", GROUP="plugdev"
    
-   # Recarregue regras
+   # Reload rules
    sudo udevadm control --reload-rules
    sudo udevadm trigger
    
-   # Reconecte o dispositivo
+   # Reconnect the device
    ```
    
-   Vendor IDs comuns:
+   Common vendor IDs:
    - Google: 18d1
    - Samsung: 04e8
    - Xiaomi: 2717
    - Motorola: 22b8
    - LG: 1004
 
-### Permissão negada ao usar ADB
+### Permission denied when using ADB
 
-**Solução**:
+**Solution**:
 
 ```bash
-# Adicione seu usuário ao grupo plugdev
+# Add your user to plugdev group
 sudo usermod -aG plugdev $USER
 
-# Faça logout e login novamente
+# Logout and login again
 ```
 
-### ADB muito lento
+### ADB very slow
 
-**Soluções**:
+**Solutions**:
 
-1. Reinicie o servidor ADB:
+1. Restart ADB server:
    ```bash
    adb kill-server
    adb start-server
    ```
 
-2. Use outro cabo USB (prefira USB 3.0)
+2. Use another USB cable (prefer USB 3.0)
 
-3. Desative outras ferramentas que usam ADB
+3. Disable other tools using ADB
 
-## Problemas com scrcpy
+## scrcpy Problems
 
-### Tela preta no scrcpy
+### Black screen in scrcpy
 
-**Causas e soluções**:
+**Causes and solutions**:
 
-1. **Tela do dispositivo bloqueada**
-   - Desbloqueie a tela
+1. **Device screen locked**
+   - Unlock the screen
 
-2. **Protetor de tela ativo**
-   - Desative temporariamente
+2. **Screen saver active**
+   - Disable temporarily
 
-3. **Aplicativo em primeiro plano bloqueando**
-   - Volte para a tela inicial
+3. **App in foreground blocking**
+   - Return to home screen
 
-4. **Codec não suportado**
+4. **Codec not supported**
    ```bash
-   # Tente com codec diferente
+   # Try with different codec
    scrcpy --video-codec=h264
    ```
 
-5. **Resolução muito alta**
-   - Use uma resolução menor:
+5. **Resolution too high**
+   - Use a lower resolution:
    ```bash
    scrcpy -m 1024
    ```
 
-### scrcpy travando/lagado
+### scrcpy freezing/lagging
 
-**Soluções**:
+**Solutions**:
 
-1. **Reduza a resolução**:
-   - No AndView: use preset "Performance"
-   - Ou defina resolução máxima: 720
+1. **Reduce resolution**:
+   - In AndView: use "Performance" preset
+   - Or set max resolution: 720
 
-2. **Reduza o bitrate**:
-   - Tente 4M ou 2M
+2. **Reduce bitrate**:
+   - Try 4M or 2M
 
-3. **Reduza FPS**:
-   - Defina para 30 FPS
+3. **Reduce FPS**:
+   - Set to 30 FPS
 
-4. **Use cabo USB**:
-   - Conexão sem fio tem mais latência
+4. **Use USB cable**:
+   - Wireless connection has more latency
 
-5. **Feche outros aplicativos**:
-   - Libere recursos do PC e do telefone
+5. **Close other applications**:
+   - Free resources on PC and phone
 
-### Áudio não funciona
+### Audio doesn't work
 
-**Nota**: Áudio no scrcpy requer versão 2.0+
+**Note**: Audio in scrcpy requires version 2.0+
 
-**Verificação**:
+**Check**:
 ```bash
 scrcpy --version
 ```
 
-**Se versão < 2.0**:
+**If version < 2.0**:
 ```bash
-# Ubuntu/Debian (pode precisar de PPA)
+# Ubuntu/Debian (may need PPA)
 sudo add-apt-repository ppa:sicklylife/scrcpy
 sudo apt update
 sudo apt install scrcpy
@@ -209,218 +209,218 @@ sudo dnf update scrcpy
 sudo pacman -Syu scrcpy
 ```
 
-### scrcpy não conecta via WiFi
+### scrcpy doesn't connect via WiFi
 
-**Passos**:
+**Steps**:
 
-1. **Conecte primeiro via USB**
+1. **Connect first via USB**
 
-2. **Configure porta TCP/IP**:
+2. **Configure TCP/IP port**:
    ```bash
    adb tcpip 5555
    ```
 
-3. **Encontre IP do dispositivo**:
-   - Configurações → Sobre → Status → Endereço IP
-   - Ou: `adb shell ip addr show wlan0`
+3. **Find device IP**:
+   - Settings → About → Status → IP address
+   - Or: `adb shell ip addr show wlan0`
 
-4. **Conecte**:
+4. **Connect**:
    ```bash
    adb connect 192.168.1.XXX:5555
    ```
 
-5. **Desconecte USB e use scrcpy**
+5. **Disconnect USB and use scrcpy**
 
-**Problemas**:
-- Computador e telefone devem estar na mesma rede
-- Alguns roteadores bloqueiam comunicação entre dispositivos
-- Firewall pode estar bloqueando
+**Issues**:
+- Computer and phone must be on the same network
+- Some routers block communication between devices
+- Firewall may be blocking
 
-## Problemas na Interface Gráfica
+## GUI Problems
 
-### AndView não abre
+### AndView doesn't open
 
-**Verificações**:
+**Checks**:
 
-1. **PyQt5 instalado?**
+1. **PyQt5 installed?**
    ```bash
    python3 -c "import PyQt5"
    ```
 
-2. **Ambiente virtual ativado?**
+2. **Virtual environment activated?**
    ```bash
    source venv/bin/activate
    python3 main.py
    ```
 
-3. **Execute com debug**:
+3. **Run with debug**:
    ```bash
    ./dev.sh --debug
    ```
 
-### Erro: "cannot import name 'MainWindow'"
+### Error: "cannot import name 'MainWindow'"
 
-**Solução**:
+**Solution**:
 ```bash
-# Limpe arquivos compilados
+# Clean compiled files
 ./dev.sh --clean
 
-# Ou manualmente
+# Or manually
 find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null
 find . -type f -name "*.pyc" -delete
 
-# Execute novamente
+# Run again
 ./dev.sh
 ```
 
-### Interface gráfica muito pequena/grande
+### GUI too small/large
 
-**Solução**: Edite `main.py` e ajuste o tamanho da janela:
+**Solution**: Edit `main.py` and adjust window size:
 
 ```python
-self.setGeometry(100, 100, 1400, 800)  # Largura, altura
+self.setGeometry(100, 100, 1400, 800)  # Width, height
 ```
 
-### Fonte muito pequena
+### Font too small
 
-**Solução**: Ajuste o DPI no Qt:
+**Solution**: Adjust DPI in Qt:
 
 ```python
-# No main.py, antes de criar a janela
+# In main.py, before creating the window
 os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
-os.environ["QT_SCALE_FACTOR"] = "1.5"  # Ajuste conforme necessário
+os.environ["QT_SCALE_FACTOR"] = "1.5"  # Adjust as needed
 ```
 
-## Problemas no AppImage
+## AppImage Problems
 
 ### "cannot open shared object file"
 
-**Causa**: Biblioteca do sistema faltando.
+**Cause**: Missing system library.
 
-**Solução**:
+**Solution**:
 ```bash
-# Instale FUSE para AppImage
+# Install FUSE for AppImage
 sudo apt install fuse libfuse2  # Ubuntu/Debian
 sudo dnf install fuse fuse-libs  # Fedora/Nobara
 ```
 
-### AppImage não executa
+### AppImage doesn't run
 
-**Verificações**:
+**Checks**:
 
-1. **É executável?**
+1. **Is it executable?**
    ```bash
    chmod +x AndView-*.AppImage
    ```
 
-2. **FUSE instalado?**
+2. **FUSE installed?**
    ```bash
    sudo apt install fuse libfuse2
    ```
 
-3. **Execute manualmente**:
+3. **Run manually**:
    ```bash
    ./AndView-*.AppImage --appimage-extract-and-run
    ```
 
-### AppImage muito grande
+### AppImage too large
 
-**Para reduzir o tamanho**:
+**To reduce size**:
 
-1. Edite `build_appimage.sh`
-2. Adicione compressão:
+1. Edit `build_appimage.sh`
+2. Add compression:
    ```bash
    appimagetool --comp gzip AndView.AppDir
    ```
 
-## Problemas de Performance
+## Performance Problems
 
-### Alto uso de CPU
+### High CPU usage
 
-**Causas**:
+**Causes**:
 
-1. **Atualização automática de dispositivos**
-   - Normal, atualiza a cada 5 segundos
-   - Para desabilitar, edite `main_window.py` e comente:
+1. **Automatic device updates**
+   - Normal, updates every 5 seconds
+   - To disable, edit `main_window.py` and comment:
    ```python
    # self.update_timer.start(5000)
    ```
 
-2. **scrcpy em alta qualidade**
-   - Use preset "Performance"
-   - Reduza resolução e FPS
+2. **scrcpy in high quality**
+   - Use "Performance" preset
+   - Reduce resolution and FPS
 
-### Alto uso de memória
+### High memory usage
 
-**Soluções**:
+**Solutions**:
 
-1. Feche e reabra o aplicativo periodicamente
-2. Não mantenha múltiplas janelas abertas
-3. Use resolução menor no scrcpy
+1. Close and reopen the application periodically
+2. Don't keep multiple windows open
+3. Use lower resolution in scrcpy
 
-## Outros Problemas
+## Other Problems
 
-### Mudanças no código não aparecem
+### Code changes don't appear
 
 ```bash
-# Limpe cache Python
+# Clean Python cache
 ./dev.sh --clean
 
-# Recrie o ambiente virtual
+# Recreate virtual environment
 rm -rf venv
 ./install.sh
 ```
 
-### Erro de importação
+### Import error
 
 ```bash
-# Certifique-se de estar no diretório correto
+# Make sure you're in the correct directory
 cd /home/panda/Projects/satodu/AndView
 
-# Ative o ambiente virtual
+# Activate virtual environment
 source venv/bin/activate
 
-# Reinstale dependências
+# Reinstall dependencies
 pip install -r requirements.txt
 ```
 
-### AndView congela
+### AndView freezes
 
-**Possíveis causas**:
+**Possible causes**:
 
-1. **Operação ADB longa**
-   - Instalação de APK grande
-   - Normal, aguarde
+1. **Long ADB operation**
+   - Installing large APK
+   - Normal, wait
 
-2. **scrcpy travou**
-   - Feche o scrcpy manualmente
-   - Clique em "Parar"
+2. **scrcpy stuck**
+   - Close scrcpy manually
+   - Click "Stop"
 
-3. **Dispositivo desconectou**
-   - Reconecte
-   - Clique em "Atualizar"
+3. **Device disconnected**
+   - Reconnect
+   - Click "Refresh"
 
-## Conseguindo Mais Ajuda
+## Getting More Help
 
-Se o problema persistir:
+If the problem persists:
 
-1. **Veja os logs**:
+1. **See the logs**:
    ```bash
    ./dev.sh --debug 2>&1 | tee andview.log
    ```
 
-2. **Teste componentes individualmente**:
+2. **Test components individually**:
    ```bash
-   adb devices       # Testa ADB
-   scrcpy --version  # Testa scrcpy
-   python3 -c "import PyQt5"  # Testa PyQt5
+   adb devices       # Test ADB
+   scrcpy --version  # Test scrcpy
+   python3 -c "import PyQt5"  # Test PyQt5
    ```
 
-3. **Abra uma issue** no GitHub com:
-   - Descrição do problema
-   - Passos para reproduzir
-   - Log de erro completo
-   - Sistema operacional e versões:
+3. **Open an issue** on GitHub with:
+   - Problem description
+   - Steps to reproduce
+   - Complete error log
+   - Operating system and versions:
      ```bash
      uname -a
      python3 --version
@@ -428,8 +428,7 @@ Se o problema persistir:
      scrcpy --version
      ```
 
-4. **Pergunte na comunidade**:
+4. **Ask the community**:
    - Reddit: r/linux
-   - Fóruns da sua distro
+   - Your distro forums
    - Stack Overflow
-
