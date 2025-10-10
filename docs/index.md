@@ -50,10 +50,10 @@ Download the latest version and start mirroring in seconds!
 
 <div style="text-align: center; margin: 2rem 0;">
   <a href="https://github.com/satodu/AndView/releases/latest/download/AndView-x86_64.AppImage" class="download-button">
-    📥 Download Latest Release
+    Download Latest Release
   </a>
   <a href="{{ '/releases' | relative_url }}" class="download-button">
-    📋 View All Releases
+    View All Releases
   </a>
 </div>
 
