@@ -1,188 +1,134 @@
 #!/bin/bash
-# Script para criar release no GitHub com AppImage
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+# AndView Release Creator
+# This script helps create GitHub releases with proper tagging
+
+set -e
+
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
-echo "====================================="
-echo "  🚀 Criador de Release - AndView"
-echo "====================================="
-echo ""
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-APP_VERSION="0.0.1"
-APP_NAME="AndView"
+# Function to print colored output
+print_status() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
 
-# Verifica se gh está instalado
-if ! command -v gh >/dev/null 2>&1; then
-    echo "⚠️  GitHub CLI (gh) não encontrado!"
-    echo ""
-    echo "Para instalar:"
-    echo "  # Ubuntu/Debian:"
-    echo "  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg"
-    echo "  echo \"deb [arch=\$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main\" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null"
-    echo "  sudo apt update && sudo apt install gh"
-    echo ""
-    echo "  # Ou baixe de: https://github.com/cli/cli/releases"
-    echo ""
+print_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+# Check if version is provided
+if [ $# -eq 0 ]; then
+    print_error "Usage: $0 <version> [release_notes]"
+    print_error "Example: $0 0.0.3 'Added new features'"
     exit 1
 fi
 
-# Verifica se está logado no GitHub
-if ! gh auth status >/dev/null 2>&1; then
-    echo "⚠️  Não está logado no GitHub!"
-    echo ""
-    echo "Para fazer login:"
-    echo "  gh auth login"
-    echo ""
+VERSION="$1"
+RELEASE_NOTES="${2:-Release v$VERSION}"
+
+print_status "Creating release v$VERSION..."
+
+# Check if we're on main branch
+CURRENT_BRANCH=$(git branch --show-current)
+if [ "$CURRENT_BRANCH" != "main" ]; then
+    print_warning "You're not on main branch (current: $CURRENT_BRANCH)"
+    read -p "Continue anyway? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi
+
+# Check if working directory is clean
+if ! git diff-index --quiet HEAD --; then
+    print_error "Working directory is not clean. Please commit or stash changes first."
     exit 1
 fi
 
-# Constrói o AppImage
-echo "🔨 Construindo AppImage..."
-echo ""
-
-echo "📦 Construindo AppImage..."
-./scripts/build_appimage.sh
-
-echo ""
-echo "📋 Verificando arquivo gerado..."
-APPIMAGE_FILE="build/AppImage/${APP_NAME}-${APP_VERSION}-x86_64.AppImage"
-
-if [ ! -f "$APPIMAGE_FILE" ]; then
-    echo "❌ AppImage não encontrado: $APPIMAGE_FILE"
+# Check if tag already exists
+if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+    print_error "Tag v$VERSION already exists!"
     exit 1
 fi
 
-echo "✅ AppImage: $(ls -lh "$APPIMAGE_FILE" | awk '{print $5}')"
-echo ""
-
-# Cria release notes
-RELEASE_NOTES_FILE="/tmp/release_notes.md"
-cat > "$RELEASE_NOTES_FILE" << EOF
-# 🎉 AndView v${APP_VERSION} - Primeiro Release!
-
-## 📱 Sobre o AndView
-
-AndView é um gerenciador moderno de dispositivos Android com suporte a conexão WiFi, desenvolvido em Python com PyQt5.
-
-## ✨ Funcionalidades
-
-- 📱 **Lista de dispositivos** conectados via USB e WiFi
-- 🔗 **Conexão WiFi** para espelhamento sem cabo
-- 🖥️ **Espelhamento de tela** com scrcpy
-- ⚙️ **Configurações de qualidade** (bitrate, resolução, etc.)
-- 📸 **Screenshots** e comandos ADB
-- 🎨 **Interface moderna** e intuitiva
-
-## 📦 Download
-
-### AppImage (~107MB)
-- ✅ **Inclui ADB e scrcpy**
-- ✅ **Funciona sem dependências externas**
-- ✅ **Recomendado para todos os usuários**
-- ✅ **Funciona em qualquer distribuição Linux**
-
-## 🚀 Como usar
-
-1. Baixe o AppImage
-2. Torne executável: \`chmod +x AndView-*-x86_64.AppImage\`
-3. Execute: \`./AndView-*-x86_64.AppImage\`
-
-## 📋 Requisitos
-
-### Para AppImage:
-- ✅ **Nenhum requisito adicional!**
-- ✅ Funciona em qualquer Linux
-- ✅ Inclui todas as dependências
-
-## 🔧 Instalação manual (apenas para desenvolvedores)
-
-> **💡 Recomendamos usar o AppImage** - não requer instalação de dependências!
-
-### Ubuntu/Debian:
-\`\`\`bash
-# ADB
-sudo apt install android-tools-adb
-
-# scrcpy
-sudo apt install scrcpy
-\`\`\`
-
-### Fedora:
-\`\`\`bash
-# ADB
-sudo dnf install android-tools
-
-# scrcpy
-sudo dnf install scrcpy
-\`\`\`
-
-### Arch Linux:
-\`\`\`bash
-# ADB
-sudo pacman -S android-tools
-
-# scrcpy
-sudo pacman -S scrcpy
-\`\`\`
-
-## 🐛 Problemas conhecidos
-
-- Primeira execução pode ser lenta (cache de dependências)
-- Algumas distribuições podem precisar de bibliotecas adicionais
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes.
-
-## 📄 Licença
-
-MIT License - veja [LICENSE](LICENSE) para detalhes.
-
----
-
-Desenvolvido com ❤️ usando Python e PyQt5
-EOF
-
-echo "📝 Release notes criadas em: $RELEASE_NOTES_FILE"
-echo ""
-
-# Pergunta se quer continuar
-read -p "🤔 Deseja criar o release no GitHub? (y/N): " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    echo "❌ Release cancelado pelo usuário"
-    exit 0
-fi
-
-echo "🚀 Criando release no GitHub..."
-
-# Cria o release
-gh release create "v${APP_VERSION}" \
-    --title "🎉 AndView v${APP_VERSION} - Primeiro Release!" \
-    --notes-file "$RELEASE_NOTES_FILE" \
-    --latest \
-    "$APPIMAGE_FILE#AppImage (~107MB) - Funciona sem dependências!"
-
-if [ $? -eq 0 ]; then
-    echo ""
-    echo "🎉 Release criado com sucesso!"
-    echo ""
-    echo "📋 Próximos passos:"
-    echo "  1. Verifique o release em: https://github.com/satodu/AndView/releases"
-    echo "  2. Teste os downloads"
-    echo "  3. Compartilhe com a comunidade!"
-    echo ""
-    echo "🔗 Links úteis:"
-    echo "  - Release: https://github.com/satodu/AndView/releases/tag/v${APP_VERSION}"
-    echo "  - Issues: https://github.com/satodu/AndView/issues"
-    echo "  - Discussions: https://github.com/satodu/AndView/discussions"
-    echo ""
+# Build the AppImage
+print_status "Building AppImage..."
+if [ -f "scripts/build_appimage.sh" ]; then
+    rm -rf build/AppImage
+    ./scripts/build_appimage.sh
+    if [ $? -ne 0 ]; then
+        print_error "Failed to build AppImage!"
+        exit 1
+    fi
 else
-    echo "❌ Erro ao criar release"
+    print_error "build_appimage.sh not found!"
     exit 1
 fi
 
-# Limpa arquivo temporário
-rm -f "$RELEASE_NOTES_FILE"
+# Find the built AppImage
+APPIMAGE_FILE=$(find build/AppImage -name "*.AppImage" -type f | head -n 1)
+if [ -z "$APPIMAGE_FILE" ]; then
+    print_error "AppImage not found in build/AppImage/"
+    exit 1
+fi
+
+print_success "AppImage built: $APPIMAGE_FILE"
+
+# Create and push tag
+print_status "Creating tag v$VERSION..."
+git tag -a "v$VERSION" -m "$RELEASE_NOTES"
+git push origin "v$VERSION"
+
+print_success "Tag v$VERSION created and pushed!"
+
+# Display next steps
+echo
+print_success "Release preparation complete!"
+echo
+echo -e "${BLUE}Next steps:${NC}"
+echo "1. Go to https://github.com/satodu/AndView/releases"
+echo "2. Click 'Create a new release'"
+echo "3. Select tag 'v$VERSION'"
+echo "4. Use this title: AndView v$VERSION"
+echo "5. Upload the AppImage: $APPIMAGE_FILE"
+echo
+echo -e "${BLUE}Suggested release description:${NC}"
+echo "## 🎉 What's New in v$VERSION"
+echo ""
+echo "$RELEASE_NOTES"
+echo ""
+echo "## 📥 Download"
+echo ""
+echo "Download \`AndView-$VERSION-x86_64.AppImage\` above and make it executable:"
+echo ""
+echo "\`\`\`bash"
+echo "chmod +x AndView-$VERSION-x86_64.AppImage"
+echo "./AndView-$VERSION-x86_64.AppImage"
+echo "\`\`\`"
+echo ""
+echo "## 📱 Setup"
+echo ""
+echo "Don't forget to enable USB debugging on your Android device!"
+echo "See [DEBUG_MODE.md](https://github.com/satodu/AndView/blob/main/docs/DEBUG_MODE.md) for instructions."
+echo ""
+echo "---"
+echo ""
+echo "**Download the AppImage above and start mirroring your Android device!** 📱✨"
+
+print_success "Ready for release! 🚀"
