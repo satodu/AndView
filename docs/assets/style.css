@@ -35,6 +35,7 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  font-weight: 400;
 }
 
 /* Force dark background everywhere */
@@ -84,7 +85,7 @@ a:hover {
   max-width: 120px;
   height: auto;
   display: block;
-  margin: 0 auto 1rem auto;
+  margin: 2rem auto 1rem auto;
   filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.3));
   transition: transform 0.3s ease;
 }
@@ -93,48 +94,24 @@ a:hover {
   transform: scale(1.05);
 }
 
-/* Hero section */
-.hero {
+/* Main heading */
+h1 {
   text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-  border-radius: 2rem;
-  margin: 2rem 0;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  opacity: 0.3;
-  pointer-events: none;
-}
-
-.hero h1 {
-  color: white;
   font-size: 3.5rem;
   font-weight: 800;
+  color: var(--primary-color) !important;
   margin-bottom: 1rem;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 1;
+  text-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
 }
 
-.hero .description {
+/* Description */
+.description {
+  text-align: center;
   font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  font-weight: 300;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--text-color) !important;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  opacity: 0.9;
 }
 
 /* Feature cards */
@@ -203,51 +180,19 @@ a:hover {
   font-size: 1.1rem;
 }
 
-/* Download section */
-.download-section {
-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-  color: white;
-  padding: 4rem 2rem;
-  border-radius: 2rem;
+/* Section headings */
+h2 {
   text-align: center;
-  margin: 3rem 0;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
-}
-
-.download-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.download-section h2 {
-  margin-bottom: 1.5rem;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 1;
-}
-
-.download-section p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  position: relative;
-  z-index: 1;
+  color: var(--primary-color) !important;
+  margin: 3rem 0 1.5rem 0;
+  text-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
 .download-button {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   padding: 1.2rem 2.5rem;
   border-radius: 1rem;
@@ -255,17 +200,32 @@ a:hover {
   font-weight: 600;
   font-size: 1.2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
+  margin: 0.5rem;
+  border: none;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+}
+
+.download-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.download-button:hover::before {
+  left: 100%;
 }
 
 .download-button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
   color: white;
   text-decoration: none;
 }
@@ -459,25 +419,21 @@ code {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero h1 {
+  h1 {
     font-size: 2.5rem;
   }
   
-  .hero .description {
+  .description {
     font-size: 1.1rem;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
   }
   
   .features {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  
-  .download-section {
-    padding: 3rem 1rem;
-  }
-  
-  .download-section h2 {
-    font-size: 2.2rem;
   }
   
   .page-content, .wrapper {
@@ -488,22 +444,33 @@ code {
     margin: 0 0.5rem;
     font-size: 0.9rem;
   }
+  
+  .download-button {
+    display: block;
+    margin: 1rem auto;
+    max-width: 300px;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero {
-    padding: 3rem 1rem;
-  }
-  
-  .hero h1 {
+  h1 {
     font-size: 2rem;
   }
   
-  .download-section h2 {
+  h2 {
     font-size: 1.8rem;
+  }
+  
+  .description {
+    font-size: 1rem;
   }
   
   .feature-card, .release-card {
     padding: 1.5rem;
+  }
+  
+  .download-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
   }
 }

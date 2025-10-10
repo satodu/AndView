@@ -4,11 +4,9 @@ title: AndView
 description: Mirror and control your Android device from Linux - No dependencies required!
 ---
 
-<div class="hero">
-  <img src="{{ '/assets/logo.png' | relative_url }}" alt="AndView Logo" class="logo">
-  <h1>📱 AndView</h1>
-  <p class="description">Mirror and control your Android device from Linux<br><strong>Zero dependencies required!</strong></p>
-</div>
+<img src="{{ '/assets/logo.png' | relative_url }}" alt="AndView Logo" class="logo">
+<h1>📱 AndView</h1>
+<p class="description">Mirror and control your Android device from Linux<br><strong>Zero dependencies required!</strong></p>
 
 ## 🎯 What is AndView?
 
@@ -46,9 +44,11 @@ AndView is a modern, user-friendly GUI application that allows you to mirror and
   </div>
 </div>
 
-<div class="download-section">
-  <h2>🚀 Ready to Start?</h2>
-  <p>Download the latest version and start mirroring in seconds!</p>
+## 🚀 Ready to Start?
+
+Download the latest version and start mirroring in seconds!
+
+<div style="text-align: center; margin: 2rem 0;">
   <a href="https://github.com/satodu/AndView/releases/latest/download/AndView-x86_64.AppImage" class="download-button">
     📥 Download Latest Release
   </a>

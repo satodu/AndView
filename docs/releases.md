@@ -4,8 +4,6 @@ title: Releases
 description: Download the latest AndView releases
 ---
 
-# 📦 Releases
-
 ## 🎉 Latest Release
 
 <div class="release-card latest">
