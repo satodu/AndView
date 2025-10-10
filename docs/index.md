@@ -4,70 +4,114 @@ title: AndView
 description: Mirror and control your Android device from Linux - No dependencies required!
 ---
 
-# 📱 AndView
-
-**Mirror and control your Android device from Linux - Zero dependencies!**
-
-![AndView Logo]({{ '/assets/logo.png' | relative_url }}){: .logo}
+<div class="hero">
+  <img src="{{ '/assets/logo.png' | relative_url }}" alt="AndView Logo" class="logo">
+  <h1>📱 AndView</h1>
+  <p class="description">Mirror and control your Android device from Linux<br><strong>Zero dependencies required!</strong></p>
+</div>
 
 ## 🎯 What is AndView?
 
 AndView is a modern, user-friendly GUI application that allows you to mirror and control your Android device directly from your Linux desktop. Built with PySide6, it provides an intuitive interface for Android device management.
 
-### ✨ Key Features
+<div class="features">
+  <div class="feature-card">
+    <h3>🖥️ Screen Mirroring</h3>
+    <ul>
+      <li>Real-time Android screen display</li>
+      <li>High-quality video streaming</li>
+      <li>Multiple quality presets</li>
+      <li>Low latency performance</li>
+    </ul>
+  </div>
 
-- 🖥️ **Screen Mirroring** - View your Android screen on Linux
-- 📱 **Device Control** - Use your mouse/keyboard to control Android
-- 📦 **APK Installation** - Install apps directly from your desktop
-- 📸 **Screenshot Capture** - Take screenshots with one click
-- 🔧 **ADB Shell** - Execute commands directly on your device
-- 📊 **Device Info** - View detailed device information
-- 🎛️ **Quality Presets** - Optimize mirroring for your needs
+  <div class="feature-card">
+    <h3>📱 Device Control</h3>
+    <ul>
+      <li>Mouse and keyboard control</li>
+      <li>Touch gestures support</li>
+      <li>Volume and power buttons</li>
+      <li>File drag & drop</li>
+    </ul>
+  </div>
 
-## 🚀 Quick Start
+  <div class="feature-card">
+    <h3>🔧 Advanced Features</h3>
+    <ul>
+      <li>APK installation via GUI</li>
+      <li>Instant screenshot capture</li>
+      <li>ADB shell integration</li>
+      <li>Device information display</li>
+    </ul>
+  </div>
+</div>
 
-### 1. Download the AppImage
+<div class="download-section">
+  <h2>🚀 Ready to Start?</h2>
+  <p>Download the latest version and start mirroring in seconds!</p>
+  <a href="https://github.com/satodu/AndView/releases/latest/download/AndView-x86_64.AppImage" class="download-button">
+    📥 Download Latest Release
+  </a>
+  <a href="{{ '/releases' | relative_url }}" class="download-button">
+    📋 View All Releases
+  </a>
+</div>
 
-Get the latest release from our [releases page]({{ '/releases' | relative_url }}):
+## ⚡ Quick Setup
+
+### 1. Download & Run
 
 ```bash
 # Download the latest AppImage
 wget https://github.com/satodu/AndView/releases/latest/download/AndView-x86_64.AppImage
 
-# Make it executable
+# Make it executable and run
 chmod +x AndView-x86_64.AppImage
-
-# Run it
 ./AndView-x86_64.AppImage
 ```
 
 ### 2. Enable USB Debugging
 
-Before connecting your Android device, you need to enable Developer Options and USB Debugging:
+Before connecting your Android device:
 
-1. Go to **Settings** → **About Phone**
-2. Tap **Build Number** 7 times
-3. Go back to **Settings** → **Developer Options**
-4. Enable **USB Debugging**
-5. Connect your device via USB
+1. **Settings** → **About Phone** → Tap **Build Number** 7 times
+2. **Settings** → **Developer Options** → Enable **USB Debugging**
+3. Connect your device via USB cable
+4. Allow USB debugging when prompted on your phone
 
-## 🎊 Why AndView?
+## 🎊 Why Choose AndView?
 
-### ✅ **100% Independent**
-- No Python installation required
-- No PyQt5/PySide6 dependencies
-- No ADB or scrcpy setup needed
-- Everything is bundled in the AppImage!
+<div class="features">
+  <div class="feature-card">
+    <h3>🚀 100% Independent</h3>
+    <ul>
+      <li>No Python installation required</li>
+      <li>No system dependencies</li>
+      <li>Everything bundled in AppImage</li>
+      <li>Works out of the box</li>
+    </ul>
+  </div>
 
-### ✅ **Always Up-to-Date**
-- Includes latest scrcpy v3.3.3
-- Latest ADB tools
-- Modern PySide6 GUI framework
+  <div class="feature-card">
+    <h3>⚡ Always Latest</h3>
+    <ul>
+      <li>Includes scrcpy v3.3.3</li>
+      <li>Latest ADB tools</li>
+      <li>Modern PySide6 GUI</li>
+      <li>Regular updates</li>
+    </ul>
+  </div>
 
-### ✅ **Cross-Distribution**
-- Works on Ubuntu, Fedora, Arch, openSUSE, etc.
-- No package manager conflicts
-- Portable and reliable
+  <div class="feature-card">
+    <h3>🌍 Universal Compatibility</h3>
+    <ul>
+      <li>Works on any Linux distro</li>
+      <li>No package conflicts</li>
+      <li>Portable and reliable</li>
+      <li>No root access needed</li>
+    </ul>
+  </div>
+</div>
 
 ## 📖 Documentation
 

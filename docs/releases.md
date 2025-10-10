@@ -8,46 +8,73 @@ description: Download the latest AndView releases
 
 Download the latest version of AndView for Linux.
 
-## 🎉 Latest Release
+<div class="hero">
+  <h1>📦 Releases</h1>
+  <p class="description">Download the latest version of AndView for Linux</p>
+</div>
 
-### v0.0.2 - Fully Independent AppImage
+<div class="release-card latest">
+  <div class="release-version">v0.0.2</div>
+  <div class="release-date">Released on October 10, 2025</div>
+  
+  <h3>🎉 What's New in v0.0.2</h3>
+  <ul>
+    <li>🎊 <strong>100% Independent AppImage</strong> - No dependencies required!</li>
+    <li>📦 <strong>Includes Everything</strong> - Python, PySide6, ADB, and scrcpy v3.3.3</li>
+    <li>🌍 <strong>English Documentation</strong> - All docs translated to English</li>
+    <li>⚡ <strong>Better Performance</strong> - Migrated from PyQt5 to PySide6</li>
+  </ul>
 
-**What's New:**
-- 🎊 **100% Independent AppImage** - No dependencies required!
-- 📦 **Includes Everything** - Python, PySide6, ADB, and scrcpy v3.3.3
-- 🌍 **English Documentation** - All docs translated to English
-- ⚡ **Better Performance** - Migrated from PyQt5 to PySide6
+  <div style="margin: 2rem 0;">
+    <a href="https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage" class="download-button">
+      📥 Download AndView-0.0.2-x86_64.AppImage
+    </a>
+  </div>
 
-[**Download AndView-0.0.2-x86_64.AppImage**](https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage)
-
-**Installation:**
-```bash
-# Download
-wget https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage
-
-# Make executable
-chmod +x AndView-0.0.2-x86_64.AppImage
-
-# Run
-./AndView-0.0.2-x86_64.AppImage
-```
+  <h4>🚀 Quick Installation:</h4>
+  ```bash
+  # Download
+  wget https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage
+  
+  # Make executable and run
+  chmod +x AndView-0.0.2-x86_64.AppImage
+  ./AndView-0.0.2-x86_64.AppImage
+  ```
+</div>
 
 ## 📋 All Releases
 
-### v0.0.2 (Latest)
-- **Date:** October 10, 2025
-- **Type:** Major Release
-- **Size:** ~150-200MB
-- **Features:** Fully independent AppImage with scrcpy v3.3.3
+<div class="release-card">
+  <div class="release-version">v0.0.2</div>
+  <div class="release-date">Released on October 10, 2025 • Major Release • ~150-200MB</div>
+  
+  <p><strong>Features:</strong> Fully independent AppImage with scrcpy v3.3.3</p>
+  
+  <div style="margin: 1rem 0;">
+    <a href="https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage" class="download-button">
+      📥 Download v0.0.2
+    </a>
+    <a href="https://github.com/satodu/AndView/blob/main/docs/CHANGELOG.md#002---2025-10-10" class="download-button" style="background: rgba(96, 165, 250, 0.2);">
+      📋 Changelog
+    </a>
+  </div>
+</div>
 
-[Download v0.0.2](https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage) | [Changelog](https://github.com/satodu/AndView/blob/main/docs/CHANGELOG.md#002---2025-10-10)
-
-### v0.0.1
-- **Date:** October 8, 2025
-- **Type:** Initial Release
-- **Features:** Basic GUI with PyQt5, requires system dependencies
-
-[Download v0.0.1](https://github.com/satodu/AndView/releases/download/v0.0.1/AndView-0.0.1-x86_64.AppImage) | [Changelog](https://github.com/satodu/AndView/blob/main/docs/CHANGELOG.md#001---2025-10-08)
+<div class="release-card">
+  <div class="release-version">v0.0.1</div>
+  <div class="release-date">Released on October 8, 2025 • Initial Release</div>
+  
+  <p><strong>Features:</strong> Basic GUI with PyQt5, requires system dependencies</p>
+  
+  <div style="margin: 1rem 0;">
+    <a href="https://github.com/satodu/AndView/releases/download/v0.0.1/AndView-0.0.1-x86_64.AppImage" class="download-button">
+      📥 Download v0.0.1
+    </a>
+    <a href="https://github.com/satodu/AndView/blob/main/docs/CHANGELOG.md#001---2025-10-08" class="download-button" style="background: rgba(96, 165, 250, 0.2);">
+      📋 Changelog
+    </a>
+  </div>
+</div>
 
 ## 🔄 Automatic Updates
 

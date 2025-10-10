@@ -1,72 +1,145 @@
-/* AndView Website Styles */
+/* AndView Website Styles - Modern Dark Theme */
 
 :root {
-  --primary-color: #1e3a8a; /* Navy blue */
-  --secondary-color: #3b82f6; /* Lighter blue */
+  /* Dark theme colors */
+  --primary-color: #3b82f6; /* Bright blue */
+  --secondary-color: #60a5fa; /* Light blue */
   --accent-color: #06b6d4; /* Cyan */
-  --text-color: #1f2937;
-  --bg-color: #ffffff;
-  --card-bg: #f8fafc;
-  --border-color: #e2e8f0;
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+  --bg-color: #0f172a; /* Dark slate */
+  --card-bg: #1e293b; /* Slate */
+  --card-hover: #334155; /* Lighter slate */
+  --border-color: #334155;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --gradient-start: #1e3a8a;
+  --gradient-end: #3b82f6;
+  
+  /* Light theme (fallback) */
+  --light-primary: #1e3a8a;
+  --light-secondary: #3b82f6;
+  --light-text: #1f2937;
+  --light-bg: #ffffff;
+  --light-card: #f8fafc;
+}
+
+/* Force dark mode */
+* {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 /* Logo styling */
 .logo {
-  max-width: 200px;
+  max-width: 120px;
   height: auto;
   display: block;
-  margin: 0 auto 2rem auto;
-  filter: drop-shadow(0 4px 8px rgba(30, 58, 138, 0.2));
+  margin: 0 auto 1rem auto;
+  filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 /* Hero section */
 .hero {
   text-align: center;
-  padding: 3rem 0;
-  background: linear-gradient(135deg, var(--card-bg) 0%, #ffffff 100%);
-  border-radius: 1rem;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  border-radius: 2rem;
   margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .hero h1 {
-  color: var(--primary-color);
-  font-size: 3rem;
-  font-weight: 700;
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 800;
   margin-bottom: 1rem;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .hero .description {
-  font-size: 1.25rem;
-  color: var(--text-color);
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
-  opacity: 0.8;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Feature cards */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
 }
 
 .feature-card {
   background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 0.75rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
   border: 1px solid var(--border-color);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+  border-color: var(--primary-color);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .feature-card h3 {
   color: var(--primary-color);
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .feature-card ul {
@@ -75,163 +148,320 @@
 }
 
 .feature-card li {
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
   color: var(--text-color);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
 }
 
 .feature-card li::before {
-  content: "✅ ";
-  margin-right: 0.5rem;
+  content: "✨";
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
 }
 
 /* Download section */
 .download-section {
-  background: var(--primary-color);
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
   color: white;
-  padding: 3rem;
-  border-radius: 1rem;
+  padding: 4rem 2rem;
+  border-radius: 2rem;
   text-align: center;
-  margin: 2rem 0;
+  margin: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+}
+
+.download-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .download-section h2 {
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.download-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
 }
 
 .download-button {
   display: inline-block;
-  background: var(--secondary-color);
+  background: rgba(255, 255, 255, 0.2);
   color: white;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
+  padding: 1.2rem 2.5rem;
+  border-radius: 1rem;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.125rem;
-  transition: background-color 0.2s ease;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
 }
 
 .download-button:hover {
-  background: var(--accent-color);
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   color: white;
   text-decoration: none;
 }
 
 /* Code blocks */
 .highlight {
-  background: #1e293b;
+  background: #0f172a;
   color: #e2e8f0;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+pre {
+  background: #0f172a !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 1rem !important;
+  padding: 1.5rem !important;
+  overflow-x: auto !important;
+  margin: 1.5rem 0 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+code {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: var(--accent-color) !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 0.3rem !important;
+  font-size: 0.9em !important;
 }
 
 /* Release cards */
 .release-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  padding: 2rem;
-  margin: 1.5rem 0;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  margin: 2rem 0;
   position: relative;
+  transition: all 0.3s ease;
+}
+
+.release-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1);
+  border-color: var(--primary-color);
 }
 
 .release-card.latest {
-  border-color: var(--secondary-color);
+  border-color: var(--accent-color);
   border-width: 2px;
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(59, 130, 246, 0.05) 100%);
 }
 
 .release-card.latest::before {
-  content: "LATEST";
+  content: "🔥 LATEST";
   position: absolute;
-  top: -10px;
+  top: -12px;
   right: 20px;
-  background: var(--secondary-color);
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
   color: white;
-  padding: 0.25rem 0.75rem;
+  padding: 0.5rem 1rem;
   border-radius: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(6, 182, 212, 0.3);
 }
 
 .release-version {
   color: var(--primary-color);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 800;
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.release-version::before {
+  content: "📱";
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .release-date {
-  color: #6b7280;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 /* Navigation */
 .site-nav {
-  background: var(--card-bg);
+  background: rgba(30, 41, 59, 0.95);
   border-bottom: 1px solid var(--border-color);
-  padding: 1rem 0;
+  padding: 1.5rem 0;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .site-nav a {
-  color: var(--primary-color);
+  color: var(--text-color);
   text-decoration: none;
-  margin: 0 1rem;
-  font-weight: 500;
+  margin: 0 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .site-nav a:hover {
-  color: var(--secondary-color);
-  text-decoration: underline;
+  color: var(--primary-color);
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
 }
 
 /* Footer */
 .site-footer {
   background: var(--card-bg);
   border-top: 1px solid var(--border-color);
-  padding: 2rem 0;
+  padding: 3rem 0;
   text-align: center;
   color: var(--text-color);
-  margin-top: 3rem;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+.site-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+  color: var(--accent-color);
+}
+
+/* Additional modern touches */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Smooth animations */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   
   .hero .description {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .features {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .download-section {
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
   }
   
   .download-section h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+  
+  .page-content, .wrapper {
+    padding: 0 1rem;
+  }
+  
+  .site-nav a {
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: #e2e8f0;
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --border-color: #334155;
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 1rem;
   }
   
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .download-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .feature-card, .release-card {
+    padding: 1.5rem;
   }
 }
