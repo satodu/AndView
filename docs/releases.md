@@ -6,18 +6,13 @@ description: Download the latest AndView releases
 
 # 📦 Releases
 
-Download the latest version of AndView for Linux.
-
-<div class="hero">
-  <h1>📦 Releases</h1>
-  <p class="description">Download the latest version of AndView for Linux</p>
-</div>
+## 🎉 Latest Release
 
 <div class="release-card latest">
   <div class="release-version">v0.0.2</div>
   <div class="release-date">Released on October 10, 2025</div>
   
-  <h3>🎉 What's New in v0.0.2</h3>
+  <h3>🚀 What's New</h3>
   <ul>
     <li>🎊 <strong>100% Independent AppImage</strong> - No dependencies required!</li>
     <li>📦 <strong>Includes Everything</strong> - Python, PySide6, ADB, and scrcpy v3.3.3</li>
@@ -31,12 +26,10 @@ Download the latest version of AndView for Linux.
     </a>
   </div>
 
-  <h4>🚀 Quick Installation:</h4>
+  <h4>⚡ Quick Install:</h4>
   ```bash
-  # Download
+  # Download and run
   wget https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage
-  
-  # Make executable and run
   chmod +x AndView-0.0.2-x86_64.AppImage
   ./AndView-0.0.2-x86_64.AppImage
   ```
