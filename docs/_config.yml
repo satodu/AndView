@@ -1,0 +1,62 @@
+title: AndView
+description: Mirror and control your Android device from Linux - No dependencies required!
+author: Eduardo Sato Panda
+email: eduardo.sato.panda@gmail.com
+url: https://satodu.github.io/AndView
+baseurl: /AndView
+
+# GitHub Pages settings
+github: [username]
+plugins:
+  - jekyll-relative-links
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+
+# Site settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Include in site
+include:
+  - _pages
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "default"
+
+# SEO
+social:
+  name: Eduardo Sato Panda
+  links:
+    - https://www.linkedin.com/in/eduardo-sato-panda
+    - https://github.com/satodu
+
+# Build settings
+destination: _site
