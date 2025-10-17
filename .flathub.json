@@ -1,0 +1,55 @@
+{
+  "flathub": {
+    "app-id": "com.satodu.AndView",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-22.08",
+    "sdk": "org.kde.Sdk",
+    "command": "andview",
+    "finish-args": [
+      "--share=network",
+      "--device=all",
+      "--talk-name=org.freedesktop.Notifications",
+      "--talk-name=org.kde.StatusNotifierWatcher",
+      "--socket=wayland",
+      "--socket=x11",
+      "--socket=fallback-x11",
+      "--filesystem=host",
+      "--filesystem=home"
+    ],
+    "modules": [
+      {
+        "name": "python3-setuptools",
+        "buildsystem": "simple",
+        "build-commands": [
+          "python3 -m pip install --no-deps setuptools wheel"
+        ]
+      },
+      {
+        "name": "python3-pip",
+        "buildsystem": "simple",
+        "build-commands": [
+          "python3 -m pip install --no-deps pip"
+        ]
+      },
+      {
+        "name": "python3-pyside6",
+        "buildsystem": "simple",
+        "build-commands": [
+          "python3 -m pip install --no-deps PySide6"
+        ]
+      },
+      {
+        "name": "AndView",
+        "buildsystem": "simple",
+        "build-commands": [
+          "install -Dm755 main.py /app/bin/andview",
+          "install -Dm644 requirements.txt /app/share/andview/",
+          "cp -r src /app/share/andview/",
+          "install -Dm644 com.satodu.AndView.desktop /app/share/applications/",
+          "install -Dm644 com.satodu.AndView.png /app/share/icons/hicolor/256x256/apps/",
+          "install -Dm644 com.satodu.AndView.metainfo.xml /app/share/metainfo/"
+        ]
+      }
+    ]
+  }
+}

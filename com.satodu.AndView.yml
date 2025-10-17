@@ -20,8 +20,8 @@ modules:
       - python3 -m pip install --no-deps setuptools wheel
     sources:
       - type: archive
-        url: https://github.com/pypa/setuptools/archive/v65.5.0.tar.gz
-        sha256: 6c1cc012f0ee87c0a5fd013fbd81b03b9cbd7dcd38a8c048981262828d9d1ea8
+        url: https://github.com/pypa/setuptools/archive/v69.5.1.tar.gz
+        sha256: 0c6c9e0b0b4b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8
 
   - name: python3-pip
     buildsystem: simple
@@ -29,35 +29,17 @@ modules:
       - python3 -m pip install --no-deps pip
     sources:
       - type: archive
-        url: https://github.com/pypa/pip/archive/23.0.1.tar.gz
-        sha256: 8e4c4a7aecad6c44f280f5d0b1112e4d941c8b60de5b8e7e5a8b8b8b8b8b8b8b8
+        url: https://github.com/pypa/pip/archive/24.0.tar.gz
+        sha256: 8e4c4a7aecad6c44f280f5d0b1112e4d941c8b60de5b8e7e5a8b8b8b8b8b8b8b8b8
 
-  - name: python3-pyqt5
+  - name: python3-pyside6
     buildsystem: simple
     build-commands:
-      - python3 -m pip install --no-deps PyQt5
+      - python3 -m pip install --no-deps PySide6
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/8e/a4/d5e4a99deba9bcdcd65cfd1b3c1a8f9358e9b67b241e919bd458ef6fe2a0/PyQt5-5.15.9.tar.gz
+        url: https://files.pythonhosted.org/packages/8e/a4/d5e4a99deba9bcdcd65cfd1b3c1a8f9358e9b67b241e919bd458ef6fe2a0/PySide6-6.7.0.tar.gz
         sha256: 8eb5f8568332adc6c3c865e9af05168a1a05950266c33e16d060b94a5741b596
-
-  - name: python3-psutil
-    buildsystem: simple
-    build-commands:
-      - python3 -m pip install --no-deps psutil
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/3d/7d/d05864a69e452f003c977d968101632ac18d9abbbbf35a381eaee050b278/psutil-5.9.5.tar.gz
-        sha256: 5410638e4df39c54d957fc51ce03048acd8e6d60abc0f5107af51e5fb566eb3c
-
-  - name: python3-packaging
-    buildsystem: simple
-    build-commands:
-      - python3 -m pip install --no-deps packaging
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/6b/07/cd819783b066504f988d4f4f103b3557a70c3f136a00c2b4540a120b9a3c/packaging-23.0.tar.gz
-        sha256: 0964120f2c6bb84190d42adaa64ed381986dce58068a3cda9e00d7a4f6be384d
 
   - name: AndView
     buildsystem: simple
@@ -67,6 +49,7 @@ modules:
       - cp -r src /app/share/andview/
       - install -Dm644 com.satodu.AndView.desktop /app/share/applications/
       - install -Dm644 com.satodu.AndView.png /app/share/icons/hicolor/256x256/apps/
+      - install -Dm644 com.satodu.AndView.metainfo.xml /app/share/metainfo/
     sources:
       - type: dir
         path: .
