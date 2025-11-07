@@ -46,6 +46,8 @@ Run the build script:
 
 The AppImage will be created in `build/AppImage/AndView-1.0.0-x86_64.AppImage`
 
+> A versão atual do script empacota automaticamente Python, PySide6, `adb` e `scrcpy` 3.3.3 (com suas bibliotecas FFmpeg/SDL), garantindo que o AppImage funcione mesmo em sistemas sem essas dependências instaladas.
+
 ### Testing the AppImage
 
 ```bash
@@ -166,12 +168,7 @@ To create a new version:
 
 ### Error: "cannot open shared object file"
 
-The AppImage needs system libraries to be available. For ADB and scrcpy, they must be installed on the system:
-
-```bash
-sudo apt install android-tools-adb scrcpy  # Ubuntu/Debian
-sudo dnf install android-tools scrcpy      # Fedora/Nobara
-```
+O AppImage inclui `adb` e `scrcpy` (v3.3.3), portanto não é necessário instalá-los no sistema hospedeiro.
 
 ### Error on run: "No such file or directory"
 

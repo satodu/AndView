@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.satodu.AndView</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>AndView</name>
+  <summary>Android Device Manager with WiFi Connection Support</summary>
+  <description>
+    <p>AndView is a modern GUI for managing Android devices using ADB and scrcpy. It provides an intuitive interface for developers and users who need to interact with Android devices from their desktop.</p>
+    
+    <p>Key features:</p>
+    <ul>
+      <li>Device list and management - View and manage connected Android devices</li>
+      <li>WiFi connection support - Connect to devices over WiFi without USB</li>
+      <li>Screen mirroring with scrcpy - High-quality screen mirroring and control</li>
+      <li>Quality settings and options - Customize video quality and performance</li>
+      <li>Multi-language support - Available in English, Spanish, and Portuguese</li>
+      <li>Modern Qt interface - Clean and responsive user interface</li>
+    </ul>
+    
+    <p>Perfect for Android developers, testers, and anyone who needs to interact with Android devices from their Linux desktop.</p>
+  </description>
+  
+  <launchable type="desktop-id">com.satodu.AndView.desktop</launchable>
+  
+  <url type="homepage">https://github.com/satodu/AndView</url>
+  <url type="bugtracker">https://github.com/satodu/AndView/issues</url>
+  <url type="help">https://github.com/satodu/AndView/wiki</url>
+  
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main interface showing device list and connection options</caption>
+    </screenshot>
+  </screenshots>
+  
+  <provides>
+    <binary>andview</binary>
+  </provides>
+  
+  <categories>
+    <category>Development</category>
+    <category>Utility</category>
+    <category>System</category>
+  </categories>
+  
+  <keywords>
+    <keyword>android</keyword>
+    <keyword>adb</keyword>
+    <keyword>scrcpy</keyword>
+    <keyword>mobile</keyword>
+    <keyword>development</keyword>
+    <keyword>device</keyword>
+    <keyword>mirroring</keyword>
+  </keywords>
+  
+  <releases>
+    <release version="1.0.0" date="2024-01-01">
+      <description>
+        <p>Initial release of AndView with basic device management and screen mirroring capabilities.</p>
+      </description>
+    </release>
+  </releases>
+  
+  <content_rating type="oars-1.1"/>
+  
+  <developer_name>Satodu</developer_name>
+</component>

@@ -1,0 +1,55 @@
+app-id: com.satodu.AndView
+runtime: org.kde.Platform
+runtime-version: '5.15-22.08'
+sdk: org.kde.Sdk
+command: andview
+finish-args:
+  - --share=network
+  - --device=all
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --socket=wayland
+  - --socket=x11
+  - --socket=fallback-x11
+  - --filesystem=host
+  - --filesystem=home
+modules:
+  - name: python3-setuptools
+    buildsystem: simple
+    build-commands:
+      - python3 -m pip install --no-deps setuptools wheel
+    sources:
+      - type: archive
+        url: https://github.com/pypa/setuptools/archive/v69.5.1.tar.gz
+        sha256: 0c6c9e0b0b4b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8b8
+
+  - name: python3-pip
+    buildsystem: simple
+    build-commands:
+      - python3 -m pip install --no-deps pip
+    sources:
+      - type: archive
+        url: https://github.com/pypa/pip/archive/24.0.tar.gz
+        sha256: 8e4c4a7aecad6c44f280f5d0b1112e4d941c8b60de5b8e7e5a8b8b8b8b8b8b8b8b8
+
+  - name: python3-pyside6
+    buildsystem: simple
+    build-commands:
+      - python3 -m pip install --no-deps PySide6
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/8e/a4/d5e4a99deba9bcdcd65cfd1b3c1a8f9358e9b67b241e919bd458ef6fe2a0/PySide6-6.7.0.tar.gz
+        sha256: 8eb5f8568332adc6c3c865e9af05168a1a05950266c33e16d060b94a5741b596
+
+  - name: AndView
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 main.py /app/bin/andview
+      - install -Dm644 requirements.txt /app/share/andview/
+      - cp -r src /app/share/andview/
+      - install -Dm644 com.satodu.AndView.desktop /app/share/applications/
+      - install -Dm644 com.satodu.AndView.png /app/share/icons/hicolor/256x256/apps/
+      - install -Dm644 com.satodu.AndView.metainfo.xml /app/share/metainfo/
+    sources:
+      - type: dir
+        path: .

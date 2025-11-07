@@ -11,6 +11,8 @@ A modern Python GUI for managing Android devices using [scrcpy](https://github.c
 ![Python](https://img.shields.io/badge/Python-3.8+-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
+📚 Documentação oficial: https://satodu.github.io/AndView/
+
 ## 🚀 Installation (Super Easy!)
 
 ### For Users: Just Download and Run! 🎉
@@ -40,7 +42,12 @@ Works on **any** Linux distribution! 🐧
 For quick installation to your Applications folder:
 
 ```bash
-wget https://github.com/satodu/AndView/releases/latest/download/AndView-1.0.0-x86_64.AppImage && chmod +x AndView-*.AppImage && mkdir -p ~/Applications && mv AndView-*.AppImage ~/Applications/
+VERSION="v0.0.3"
+FILE="AndView-${VERSION#v}-x86_64.AppImage"
+wget "https://github.com/satodu/AndView/releases/download/${VERSION}/${FILE}" \
+  && chmod +x "${FILE}" \
+  && mkdir -p ~/Applications \
+  && mv "${FILE}" ~/Applications/
 ```
 
 ## 📱 Preparing Your Android Device

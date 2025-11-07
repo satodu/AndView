@@ -49,8 +49,8 @@ AndView is a modern, user-friendly GUI application that allows you to mirror and
 Download the latest version and start mirroring in seconds!
 
 <div style="text-align: center; margin: 2rem 0;">
-  <a href="https://github.com/satodu/AndView/releases/latest/download/AndView-x86_64.AppImage" class="download-button">
-    Download Latest Release
+  <a href="https://github.com/satodu/AndView/releases/download/v0.0.3/AndView-0.0.3-x86_64.AppImage" class="download-button">
+    Download v0.0.3
   </a>
   <a href="{{ '/releases' | relative_url }}" class="download-button">
     View All Releases
@@ -62,12 +62,12 @@ Download the latest version and start mirroring in seconds!
 ### 1. Download & Run
 
 ```bash
-# Download the latest AppImage
-wget https://github.com/satodu/AndView/releases/latest/download/AndView-x86_64.AppImage
+# Download the v0.0.3 AppImage
+wget https://github.com/satodu/AndView/releases/download/v0.0.3/AndView-0.0.3-x86_64.AppImage
 
 # Make it executable and run
-chmod +x AndView-x86_64.AppImage
-./AndView-x86_64.AppImage
+chmod +x AndView-0.0.3-x86_64.AppImage
+./AndView-0.0.3-x86_64.AppImage
 ```
 
 ### 2. Enable USB Debugging

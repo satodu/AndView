@@ -7,8 +7,8 @@ description: Download the latest AndView releases
 ## 🎉 Latest Release
 
 <div class="release-card latest">
-  <div class="release-version">v0.0.2</div>
-  <div class="release-date">Released on October 10, 2025</div>
+  <div class="release-version">v0.0.3</div>
+  <div class="release-date">Released on November 7, 2025</div>
   
   <h3>🚀 What's New</h3>
   <ul>
@@ -19,21 +19,37 @@ description: Download the latest AndView releases
   </ul>
 
   <div style="margin: 2rem 0;">
-    <a href="https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage" class="download-button">
-      📥 Download AndView-0.0.2-x86_64.AppImage
+    <a href="https://github.com/satodu/AndView/releases/download/v0.0.3/AndView-0.0.3-x86_64.AppImage" class="download-button">
+      📥 Download AndView-0.0.3-x86_64.AppImage
     </a>
   </div>
 
   <h4>⚡ Quick Install:</h4>
   ```bash
   # Download and run
-  wget https://github.com/satodu/AndView/releases/download/v0.0.2/AndView-0.0.2-x86_64.AppImage
-  chmod +x AndView-0.0.2-x86_64.AppImage
-  ./AndView-0.0.2-x86_64.AppImage
+  wget https://github.com/satodu/AndView/releases/download/v0.0.3/AndView-0.0.3-x86_64.AppImage
+  chmod +x AndView-0.0.3-x86_64.AppImage
+  ./AndView-0.0.3-x86_64.AppImage
   ```
 </div>
 
 ## 📋 All Releases
+
+<div class="release-card">
+  <div class="release-version">v0.0.3</div>
+  <div class="release-date">Released on November 7, 2025 • Stability & Polish • ~200MB</div>
+  
+  <p><strong>Highlights:</strong> General stability improvements and packaging refinements.</p>
+  
+  <div style="margin: 1rem 0;">
+    <a href="https://github.com/satodu/AndView/releases/download/v0.0.3/AndView-0.0.3-x86_64.AppImage" class="download-button">
+      📥 Download v0.0.3
+    </a>
+    <a href="https://github.com/satodu/AndView/blob/main/docs/CHANGELOG.md#003---2025-11-07" class="download-button" style="background: rgba(96, 165, 250, 0.2);">
+      📋 Changelog
+    </a>
+  </div>
+</div>
 
 <div class="release-card">
   <div class="release-version">v0.0.2</div>
